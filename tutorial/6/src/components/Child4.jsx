@@ -1,6 +1,7 @@
+import { memo } from "react"
 import classes from "./Child4.module.scss"
 
-export const Child4 = () =>{
+export const Child4 = memo(() =>{
     console.log("Child4 レンダリング")
 
     return (
@@ -9,4 +10,4 @@ export const Child4 = () =>{
         </div>
 
     )
-}
+})
