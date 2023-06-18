@@ -6,13 +6,12 @@ import { Child3 } from "./Child3";
 export const Child1 = memo((props) =>{
     console.log("Child1 レンダリング")
 
-    const {onClickReset,num} = props
-    console.log({num})
+    const {onClickReset} = props
     return (
         <div className={classes.style}>
             <p>Child1</p>
             <button onClick={onClickReset}>リセット</button>
-            <Child2 num={num}/>
+            <Child2 />
             <Child3 />
         </div>
     )
