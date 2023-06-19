@@ -3,6 +3,7 @@ import { useState,useEffect } from "react"
 
 export const App = () => {
   const [num, setNum] = useState(0)
+  
   useEffect(()=>{
     alert(num)
   },[num])
