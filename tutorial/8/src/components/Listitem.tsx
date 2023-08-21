@@ -10,6 +10,7 @@ export const Listitem: FC<User> = (props: User) => {
     )
 }
 
+
 Listitem.defaultProps={
     parsonalColor:"grey"
 }
