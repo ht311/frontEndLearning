@@ -8,6 +8,7 @@ import ContextSample from './components/ContextSample'
 import Counter from './components/Counter'
 import {Parent} from './components/ParentUseCallBack';
 import { UseMemoSample } from './components/UseMemoSample';
+import Clock from './components/Clock';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,6 +19,7 @@ ReactDOM.render(
     <Counter initialValue={3} />
     <Parent />
     <UseMemoSample />
+    <Clock />
   </React.StrictMode>,
   document.getElementById('root')
 );
