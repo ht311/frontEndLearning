@@ -6,6 +6,8 @@ import Message from './components/Message';
 import Container from './components/ContainerSample'
 import ContextSample from './components/ContextSample'
 import Counter from './components/Counter'
+import {Parent} from './components/ParentUseCallBack';
+import { UseMemoSample } from './components/UseMemoSample';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,6 +16,8 @@ ReactDOM.render(
     <Container />
     <ContextSample />
     <Counter initialValue={3} />
+    <Parent />
+    <UseMemoSample />
   </React.StrictMode>,
   document.getElementById('root')
 );
