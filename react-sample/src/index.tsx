@@ -9,6 +9,7 @@ import Counter from './components/Counter'
 import {Parent} from './components/ParentUseCallBack';
 import { UseMemoSample } from './components/UseMemoSample';
 import Clock from './components/Clock';
+import { ImageUploader } from './components/ImageUploader';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -20,6 +21,7 @@ ReactDOM.render(
     <Parent />
     <UseMemoSample />
     <Clock />
+    <ImageUploader />
   </React.StrictMode>,
   document.getElementById('root')
 );

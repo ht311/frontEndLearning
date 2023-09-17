@@ -43,7 +43,7 @@ const Clock = (): JSX.Element => {
     // localstorageから値を読み込む副作用
     useEffect(() => {
         const savedLocale: string | null = localStorage.getItem(KEY_LOCALE)
-        if (savedLocale != null) {
+        if (!!savedLocale) {
             setLocale(judgeLocalFromString(savedLocale))
         }
     }, []
