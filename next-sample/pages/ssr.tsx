@@ -24,7 +24,8 @@ const SSR:NextPage<SSRProps>=(props)=>{
 
             
 export const getServerSideProps : GetServerSideProps<SSRProps>=async(context)=>{
-    const timeStamp = new Date().toLocaleString
+    const timeStamp = new Date().toLocaleString()
+    
     const message = `${timeStamp}にこのページのgetServerSidePropsが実行された`
     console.log(message)
     console.log(context.resolvedUrl)
