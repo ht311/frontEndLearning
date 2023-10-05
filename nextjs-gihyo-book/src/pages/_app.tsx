@@ -1,6 +1,6 @@
-import { AppProps } from "next/app";
-import Head from "next/head";
-import { createGlobalStyle } from "styled-components";
+import { AppProps } from 'next/app'
+import Head from 'next/head'
+import { createGlobalStyle } from 'styled-components'
 
 // グローバルのスタイル
 const GlobalStyle = createGlobalStyle`
@@ -27,23 +27,23 @@ ol,ul {
     list-style:none;
 }
 `
-const MyApp =({Component, pageProps}:AppProps) =>{
-    return (
-        <>
-            <Head>
-                <meta key="charset" name="charset" charSet="utf-8" />
-                <meta
-                    key="viewport"
-                    name="viewport"
-                    content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=5"
-                    />
-                <meta property="og:locale" content="ja_JP" />
-                <meta property="og:type" content="wensite" />
-            </Head>
-            <GlobalStyle />
-            <Component {...pageProps} />
-        </>
-    )
+const MyApp = ({ Component, pageProps }: AppProps) => {
+  return (
+    <>
+      <Head>
+        <meta key="charset" name="charset" charSet="utf-8" />
+        <meta
+          key="viewport"
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=5"
+        />
+        <meta property="og:locale" content="ja_JP" />
+        <meta property="og:type" content="wensite" />
+      </Head>
+      <GlobalStyle />
+      <Component {...pageProps} />
+    </>
+  )
 }
 
 export default MyApp
