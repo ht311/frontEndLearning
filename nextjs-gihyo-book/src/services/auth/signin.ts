@@ -8,8 +8,9 @@ export type SigninParams = {
 
 /**
  * 認証API
- * 
- * 
+ * @param context APIコンテキスト
+ * @param signinParams パラメータ
+ * @returns ログインユーザ
  */
 const signin
     = async (context: ApiContext, signinParams: SigninParams): Promise<User> => {

@@ -1,9 +1,29 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode:true,
-    compiler:{
-        // styledComponents有効化
-        styledComponents:true
+    reactStrictMode: true,
+    compiler: (() => {
+        let compilerConfig = {
+            // styledComponents有効化
+            styledComponents: true
+        }
+
+        if (process.env.NODE_ENV = 'production') {
+            compilerConfig = {
+                ...compilerConfig,
+                // 本番環境ではReact Testing Libraryで使用するdate-testidを削除
+                reactRemoveProperties: { propertes: [`^data-testid$`] }
+            }
+        }
+
+        return compilerConfig
+    })(),
+    async rewrites() {
+        return [
+            {
+                source: `${process.env.NEXT_PUBLIC_API_BASE_PATH}/:match*`,
+                destination: `${process.env.API_BASE_URL}/:match`
+            }
+        ]
     }
 }
 
