@@ -1,5 +1,5 @@
 
-export const fetcher 
+export const fetcher
     = async (resource: RequestInfo, init?: RequestInit): Promise<any> => {
         const response = await fetch(resource, init)
 
@@ -13,4 +13,4 @@ export const fetcher
         }
 
         return response.json()
-}
+    }
