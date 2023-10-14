@@ -11,6 +11,10 @@
     "plugin:import/typescript",
     "plugin:storybook/recommended"
   ],
+  "ignorePatterns": [
+    "styles.d.ts",
+    "styles.ts"
+  ],
   "rules": {
     "@next/next/no-document-import-in-page": "off",
     "react/react-in-jsx-scope": "off",

@@ -1,16 +1,14 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from 'styled-components'
 
 export const parameters = {
-    actions: { argTypesRegex: '^on[A-Z].*' },
-    controls: {
-        mathers: {
-            color: /(background|color)$/i,
-            date: /Date$/
-        }
-    }
+  actions: { argTypesRegex: '^on[A-Z].*' },
+  controls: {
+    mathers: {
+      color: /(background|color)$/i,
+      date: /Date$/,
+    },
+  },
 }
-
-
 
 export const GlobalStyle = createGlobalStyle`
     html,
@@ -30,4 +28,3 @@ export const GlobalStyle = createGlobalStyle`
         color: #000000;
     }   
 `
-
