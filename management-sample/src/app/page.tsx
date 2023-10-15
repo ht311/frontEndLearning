@@ -1,5 +1,7 @@
 "use client";
-import { Button,FormErrorMessage,Linkcomponent } from '@/components/atoms';
+import { Button, FormErrorMessage, Linkcomponent } from '@/components/atoms';
+import DushboardCard from '@/components/molecules/dashboard-card';
+import NaviItem from '@/components/molecules/navi-item';
 import { useState } from 'react'
 
 export default function Home() {
@@ -24,6 +26,17 @@ export default function Home() {
       <Linkcomponent >
         azsssssssaeffda
       </Linkcomponent>
+      <DushboardCard
+        count={1}
+        label={"label1111"}
+      >
+        <div>divタグです</div>
+      </DushboardCard>
+      <DushboardCard count={2} label={"githubに飛ぶカードだ"}>
+        <Linkcomponent href='https://github.com/'>
+          ここを押してくれ！
+        </Linkcomponent>
+      </DushboardCard>
     </>
   )
 }
