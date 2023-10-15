@@ -1,3 +1,4 @@
+
 import { theme } from '@/themes'
 import type { ResponsiveProp, Responsive } from '@/types/styles'
 
@@ -18,6 +19,7 @@ export type LineHeight = LineHeightThemeKeys | (string & {})
 
 // ブレークポイント
 const BREAKPOINTS: { [key: string]: string } = {
+
   sm: '640px',
   md: '768px',
   lg: '1024px',

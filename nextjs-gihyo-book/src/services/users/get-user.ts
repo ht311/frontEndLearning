@@ -3,6 +3,7 @@ import { fetcher } from '@/utils'
 
 export type GetUserParams = {
   id: number
+
 }
 
 /**
