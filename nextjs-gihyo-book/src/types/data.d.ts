@@ -7,12 +7,12 @@ export type Condition = 'new' | 'used'
 
 // ユーザー
 export type User = {
-    id: number
-    userName: string
-    displayName: string
-    email: string
-    profileImageUrl: string
-    description: string
+  id: number
+  userName: string
+  displayName: string
+  email: string
+  profileImageUrl: string
+  description: string
 }
 
 // 商品
@@ -25,9 +25,11 @@ export type Product = {
     blurDataUrl: string
     condition: Condition
     owner: User
+
 }
 
 // API Context
 export type ApiContext = {
     apiRootUrl: string
 }
+

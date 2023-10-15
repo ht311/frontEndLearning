@@ -4,11 +4,12 @@
  * T:CSSプロパティの型
  */
 export type ResponsiveProp<T> = {
-    base?: T //default
-    sm?: T // 640px以上
-    md?: T // 768px以上
-    lg?: T // 1024px以上
-    xl?: T // 1280px以上
+
+  base?: T //default
+  sm?: T // 640px以上
+  md?: T // 768px以上
+  lg?: T // 1024px以上
+  xl?: T // 1280px以上
 }
 
 export type Responsive<T> = T | Responsive<T>
@@ -120,9 +121,10 @@ export type CSSPropertyAlignSelf =
 type GridLine = 'auto' | (string & {})
 
 export type CSSPropertyGridColumn =
-    | CSSPropertyGlobals
-    | GridLine
-    | (string & {})
+
+  | CSSPropertyGlobals
+  | GridLine
+  | (string & {})
 
 export type CSSPropertyGridRow = CSSPropertyGlobals | GridLine | (string & {})
 
@@ -134,3 +136,4 @@ export type CSSPropertyGridAutoFlow =
     | (string & {})
 
 export type CSSPropertyGridArea = CSSPropertyGlobals | GridLine | (string & {})
+

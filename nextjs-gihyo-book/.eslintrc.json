@@ -11,6 +11,10 @@
     "plugin:import/typescript",
     "plugin:storybook/recommended"
   ],
+  "ignorePatterns": [
+    "styles.d.ts",
+    "styles.ts"
+  ],
   "rules": {
     "@next/next/no-document-import-in-page": "off",
     "react/react-in-jsx-scope": "off",
@@ -30,7 +34,7 @@
         "semi": false,
         "singleQuote": true,
         "printWidth": 80,
-        "tabWidth": 2
+        "tabWidth": 4
       }
     ]
   }
