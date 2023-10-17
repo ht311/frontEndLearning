@@ -1,3 +1,7 @@
+[zenn](https://zenn.dev/thirosue/books/13ac92fc34ae22/viewer/8ecc99)
+[git](https://github.com/Thirosue/next-typescript-sample)
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
