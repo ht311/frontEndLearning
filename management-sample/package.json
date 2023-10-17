@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "4.28.0",
+    "@tanstack/react-query-devtools": "4.28.0",
     "lodash": "^4.17.21",
     "next": "13.5.4",
     "react": "^18",

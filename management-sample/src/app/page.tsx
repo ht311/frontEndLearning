@@ -2,6 +2,8 @@
 import { Button, FormErrorMessage, Linkcomponent } from '@/components/atoms';
 import DushboardCard from '@/components/molecules/dashboard-card';
 import NaviItem from '@/components/molecules/navi-item';
+import Pager from '@/components/molecules/pager';
+import { ProductListRequest, ProductRepository } from '@/repository/product-repository';
 import { useState } from 'react'
 
 export default function Home() {
@@ -10,7 +12,11 @@ export default function Home() {
     setCount(count + 1)
   }
 
-
+  // const req:ProductListRequest ={
+  //   page: 0,
+  //   rows: 0
+  // }
+  // ProductRepository.findAll(req)
   return (
     <>
       <Button
@@ -37,6 +43,14 @@ export default function Home() {
           ここを押してくれ！
         </Linkcomponent>
       </DushboardCard>
+      <Pager pageItem={{
+        page: 1,
+        totalPage: 10,
+        totalCount: 1,
+        perPage: 1
+      }} search={function (page: number): Promise<void> {
+        throw new Error('Function not implemented.');
+      } } />
     </>
   )
 }
