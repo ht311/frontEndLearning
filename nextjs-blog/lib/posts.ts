@@ -1,7 +1,7 @@
 import fs from "fs"
 import path from "path"
 import matter from "gray-matter"
-import {remark} from "remark"
+import { remark } from "remark"
 import html from "remark-html"
 
 const postsDirectory: string = path.join(process.cwd(), "posts")
@@ -63,10 +63,22 @@ export const getAllPostIds = (): any => {
             }
         }
     })
+    // // ファイルシステムの代わりに
+    // // 外部の API エンドポイントから投稿データを取得する
+    // const res = await fetch('..')
+    // const posts = await res.json()
+    // return posts.map(post => {
+    //     return {
+    //         params: {
+    //             id: post.id
+    //         }
+    //     }
+    // })
+
 }
 
 
-export const getPostData = async(id: string) => {
+export const getPostData = async (id: string) => {
     const fullPath = path.join(postsDirectory, `${id}.md`)
     const fileContents = fs.readFileSync(fullPath, 'utf-8')
 
@@ -78,7 +90,7 @@ export const getPostData = async(id: string) => {
         .use(html)
         .process(matterResult.content)
     const contentHtml = processdContent.toString()
-    
+
 
     // typeにして返す
     return {
