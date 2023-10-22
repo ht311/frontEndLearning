@@ -1,6 +1,8 @@
 import fs from "fs"
 import path from "path"
 import matter from "gray-matter"
+import {remark} from "remark"
+import html from "remark-html"
 
 const postsDirectory: string = path.join(process.cwd(), "posts")
 
@@ -36,3 +38,53 @@ const getSortedPostsData = () => {
 }
 
 export default getSortedPostsData
+
+
+
+export const getAllPostIds = (): any => {
+    const fileNames = fs.readdirSync(postsDirectory)
+    // 以下のような配列を返します:
+    // [
+    //   {
+    //     params: {
+    //       id: 'ssg-ssr'
+    //     }
+    //   },
+    //   {
+    //     params: {
+    //       id: 'pre-rendering'
+    //     }
+    //   }
+    // ]
+    return fileNames.map((fileName: string) => {
+        return {
+            params: {
+                id: fileName.replace(/\.md$/, '')
+            }
+        }
+    })
+}
+
+
+export const getPostData = async(id: string) => {
+    const fullPath = path.join(postsDirectory, `${id}.md`)
+    const fileContents = fs.readFileSync(fullPath, 'utf-8')
+
+    // 投稿のメタデータ解析
+    const matterResult = matter(fileContents)
+
+    // マークダウンをhtml形式に変換
+    const processdContent = await remark()
+        .use(html)
+        .process(matterResult.content)
+    const contentHtml = processdContent.toString()
+    
+
+    // typeにして返す
+    return {
+        id,
+        contentHtml,
+        ...matterResult.data
+    }
+
+}
