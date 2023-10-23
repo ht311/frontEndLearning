@@ -39,17 +39,15 @@ const Layout = ({ children, home }: any): JSX.Element => {
                 ) : (
                     <>
                         <Link href="/">
-                            <a>
                                 <img
                                     src="/images/profileIcon.png"
                                     className={`${styles.headerImage} ${utilStyles.borderCircle}`}
                                     alt={name}
                                 />
-                            </a>
                         </Link>
                         <h2 className={utilStyles.headingLg}>
                             <Link href="/">
-                                <a className={utilStyles.colorInherit}>{name}</a>
+                                {name}
                             </Link>
                         </h2>
                     </>
@@ -58,9 +56,7 @@ const Layout = ({ children, home }: any): JSX.Element => {
             <main>{children}</main>
             {!home && (
                 <div className={styles.backToHome}>
-                    <Link href="/">
-                        <a>←Back To Home</a>
-                    </Link>
+                    <Link href="/">←Back To Home</Link>
                 </div>
             )}
         </div>

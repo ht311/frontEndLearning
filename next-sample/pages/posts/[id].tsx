@@ -2,6 +2,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import Head from "next/head"
 import { useRouter } from "next/router"
 import { ParsedUrlQuery } from "querystring"
+import fs from "fs"
 
 type PostProps = {
     id: string
@@ -20,7 +21,11 @@ const Post: NextPage<PostProps> = (props) => {
         <div>
             <Head>
                 <title>Create Next App</title>
-                <link rel='icon' href="/favicon.ico" />
+                {/**
+                 * 
+                 <link rel='icon' href="/favicon.ico" />
+                 */
+                }
             </Head>
             <main>
                 <p>このページは静的サイト生成によってビルド時に生成されています</p>
@@ -32,6 +37,7 @@ const Post: NextPage<PostProps> = (props) => {
 
 // getStaticPathsは生成したいページのパスパラメータの組み合わせを示す
 export const getStaticPaths: GetStaticPaths = async () => {
+
     const paths = [{
         params: {
             id: '1'

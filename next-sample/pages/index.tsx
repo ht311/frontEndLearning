@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import styles from '../styles/Home.module.css'
 import styled from 'styled-components'
+import Link from "next/link";
 
 const H1 = styled.h1`
     color:red;
@@ -38,11 +39,13 @@ const Home: NextPage = () => {
             <main className={styles.main}>
                 ...
                 <H1>
+                    
                     Welcome to <a href="https://nextjs.org/">Next.js!</a>
                 </H1>
                 <Badge>Hello World!</Badge>
                 {/*赤文字で透明背景のボタン */}
                 <Button backgroundColor="transparent" color="#FF0000" />
+                <Link href='posts/first-post'>link</Link>
                 {/*白色で青背景のボタン*/}
                 <Button backgroundColor="#1E90FF" color="white" />
             </main>
