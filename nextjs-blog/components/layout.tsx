@@ -9,6 +9,8 @@ const Layout = ({ children, home }: any): JSX.Element => {
     const name = 'takuya hirose'
     const siteTitle = 'Next.js Sample Website'
 
+    //console.log('Layout読み込み！')
+
     return (
         <div className={styles.container}>
             <Head>

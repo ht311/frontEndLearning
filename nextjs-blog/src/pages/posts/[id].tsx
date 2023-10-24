@@ -12,7 +12,7 @@ type PostProps = {
 
 export const Post = ({ postData }: any): JSX.Element => {
     return (
-        <Layout>
+        <>
             <Head>
                 <title>{postData.title}</title>
             </Head>
@@ -21,7 +21,7 @@ export const Post = ({ postData }: any): JSX.Element => {
                 <div className={utilStyles.lightText}>{postData.id}:{postData.date}</div>
                 <div dangerouslySetInnerHTML={{__html:postData.contentHtml}}/>
             </article>
-        </Layout>
+        </>
     )
 }
 

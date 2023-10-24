@@ -13,7 +13,7 @@ export const Home: NextPage<HomeProps> = ({ allPostsData }: HomeProps) => {
     const siteTitle = 'Next.js Sample Website'
 
     return (
-        <Layout home>
+        <>
             <Head>
                 <title>{siteTitle}</title>
             </Head>
@@ -21,7 +21,7 @@ export const Home: NextPage<HomeProps> = ({ allPostsData }: HomeProps) => {
                 <p>[Your Selt Introduction]</p>
                 <p>
                     (This is a sample website - you’ll be building a site like this on{' '}
-                    <Link href="https://nextjs.org/learn">our Next.js tutorial</Link>.)
+                    <Link href="https://nextjs.org/learn" target="_blank" >our Next.js tutorial</Link>.)
                 </p>
             </section>
             <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
@@ -40,8 +40,11 @@ export const Home: NextPage<HomeProps> = ({ allPostsData }: HomeProps) => {
                     ))}
                 </ul>
             </section>
-            <Link href='posts/ssg-ssr'>link</Link>
-        </Layout>
+            <section className={utilStyles.headingMd}>
+                <h2>Util</h2>
+                <Link href='todo'>ToDoList</Link>
+            </section>
+        </>
     )
 }
 
