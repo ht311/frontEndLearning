@@ -50,7 +50,7 @@ export const Home: NextPage<HomeProps> = ({ allPostsData }: HomeProps) => {
 
 export default Home
 
-
+//afoo
 // API読み込みバージョン
 // export const getStaticProps:GetStaticProps<HomeProps> = async()=>{
 //     const res = await fetch('それっぽいurl')
