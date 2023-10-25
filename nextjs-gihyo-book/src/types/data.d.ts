@@ -1,5 +1,3 @@
-import { type } from "os"
-
 // 商品カテゴリ
 export type Category = 'shoes' | 'clothes' | 'book'
 // 商品状態
@@ -17,14 +15,14 @@ export type User = {
 
 // 商品
 export type Product = {
-    id: number
-    category: Category
-    titile: string
-    description: string
-    imageUrl: string
-    blurDataUrl: string
-    condition: Condition
-    owner: User
+  id: number
+  category: Category
+  titile: string
+  description: string
+  imageUrl: string
+  blurDataUrl: string
+  condition: Condition
+  owner: User
 
 }
 
