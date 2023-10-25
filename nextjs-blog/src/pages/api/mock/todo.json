@@ -1,0 +1,12 @@
+{
+    "task": [
+        {
+            "name": "foo",
+            "isComplete": false
+        },
+        {
+            "name": "bar",
+            "isComplete": true
+        }
+    ]
+}
