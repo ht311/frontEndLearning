@@ -12,8 +12,6 @@ type HomeProps = {
 export const Home: NextPage<HomeProps> = ({ allPostsData }: HomeProps) => {
     const siteTitle = 'Next.js Sample Website'
 
-    const siteTitle = 'Next.js Sample Website'
-
     return (
         <>
             <Head>
