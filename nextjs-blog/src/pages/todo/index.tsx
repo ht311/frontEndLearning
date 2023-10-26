@@ -15,6 +15,8 @@ export const ToDo: NextPage<any> = () => {
 
     // 追加ボタン押下
     const inputButtonClick = () => {
+        if(!inputValue) return
+        
         toDoList.push(inputValue)
         setInputValue("")
     }
