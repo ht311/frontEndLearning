@@ -55,7 +55,9 @@ const Layout = ({ children, home }: any): JSX.Element => {
                     </>
                 )}
             </header>
+            <hr />
             <main>{children}</main>
+            <hr />
             {!home && (
                 <div className={styles.backToHome}>
                     <Link href="/">←Back To Home</Link>
