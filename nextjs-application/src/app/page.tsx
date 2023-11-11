@@ -27,6 +27,8 @@ export const Home: NextPage<HomeProps> = ({ allPostsData }: HomeProps) => {
             <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
                 <h2 className={utilStyles.headingLg}>Blog</h2>
                 <ul className={utilStyles.list}>
+                    {/**
+                     * 
                     {allPostsData.map(({ id, date, title }) => (
                         <li className={utilStyles.listItem} key={id}>
                             <Link href={`posts/${id}`}>
@@ -38,11 +40,17 @@ export const Home: NextPage<HomeProps> = ({ allPostsData }: HomeProps) => {
                             </small>
                         </li>
                     ))}
+                */}
                 </ul>
             </section>
             <section className={utilStyles.headingMd}>
                 <h2>Util</h2>
-                <Link href='todo'>ToDoList</Link>
+                <div>
+                    <Link href='todo'>ToDoList</Link>
+                </div>
+                <div>
+                    <Link href='cat'>猫ちゃんの画像を見る</Link>
+                </div>
             </section>
         </>
     )
@@ -58,12 +66,12 @@ export default Home
 // }
 
 // ファイル読み込みバージョン
-export const getStaticProps: GetStaticProps<any> = async () => {
-    const allPostsData = getSortedPostsData()
+// export const getStaticProps: GetStaticProps<any> = async () => {
+//     const allPostsData = getSortedPostsData()
 
-    return {
-        props: {
-            allPostsData
-        }
-    }
-}
+//     return {
+//         props: {
+//             allPostsData
+//         }
+//     }
+// }

@@ -1,4 +1,16 @@
-n競合を解決してrebase
+
+[backlog API](https://developer.nulab.com/ja/docs/backlog/#)
+[ディレクトリ構成について](https://zenn.dev/yutabeee/articles/5e32a99a3cab97)
+
+
+
+components\parts
+ボタンやラベルなどの簡単なパーツを定義
+
+nextjs-application\components\template
+ヘッダーフッターなどの共通的に使えるある程度の塊を定義
+
+
 iaThis is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 
