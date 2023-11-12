@@ -1,9 +1,7 @@
 import Link from 'next/link'
-import Layout from '../../components/layout'
 import Head from 'next/head'
 import utilStyles from '../../styles/utils.module.css'
-import getSortedPostsData from '../../lib/posts'
-import { GetStaticProps, NextPage } from 'next'
+import { NextPage } from 'next'
 
 type HomeProps = {
     allPostsData: any[]

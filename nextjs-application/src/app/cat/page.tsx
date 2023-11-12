@@ -1,6 +1,6 @@
 "use client"
+import Button from "@/components/elements/button";
 import { NextPage } from "next";
-import Button from "../../../components/elements/button";
 import { useState } from "react";
 
 
