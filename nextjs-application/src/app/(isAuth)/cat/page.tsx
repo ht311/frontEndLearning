@@ -5,7 +5,7 @@ import { NextPage } from "next";
 import { useContext, useState } from "react";
 
 
-export const Cat: NextPage<any> = () => {
+const Cat: NextPage<any> = () => {
     const [url,setUrl] = useState("")
     const onClick = async () => {
         const res = await handler()
@@ -25,7 +25,7 @@ export const Cat: NextPage<any> = () => {
 }
 export default Cat
 
-export type Image = {
+type Image = {
     url: string
 }
 

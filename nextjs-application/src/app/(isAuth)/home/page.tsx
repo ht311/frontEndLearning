@@ -5,11 +5,8 @@ import { NextPage } from 'next'
 import { useContext } from 'react'
 import { UserAuth, UserAuthContext } from '@/contexts/userAuth/userAuth'
 
-type HomeProps = {
-    allPostsData: any[]
-}
 
-export const Home: NextPage<HomeProps> = ({ allPostsData }: HomeProps) => {
+const Home: NextPage<any> = () => {
     const siteTitle = 'Next.js Sample Website'
 
     // const userAuth:UserAuth = useContext(UserAuthContext)
