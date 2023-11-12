@@ -1,7 +1,8 @@
 "use client"
 import { FormEventHandler } from "react"
 import { useState } from "react";
-import InputText from "../../../../components/elements/input-text";
+import InputText from "@/components/elements/input-text";
+import { UserAuth } from "@/contexts/userAuth/userAuth";
 
 
 export type LoginFromArgs = {
@@ -23,8 +24,6 @@ export const LoginFrom: React.FC<LoginFromArgs> = ({ submitEvent }): JSX.Element
     }
 
 
-
-
     // form押下時の処理
     const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
         event.preventDefault();
@@ -34,6 +33,12 @@ export const LoginFrom: React.FC<LoginFromArgs> = ({ submitEvent }): JSX.Element
         const res = await handler(url.toString(), apikey.toString())
 
         if (res.isOk) {
+            const userAuth: UserAuth = {
+                url: url.toString(),
+                apikey: apikey.toString(),
+                isAuth: true
+            }
+            window.localStorage.setItem("userAuth", JSON.stringify(userAuth))
             alert("LoginOK!!!")
             submitEvent()
         }
@@ -41,14 +46,14 @@ export const LoginFrom: React.FC<LoginFromArgs> = ({ submitEvent }): JSX.Element
 
     return (
         <form onSubmit={handleSubmit}>
-            <label>
+            <div>
                 url:
-                <InputText inputName="url" value={url} onChange={urlOnChange}></InputText>
-            </label>
-            <label>
+                <InputText inputName="url" value={url} onChange={urlOnChange} />
+            </div>
+            <div>
                 apikey:
-                <InputText inputName="apikey" value={apikey} onChange={apikeyOnChange}></InputText>
-            </label>
+                <InputText inputName="apikey" value={apikey} onChange={apikeyOnChange} />
+            </div>
             <input type="submit" value="ログイン！"></input>
         </form>
     )
