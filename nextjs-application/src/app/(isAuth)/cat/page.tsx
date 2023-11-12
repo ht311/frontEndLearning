@@ -1,21 +1,25 @@
 "use client"
 import Button from "@/components/elements/button";
+import { UserAuth, UserAuthContext } from "@/contexts/userAuth/userAuth";
 import { NextPage } from "next";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 
 export const Cat: NextPage<any> = () => {
-
     const [url,setUrl] = useState("")
     const onClick = async () => {
         const res = await handler()
         setUrl(res[0].url)
     }
 
+
+    // const userAuth:UserAuth = useContext(UserAuthContext)
+
     return (
         <>
             <Button onClick={onClick}>クリック</Button>
             <div><img src={url}></img></div>
+            {/* <div>url:{userAuth.url}</div> */}
         </>
     )
 }

@@ -1,7 +1,9 @@
 import Link from 'next/link'
 import Head from 'next/head'
-import utilStyles from '../../styles/utils.module.css'
+import utilStyles from '../../../../styles/utils.module.css'
 import { NextPage } from 'next'
+import { useContext } from 'react'
+import { UserAuth, UserAuthContext } from '@/contexts/userAuth/userAuth'
 
 type HomeProps = {
     allPostsData: any[]
@@ -9,6 +11,8 @@ type HomeProps = {
 
 export const Home: NextPage<HomeProps> = ({ allPostsData }: HomeProps) => {
     const siteTitle = 'Next.js Sample Website'
+
+    // const userAuth:UserAuth = useContext(UserAuthContext)
 
     return (
         <>
@@ -23,31 +27,21 @@ export const Home: NextPage<HomeProps> = ({ allPostsData }: HomeProps) => {
                 </p>
             </section>
             <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-                <h2 className={utilStyles.headingLg}>Blog</h2>
-                <ul className={utilStyles.list}>
-                    {/**
-                     * 
-                    {allPostsData.map(({ id, date, title }) => (
-                        <li className={utilStyles.listItem} key={id}>
-                            <Link href={`posts/${id}`}>
-                                {title}
-                            </Link>
-                            <br />
-                            <small className={utilStyles.lightText}>
-                                {date}
-                            </small>
-                        </li>
-                    ))}
-                */}
-                </ul>
+                <h2 className={utilStyles.headingLg}>Login</h2>
+                <div>
+                    <Link href='../../login'>Login</Link>
+                </div>
             </section>
             <section className={utilStyles.headingMd}>
                 <h2>Util</h2>
                 <div>
-                    <Link href='todo'>ToDoList</Link>
+                    <Link href='../todo'>ToDoList</Link>
                 </div>
                 <div>
-                    <Link href='cat'>猫ちゃんの画像を見る</Link>
+                    <Link href='../cat'>猫ちゃんの画像を見る</Link>
+                </div>
+                <div>
+                    <Link href='../activities'>アクティビティ参照</Link>
                 </div>
             </section>
         </>
