@@ -1,4 +1,6 @@
 "use client"
+import { fetcher } from "@/api/fetcher";
+import { ActivityRequest, ActivityResponse } from "@/api/type/backlog/activities";
 import Button from "@/components/elements/button";
 import { UserAuth, UserAuthContext } from "@/contexts/userAuth/userAuth";
 import { useContext, useState } from "react";
@@ -8,8 +10,9 @@ export const GetAPI: React.FC = ():JSX.Element => {
     const [mailAddress, setMailAddress] = useState("")
     const userAuth: UserAuth = useContext(UserAuthContext)
     const onClick = async () => {
-        const res = await handler(userAuth)
-        setMailAddress(res[0].createdUser.mailAddress)
+        const req = new ActivityRequest(userAuth)
+        const res = await fetcher<ActivityResponse>(req)
+        setMailAddress(res[0].createdUser.lastLoginTime.toString())
     }
 
     return (
@@ -21,60 +24,3 @@ export const GetAPI: React.FC = ():JSX.Element => {
     )
 }
 export default GetAPI
-
-type Activity = {
-    id: number,
-    project: {
-        id: number,
-        projectKey: string,
-        name: string,
-        chartEnabled: boolean,
-        useResolvedForChart: boolean,
-        subtaskingEnabled: boolean,
-        projectLeaderCanEditProjectLeader: boolean,
-        useWiki: boolean,
-        useFileSharing: boolean,
-        useWikiTreeView: boolean,
-        useOriginalImageSizeAtWiki: boolean,
-        textFormattingRule: string,
-        archived: boolean,
-        displayOrder: number,
-        useDevAttributes: boolean
-    },
-    type: number,
-    content: {
-        id: number,
-        key_id: number,
-        summary: string,
-        description: string
-    },
-    createdUser: {
-        id: number,
-        userId: string,
-        name: string,
-        roleType: number,
-        lang: string,
-        mailAddress: string,
-        nulabAccount: {
-            nulabId: string,
-            name: string,
-            uniqueId: string
-        },
-        keyword: string,
-        lastLoginTime: Date
-    }
-}
-
-const handler = async (userAuth: UserAuth): Promise<Activity[]> =>
-    fetch(`https://${userAuth.url}.backlog.com/api/v2/space/activities?apiKey=${userAuth.apikey}`)
-        .then((response) => {
-            if (!response.ok) {
-                return Promise.reject(new Error("API失敗"))
-            }
-
-            return response.json()
-        })
-        .catch((error: Error) => {
-            console.error(error)
-            throw error
-        })

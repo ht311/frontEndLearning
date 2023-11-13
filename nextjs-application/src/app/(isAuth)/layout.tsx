@@ -4,6 +4,7 @@ import Layout from '@/components/layouts/layout'
 import UserAuthProvider from '@/contexts/userAuth/userAuthProvider'
 import { UserAuth } from '@/contexts/userAuth/userAuth'
 import { useRouter } from 'next/navigation'
+import { Metadata } from 'next'
 
 
 const App = ({ children }: { children: ReactNode }) => {
@@ -50,7 +51,7 @@ export default App
 
 
 
-export const metadata = {
+export const metadata:Metadata  = {
     title: 'title',
     // 以下のように template を使用すると、他のレイアウトで title を設定時に `title | AppName` という形になる
     // title: {

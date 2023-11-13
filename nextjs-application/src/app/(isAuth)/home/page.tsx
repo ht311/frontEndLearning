@@ -2,8 +2,6 @@ import Link from 'next/link'
 import Head from 'next/head'
 import utilStyles from '../../../../styles/utils.module.css'
 import { NextPage } from 'next'
-import { useContext } from 'react'
-import { UserAuth, UserAuthContext } from '@/contexts/userAuth/userAuth'
 
 
 const Home: NextPage<any> = () => {
