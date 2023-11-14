@@ -5,6 +5,7 @@ import Layout from '@/components/layouts/layout'
 import UserAuthProvider from '@/contexts/userAuth/userAuthProvider'
 import { UserAuth } from '@/contexts/userAuth/userAuth'
 import { useRouter } from 'next/navigation'
+import { Metadata } from 'next'
 
 
 const App = ({ children }: { children: ReactNode }) => {
@@ -16,27 +17,22 @@ const App = ({ children }: { children: ReactNode }) => {
         const userAuthJson = window.localStorage.getItem("userAuth") || "{}"
         //window.localStorage.removeItem("userAuth")
         // 未ログイン時は、login画面に飛ばす
-        // if (userAuthJson === "{}") {
-        //     router.push("./login")
-        //     return
-        // }
+        if (userAuthJson === "{}") {
+            router.push("./login")
+            return
+        }
 
         // 認証失敗で到達不可のはずだが、念のため
         setUserAuth(JSON.parse(userAuthJson))
         // なぜか空になる...
-        console.log("ここ")
-        console.log(userAuth)
+        //console.log("ここ")
+        //console.log(userAuth)
         // if (!(userAuth && userAuth.isAuth)) {
         //     router.push("./login")
         //     return
         // }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
-    // const userAuth: UserAuth = {
-    //     url: "im-hirose",
-    //     apikey: "wlhRepduX2ccDFanKYV8H66X77oYNiEIPIw1eVtvc2awwIo4Vjh3NBpUgVjMCm8g",
-    //     isAuth: true
-    // }
 
     return (
         <Layout>
@@ -51,7 +47,7 @@ export default App
 
 
 
-// export const metadata = {
+// export const metadata:Metadata  = {
 //     title: 'title',
 //     // 以下のように template を使用すると、他のレイアウトで title を設定時に `title | AppName` という形になる
 //     // title: {

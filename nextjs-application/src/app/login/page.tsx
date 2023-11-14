@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
  * ログインページ
  * ログイン成功なら、ホームに飛ばす
  */
-export const Login: NextPage<any> = () => {
+const Login: NextPage<any> = () => {
 
     const router = useRouter()
     const submitEvent = () => {
