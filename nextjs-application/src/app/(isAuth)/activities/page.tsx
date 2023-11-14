@@ -1,11 +1,9 @@
-import{ GetAPI} from "./_components/GetAPI"
+import{ Detail} from "./_components/detail"
 
 const Activities = () => {
     return (
         <>  
-            <div>
-                <GetAPI></GetAPI>
-            </div>
+            <Detail/>
         </>
     )
 }

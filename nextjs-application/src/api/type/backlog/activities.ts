@@ -41,7 +41,8 @@ type Activity = {
     content: {
         id: number,
         key_id: number,
-        summary: string,
+        summary?: string,
+        name?: string,
         description: string
     },
     createdUser: {
