@@ -39,7 +39,7 @@ export const LoginFrom: React.FC<LoginFromArgs> = ({ submitEvent }): JSX.Element
                 apikey:
                 <InputTextForm inputName="apikey" />
             </div>
-            <input type="submit" value="ログイン！"></input>
+            <input type="submit" value="ログイン！"/>
         </form>
     )
 }

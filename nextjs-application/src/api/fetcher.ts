@@ -1,10 +1,16 @@
 
+
 /**
  * fetcherのrequestクラスの基底
- */
+*/
 export interface BaseRequest {
-    url:string
+    url: string
+    method: method
+    headers?: HeadersInit
+    body?: BodyInit
 }
+
+export type method = "GET" | "POST"
 
 /**
  * APIを発行するためのラッパー関数
@@ -15,7 +21,12 @@ export interface BaseRequest {
  * @returns APIの戻り値をResponseにパースした結果
  */
 export const fetcher = async<Response>(request: BaseRequest): Promise<Response> =>
-    fetch(request.url)
+    fetch(request.url
+        , {
+            method: request.method,
+            headers: request.headers,
+            body: request.body
+        })
         .then((response) => {
             if (!response.ok) {
                 return Promise.reject(new Error("API失敗"))

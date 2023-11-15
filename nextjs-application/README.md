@@ -1,6 +1,6 @@
 
-[backlog API](https://developer.nulab.com/ja/docs/backlog/#)
-[ディレクトリ構成について](https://zenn.dev/yutabeee/articles/5e32a99a3cab97)
+- [backlog API](https://developer.nulab.com/ja/docs/backlog/#)
+- [ディレクトリ構成について](https://zenn.dev/yutabeee/articles/5e32a99a3cab97)
 
 
 
