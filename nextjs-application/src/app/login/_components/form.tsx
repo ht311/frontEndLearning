@@ -1,8 +1,6 @@
-"use client"
 import { FormEventHandler } from "react"
-import { useState } from "react";
-import InputText from "@/components/elements/input-text";
 import { UserAuth } from "@/contexts/userAuth/userAuth";
+import InputTextForm from "@/components/elements/input/input-text-form";
 
 
 export type LoginFromArgs = {
@@ -10,19 +8,6 @@ export type LoginFromArgs = {
 }
 
 export const LoginFrom: React.FC<LoginFromArgs> = ({ submitEvent }): JSX.Element => {
-
-    // urlの状態管理
-    const [url, setUrl] = useState("")
-    const urlOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setUrl(event.target.value)
-    }
-
-    // apikeyの状態管理
-    const [apikey, setApikey] = useState("")
-    const apikeyOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setApikey(event.target.value)
-    }
-
 
     // form押下時の処理
     const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
@@ -48,20 +33,17 @@ export const LoginFrom: React.FC<LoginFromArgs> = ({ submitEvent }): JSX.Element
         <form onSubmit={handleSubmit}>
             <div>
                 url:
-                <InputText inputName="url" value={url} onChange={urlOnChange} />
+                <InputTextForm inputName="url" />
             </div>
             <div>
                 apikey:
-                <InputText inputName="apikey" value={apikey} onChange={apikeyOnChange} />
+                <InputTextForm inputName="apikey" />
             </div>
             <input type="submit" value="ログイン！"></input>
         </form>
     )
 }
 export default LoginFrom
-
-
-
 
 
 export type Response = {

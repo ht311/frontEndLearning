@@ -1,6 +1,7 @@
 "use client"
-import Button from "@/components/elements/button";
+import Button from "@/components/elements/button/button";
 import { NextPage } from "next";
+import Image from "next/image";
 import { useState } from "react";
 
 
@@ -17,7 +18,7 @@ const Cat: NextPage<any> = () => {
     return (
         <>
             <Button onClick={onClick}>クリック</Button>
-            <div><img src={url}></img></div>
+            <div><Image src={url} alt="猫ちゃんの画像"></Image></div>
             {/* <div>url:{userAuth.url}</div> */}
         </>
     )
