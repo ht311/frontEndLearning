@@ -17,8 +17,8 @@ const Cat: NextPage<any> = () => {
 
     return (
         <>
-            <Button onClick={onClick}>クリック</Button>
-            <div><Image src={url} alt="猫ちゃんの画像"></Image></div>
+            <Button onClick={onClick}>猫ちゃんの画像を表示する</Button>
+            <div>{url&& <Image src={url} alt="猫ちゃんの画像" width="500" height="500"></Image>}</div>
             {/* <div>url:{userAuth.url}</div> */}
         </>
     )

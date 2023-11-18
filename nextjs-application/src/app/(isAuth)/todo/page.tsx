@@ -1,6 +1,6 @@
 "use client"
 import { NextPage } from "next";
-import InputLabel from "@/components/elements/input/input-text";
+import InputText from "@/components/elements/input/input-text";
 import Button from "@/components/elements/button/button";
 import { useState } from "react";
 
@@ -16,6 +16,10 @@ const ToDo: NextPage<any> = () => {
 
     // 追加ボタン押下
     const inputButtonClick = () => {
+        if (!inputValue) {
+            alert("タスクは入力してください！")
+            return
+        }
         toDoList.push(inputValue)
         setInputValue("")
     }
@@ -31,17 +35,17 @@ const ToDo: NextPage<any> = () => {
         <>
             <h1>ToDo リスト</h1>
 
-            <div>
-                <InputLabel value={inputValue} onChange={inputLabelOnChenge}/>
+            <div style={{ display: "flex" }}>
+                <InputText value={inputValue} placeholder="タスクを入力" onChange={inputLabelOnChenge} />
                 <Button onClick={inputButtonClick}>
                     追加
                 </Button>
             </div>
 
-            <table>
+            {toDoList && <table>
                 {toDoList.map((toDo, index) => (
                     <tr key={index}>
-                        <td>No{index+1}</td>
+                        <td>No{index + 1}</td>
                         <td>{toDo}</td>
                         <td>
                             <Button
@@ -52,7 +56,7 @@ const ToDo: NextPage<any> = () => {
                         </td>
                     </tr>
                 ))}
-            </table>
+            </table>}
         </>
     )
 

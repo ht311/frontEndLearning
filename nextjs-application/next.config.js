@@ -11,6 +11,17 @@ const nextConfig = {
             },
         ]
     },
+    // Imageタグが使用するホストの許可定義
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'cdn2.thecatapi.com',
+                port: '',
+                pathname: '/**',
+            },
+        ],
+    },
 }
 
 //reactStrictMode:false
