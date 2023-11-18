@@ -5,14 +5,21 @@ import styles from "./button.module.css";
  */
 export type ButtonProps = {
     children: React.ReactNode;
+    /**
+     * クリック時のイベント
+     */
+    // eslint-disable-next-line no-unused-vars
     onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
-    disabled?: boolean; // 非表示にしたいときにtrue
+    /**
+     * 非表示にしたいときにtrue
+     */
+    disabled?: boolean;
 };
 
 /**
  * ボタンcomponent
  * @param ButtonProps
- * @returns いい感じにCSS適用されたボタン
+ * @returns CSS適用されたボタン
  */
 export const Button: React.FC<ButtonProps> = ({
     children,

@@ -5,7 +5,7 @@ import Layout from "@/components/layouts/layout";
 import UserAuthProvider from "@/contexts/userAuth/userAuthProvider";
 import { UserAuth } from "@/contexts/userAuth/userAuth";
 import { useRouter } from "next/navigation";
-import { Metadata } from "next";
+// import { Metadata } from "next";
 
 const App = ({ children }: { children: ReactNode }) => {
     const [userAuth, setUserAuth] = useState<UserAuth>({ apikey: "", url: "", isAuth: false });

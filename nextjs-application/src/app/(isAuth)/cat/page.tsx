@@ -4,7 +4,7 @@ import { NextPage } from "next";
 import Image from "next/image";
 import { useState } from "react";
 
-const Cat: NextPage<any> = () => {
+const Cat: NextPage = () => {
     const [url, setUrl] = useState("");
     const onClick = async () => {
         const res = await handler();
@@ -25,11 +25,11 @@ const Cat: NextPage<any> = () => {
 };
 export default Cat;
 
-type Image = {
+type ImageResponse = {
     url: string;
 };
 
-const handler = async (): Promise<Image[]> =>
+const handler = async (): Promise<ImageResponse[]> =>
     fetch("https://api.thecatapi.com/v1/images/search")
         .then((response) => {
             if (!response.ok) {

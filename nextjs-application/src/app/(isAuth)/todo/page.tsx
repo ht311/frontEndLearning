@@ -4,7 +4,7 @@ import InputText from "@/components/elements/input/input-text";
 import Button from "@/components/elements/button/button";
 import { useState } from "react";
 
-const ToDo: NextPage<any> = () => {
+const ToDo: NextPage = () => {
     const [inputValue, setInputValue] = useState("");
     const [toDoList, setToDoList] = useState<string[]>([]);
 

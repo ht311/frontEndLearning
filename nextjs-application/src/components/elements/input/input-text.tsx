@@ -4,8 +4,15 @@ export type InputTextProps = {
     inputName?: string;
     value?: string | number;
     placeholder?: string;
+    /**
+     * inputのonChengeイベント
+     */
+    // eslint-disable-next-line no-unused-vars
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    disabled?: boolean; // 非表示にしたいときにtrue
+    /**
+     * 非表示にしたいときにtrue
+     */
+    disabled?: boolean;
 };
 
 export const InputText = ({
