@@ -1,0 +1,6 @@
+{
+    # 下記以外はデフォルト設定を使用する
+    # https://prettier.io/docs/en/options.html
+    "printWidth": 100, # 100文字を超えると改行
+    "tabWidth": 4, # インデント
+}

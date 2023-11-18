@@ -2,23 +2,30 @@ import { BaseRequest, method } from "@/api/fetcher";
 import { UserAuth } from "@/contexts/userAuth/userAuth";
 
 /**
- * Backlogのactivity APIのrequest
- * @link https://developer.nulab.com/ja/docs/backlog/api/2/get-recent-updates/#
+ * Backlogのadd-issue APIのrequest
+ * @link https://developer.nulab.com/ja/docs/backlog/api/2/add-issue/#
  */
-export class ActivityRequest implements BaseRequest {
+export class AddIssueRequest implements BaseRequest {
     url: string;
     method: method;
+    headers: HeadersInit;
+    body?: FormData;
 
     constructor(userAuth: UserAuth) {
-        this.url = `https://${userAuth.url}.backlog.com/api/v2/space/activities?apiKey=${userAuth.apikey}`;
-        this.method = "GET";
+        this.url = `https://${userAuth.url}.backlog.com/api/v2/issues?apiKey=${userAuth.apikey}`;
+        this.method = "POST";
+        this.headers = { "Content-Type": "application/x-www-form-urlencoded" };
+    }
+
+    setBody(body: FormData) {
+        this.body = body;
     }
 }
 
 /**
- * Backlogのactivity APIのresponse
+ * Backlogのadd-issue APIのresponse
  */
-export type ActivityResponse = Activity[];
+export type AddIssueResponse = Activity[];
 
 type Activity = {
     id: number;

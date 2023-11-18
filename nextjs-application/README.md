@@ -1,8 +1,29 @@
 
-[backlog API](https://developer.nulab.com/ja/docs/backlog/#)
-[ディレクトリ構成について](https://zenn.dev/yutabeee/articles/5e32a99a3cab97)
+## 環境構築
+本プロジェクトは[VSCode](https://code.visualstudio.com/)での開発を推奨
 
+1. VSCodeの拡張機能をインストール
+   1. [eslint(フォーマッター)](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+   2. [prettier(自動フォーマット)](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+2. `npm install`で依存するパッケージをインストール
 
+## プロジェクトの起動方法
+- 開発者モードで起動
+  - `npm run dev`
+    - 実行時に静的解析、フォーマットも実行  
+        静的解析が不要な場合は、引数に`--noFormat`を追加
+- 起動
+  - `npm run start`
+- ビルド
+  - `npm run build`
+- 静的解析、フォーマット
+  - `npm run format`
+
+## 使用技術について
+- [backlog API](https://developer.nulab.com/ja/docs/backlog/#)
+- [ディレクトリ構成について](https://zenn.dev/yutabeee/articles/5e32a99a3cab97)
+- [cssについて](https://nextjs.org/docs/app/building-your-application/styling)
+- [css in modules](https://nextjs.org/docs/app/building-your-application/styling/css-modules)
 
 components\parts
 ボタンやラベルなどの簡単なパーツを定義
@@ -10,38 +31,6 @@ components\parts
 nextjs-application\components\template
 ヘッダーフッターなどの共通的に使えるある程度の塊を定義
 
-
-iaThis is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 

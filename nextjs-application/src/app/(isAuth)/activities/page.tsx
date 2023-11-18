@@ -1,10 +1,10 @@
-import{ Detail} from "./_components/detail"
+import { Detail } from "./_components/detail";
 
 const Activities = () => {
     return (
-        <>  
-            <Detail/>
+        <>
+            <Detail />
         </>
-    )
-}
-export default Activities
+    );
+};
+export default Activities;

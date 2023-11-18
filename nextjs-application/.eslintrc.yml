@@ -1,0 +1,33 @@
+
+  extends: 
+    - next
+    - next/core-web-vitals 
+    - eslint:recommended
+    # - next/babel
+    - prettier
+    - plugin:@typescript-eslint/eslint-recommended
+    - plugin:@typescript-eslint/recommended
+  parserOptions:
+    project: ./tsconfig.json
+  ignorePatterns:
+    - node_modules
+    - dist
+  rules: 
+    no-undef:
+      - off
+  # overrides:
+  #   files: 
+  #     - ['*.ts', '*.tsx']
+  #   rules: 
+  #     - no-undef: off
+
+#   "parserOptions": {
+#     "babelOptions": {
+#       "presets": ["require.resolve(\"next/babel\")"]
+#     }
+#   },
+#   "rules": {
+#     "camelcase": ["error", { "properties": "never" }],
+#     "no-unreachable": "error"
+#   }
+# }
