@@ -1,8 +1,8 @@
 
 - [backlog API](https://developer.nulab.com/ja/docs/backlog/#)
 - [ディレクトリ構成について](https://zenn.dev/yutabeee/articles/5e32a99a3cab97)
-
-
+- [cssについて](https://nextjs.org/docs/app/building-your-application/styling/css-in-js)
+- [module css](https://nextjs.org/docs/app/building-your-application/styling/css-modules)
 
 components\parts
 ボタンやラベルなどの簡単なパーツを定義
