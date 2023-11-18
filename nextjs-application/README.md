@@ -1,8 +1,7 @@
-
-- [backlog API](https://developer.nulab.com/ja/docs/backlog/#)
-- [ディレクトリ構成について](https://zenn.dev/yutabeee/articles/5e32a99a3cab97)
-- [cssについて](https://nextjs.org/docs/app/building-your-application/styling/css-in-js)
-- [module css](https://nextjs.org/docs/app/building-your-application/styling/css-modules)
+-   [backlog API](https://developer.nulab.com/ja/docs/backlog/#)
+-   [ディレクトリ構成について](https://zenn.dev/yutabeee/articles/5e32a99a3cab97)
+-   [cssについて](https://nextjs.org/docs/app/building-your-application/styling)
+-   [css in modules](https://nextjs.org/docs/app/building-your-application/styling/css-modules)
 
 components\parts
 ボタンやラベルなどの簡単なパーツを定義
@@ -10,9 +9,12 @@ components\parts
 nextjs-application\components\template
 ヘッダーフッターなどの共通的に使えるある程度の塊を定義
 
+-   開発時の注意
+-   vscodeの拡張機能で下記をインストールすること
+    -   [eslint(フォーマッター)](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+    -   [prettier(自動フォーマット)](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
 iaThis is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 
 ## Getting Started
 
@@ -38,8 +40,8 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-   [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+-   [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 

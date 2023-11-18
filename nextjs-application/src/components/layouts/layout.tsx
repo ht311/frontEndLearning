@@ -1,13 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
-import Head from "next/head"
-import styles from "./layout.module.css"
-import utilStyles from '../../../styles/utils.module.css'
+import Head from "next/head";
+import styles from "./layout.module.css";
+import utilStyles from "../../../styles/utils.module.css";
 //import Image from 'next/image'
-import Link from 'next/link'
+import Link from "next/link";
 
 const Layout = ({ children, home }: any): JSX.Element => {
-    const name = 'takuya hirose'
-    const siteTitle = 'Next.js Sample Website'
+    const name = "takuya hirose";
+    const siteTitle = "Next.js Sample Website";
 
     //console.log('Layout読み込み！')
 
@@ -22,7 +22,7 @@ const Layout = ({ children, home }: any): JSX.Element => {
                 <meta
                     property="og:image"
                     content={`https://og-image.now.sh/${encodeURI(
-                        siteTitle
+                        siteTitle,
                     )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
                 />
                 <meta name="og:title" content={siteTitle} />
@@ -41,16 +41,14 @@ const Layout = ({ children, home }: any): JSX.Element => {
                 ) : (
                     <>
                         <Link href="/">
-                                <img
-                                    src="/images/profileIcon.png"
-                                    className={`${styles.headerImage} ${utilStyles.borderCircle}`}
-                                    alt={name}
-                                />
+                            <img
+                                src="/images/profileIcon.png"
+                                className={`${styles.headerImage} ${utilStyles.borderCircle}`}
+                                alt={name}
+                            />
                         </Link>
                         <h2 className={utilStyles.headingLg}>
-                            <Link href="/">
-                                {name}
-                            </Link>
+                            <Link href="/">{name}</Link>
                         </h2>
                     </>
                 )}
@@ -62,7 +60,7 @@ const Layout = ({ children, home }: any): JSX.Element => {
                 </div>
             )}
         </div>
-    )
-}
+    );
+};
 
-export default Layout
+export default Layout;

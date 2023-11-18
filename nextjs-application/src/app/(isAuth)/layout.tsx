@@ -1,29 +1,27 @@
-"use client"
-import { ReactNode, useEffect, useState } from 'react'
-import '../../../styles/global.css'
-import Layout from '@/components/layouts/layout'
-import UserAuthProvider from '@/contexts/userAuth/userAuthProvider'
-import { UserAuth } from '@/contexts/userAuth/userAuth'
-import { useRouter } from 'next/navigation'
-import { Metadata } from 'next'
-
+"use client";
+import { ReactNode, useEffect, useState } from "react";
+import "../../../styles/global.css";
+import Layout from "@/components/layouts/layout";
+import UserAuthProvider from "@/contexts/userAuth/userAuthProvider";
+import { UserAuth } from "@/contexts/userAuth/userAuth";
+import { useRouter } from "next/navigation";
+import { Metadata } from "next";
 
 const App = ({ children }: { children: ReactNode }) => {
-    const [userAuth, setUserAuth] = useState<UserAuth>({ apikey: "", url: "", isAuth: false })
-    const router = useRouter()
+    const [userAuth, setUserAuth] = useState<UserAuth>({ apikey: "", url: "", isAuth: false });
+    const router = useRouter();
     useEffect(() => {
-
         //console.log(window.localStorage.getItem("userAuth"))
-        const userAuthJson = window.localStorage.getItem("userAuth") || "{}"
+        const userAuthJson = window.localStorage.getItem("userAuth") || "{}";
         //window.localStorage.removeItem("userAuth")
         // 未ログイン時は、login画面に飛ばす
         if (userAuthJson === "{}") {
-            router.push("./login")
-            return
+            router.push("./login");
+            return;
         }
 
         // 認証失敗で到達不可のはずだが、念のため
-        setUserAuth(JSON.parse(userAuthJson))
+        setUserAuth(JSON.parse(userAuthJson));
         // なぜか空になる...
         //console.log("ここ")
         //console.log(userAuth)
@@ -32,20 +30,16 @@ const App = ({ children }: { children: ReactNode }) => {
         //     return
         // }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, []);
 
     return (
         <Layout>
-            <UserAuthProvider userAuth={userAuth}>
-                {children}
-            </UserAuthProvider>
+            <UserAuthProvider userAuth={userAuth}>{children}</UserAuthProvider>
         </Layout>
-    )
-}
+    );
+};
 
-export default App
-
-
+export default App;
 
 // export const metadata:Metadata  = {
 //     title: 'title',
@@ -55,4 +49,3 @@ export default App
 //     // },
 //     description: 'description',
 // }
-
