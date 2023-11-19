@@ -1,4 +1,8 @@
 
+## 使い方
+本プロジェクトはデプロイ済でアクセス可能  
+[デプロイ済のアプリを触る](https://nextjs-application-coral.vercel.app/home)
+
 ## 環境構築
 本プロジェクトはVSCodeでの開発を推奨
 
