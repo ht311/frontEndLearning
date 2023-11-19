@@ -1,6 +1,7 @@
+import { NextPage } from "next";
 import { Detail } from "./_components/detail";
 
-const Activities = () => {
+const Activities: NextPage = () => {
     return (
         <>
             <Detail />

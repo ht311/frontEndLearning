@@ -1,6 +1,7 @@
+import { NextPage } from "next";
 import { Form } from "./_components/form";
 
-const Activities = () => {
+const Activities: NextPage = () => {
     return (
         <>
             <Form />

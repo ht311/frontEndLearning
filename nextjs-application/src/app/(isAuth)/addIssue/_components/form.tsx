@@ -7,6 +7,7 @@ import { FormEventHandler, useContext, useState } from "react";
 import Projects from "./_elements/projects";
 import IssueTypeIds from "./_elements/issueTypeIds";
 import Priorities from "./_elements/priorities";
+import Link from "next/link";
 
 /**
  * 課題追加ページのformcomponent
@@ -61,12 +62,7 @@ export const Form: React.FC = (): JSX.Element => {
                 </div>
                 <input type="submit" value="追加" />
             </form>
-            {issueKey && (
-                <div>
-                    課題が追加されました
-                    {issueKey}
-                </div>
-            )}
+            {issueKey && <Link href={`./issue/${issueKey}`}>課題が追加されました</Link>}
         </>
     );
 };
