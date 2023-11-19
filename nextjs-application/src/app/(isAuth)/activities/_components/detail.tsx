@@ -1,8 +1,8 @@
 "use client";
-import { fetcher } from "@/api/fetcher";
-import { ActivityRequest, ActivityResponse } from "@/api/type/backlog/activities";
-import Button from "@/components/elements/button/button";
-import { UserAuth, UserAuthContext } from "@/contexts/userAuth/userAuth";
+import { fetcher } from "@api/fetcher";
+import { ActivityRequest, ActivityResponse } from "@api/type/backlog/activities";
+import Button from "@components/elements/button/button";
+import { UserAuth, UserAuthContext } from "@contexts/userAuth/userAuth";
 import { useContext, useEffect, useState } from "react";
 
 export const Detail: React.FC = (): JSX.Element => {

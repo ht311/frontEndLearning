@@ -1,5 +1,5 @@
-import { BaseRequest, method } from "@/api/fetcher";
-import { UserAuth } from "@/contexts/userAuth/userAuth";
+import { BaseRequest, method } from "@api/fetcher";
+import { UserAuth } from "@contexts/userAuth/userAuth";
 
 /**
  * Backlogのadd-issue APIのrequest
@@ -9,16 +9,33 @@ export class AddIssueRequest implements BaseRequest {
     url: string;
     method: method;
     headers: HeadersInit;
-    body?: FormData;
+    body?: BodyInit;
 
     constructor(userAuth: UserAuth) {
         this.url = `https://${userAuth.url}.backlog.com/api/v2/issues?apiKey=${userAuth.apikey}`;
         this.method = "POST";
-        this.headers = { "Content-Type": "application/x-www-form-urlencoded" };
+        this.headers = {
+            "Content-Type": "application/x-www-form-urlencoded",
+        };
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     setBody(body: FormData) {
-        this.body = body;
+        // const fetch = require("node-fetch");
+        // let formBody: string[] = [];
+        // Object.keys(body).forEach((key) => {
+        //     const encodedKey = encodeURIComponent(key);
+        //     const s = body.get(key)?.toString() || "";
+        //     const encodedValue = encodeURIComponent(s);
+        //     formBody.push(encodedKey + "=" + encodedValue);
+        // });
+        // this.body = formBody.join("&");
+        this.body = new URLSearchParams([
+            ["projectId", "456956"],
+            ["summary", "test"],
+            ["issueTypeId", "2330943"],
+            ["priorityId", "3"],
+        ]);
     }
 }
 

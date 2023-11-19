@@ -40,6 +40,9 @@ const Home: NextPage = () => {
                 <div>
                     <Link href="../activities">アクティビティ参照</Link>
                 </div>
+                <div>
+                    <Link href="../addIssue">課題追加</Link>
+                </div>
             </section>
         </>
     );

@@ -1,25 +1,24 @@
-
-  extends: 
+extends:
     - next
-    - next/core-web-vitals 
+    - next/core-web-vitals
     - eslint:recommended
     # - next/babel
     - prettier
     - plugin:@typescript-eslint/eslint-recommended
     - plugin:@typescript-eslint/recommended
-  parserOptions:
+parserOptions:
     project: ./tsconfig.json
-  ignorePatterns:
+ignorePatterns:
     - node_modules
     - dist
-  rules: 
-    no-undef:
-      - off
-  # overrides:
-  #   files: 
-  #     - ['*.ts', '*.tsx']
-  #   rules: 
-  #     - no-undef: off
+rules:
+    no-undef: # TypeScriptのコンパイラが未定義はエラーにしてくれるため
+        - off
+# overrides:
+#   files:
+#     - ['*.ts', '*.tsx']
+#   rules:
+#     - no-undef: off
 
 #   "parserOptions": {
 #     "babelOptions": {
