@@ -1,5 +1,5 @@
-import { BaseRequest, method } from "@/api/fetcher";
-import { UserAuth } from "@/contexts/userAuth/userAuth";
+import { BaseRequest, method } from "@api/fetcher";
+import { UserAuth } from "@contexts/userAuth/userAuth";
 
 /**
  * Backlogのadd-issue APIのrequest
@@ -9,64 +9,46 @@ export class AddIssueRequest implements BaseRequest {
     url: string;
     method: method;
     headers: HeadersInit;
-    body?: FormData;
+    body?: BodyInit;
 
     constructor(userAuth: UserAuth) {
         this.url = `https://${userAuth.url}.backlog.com/api/v2/issues?apiKey=${userAuth.apikey}`;
         this.method = "POST";
-        this.headers = { "Content-Type": "application/x-www-form-urlencoded" };
+        this.headers = {
+            "Content-Type": "application/x-www-form-urlencoded",
+        };
     }
 
-    setBody(body: FormData) {
-        this.body = body;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    setBody(params: RequestParams) {
+        // const fetch = require("node-fetch");
+        // let formBody: string[] = [];
+        // Object.keys(body).forEach((key) => {
+        //     const encodedKey = encodeURIComponent(key);
+        //     const s = body.get(key)?.toString() || "";
+        //     const encodedValue = encodeURIComponent(s);
+        //     formBody.push(encodedKey + "=" + encodedValue);
+        // });
+        // this.body = formBody.join("&");
+        const searchParams: string[][] = [];
+
+        for (const [key, value] of Object.entries(params)) {
+            searchParams.push([key.toString(), value.toString()]);
+        }
+        this.body = new URLSearchParams(searchParams);
     }
 }
+
+export type RequestParams = {
+    projectId: string;
+    summary: string;
+    issueTypeId: string;
+    priorityId: string;
+};
 
 /**
  * Backlogのadd-issue APIのresponse
  */
-export type AddIssueResponse = Activity[];
-
-type Activity = {
-    id: number;
-    project: {
-        id: number;
-        projectKey: string;
-        name: string;
-        chartEnabled: boolean;
-        useResolvedForChart: boolean;
-        subtaskingEnabled: boolean;
-        projectLeaderCanEditProjectLeader: boolean;
-        useWiki: boolean;
-        useFileSharing: boolean;
-        useWikiTreeView: boolean;
-        useOriginalImageSizeAtWiki: boolean;
-        textFormattingRule: string;
-        archived: boolean;
-        displayOrder: number;
-        useDevAttributes: boolean;
-    };
-    type: number;
-    content: {
-        id: number;
-        key_id: number;
-        summary?: string;
-        name?: string;
-        description: string;
-    };
-    createdUser: {
-        id: number;
-        userId: string;
-        name: string;
-        roleType: number;
-        lang: string;
-        mailAddress: string;
-        nulabAccount: {
-            nulabId: string;
-            name: string;
-            uniqueId: string;
-        };
-        keyword: string;
-        lastLoginTime: Date;
-    };
+export type AddIssueResponse = {
+    issueKey: string;
 };

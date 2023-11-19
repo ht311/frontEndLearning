@@ -26,11 +26,16 @@ export const fetcher = async <Response>(request: BaseRequest): Promise<Response>
     })
         .then((response) => {
             if (!response.ok) {
-                return Promise.reject(new Error("API失敗"));
+                return response.text();
+                // return Promise.reject(new Error("API失敗"));
             }
 
             return response.json();
         })
+        // .then((text) => {
+        //     console.log(text);
+        //     return Promise.reject(new Error("API失敗"));
+        // })
         .catch((error: Error) => {
             console.error(error);
             throw error;

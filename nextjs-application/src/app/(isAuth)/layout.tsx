@@ -1,9 +1,9 @@
 "use client";
 import { ReactNode, useEffect, useState } from "react";
 import "../../../styles/global.css";
-import Layout from "@/components/layouts/layout";
-import UserAuthProvider from "@/contexts/userAuth/userAuthProvider";
-import { UserAuth } from "@/contexts/userAuth/userAuth";
+import Layout from "@components/layouts/layout";
+import UserAuthProvider from "@contexts/userAuth/userAuthProvider";
+import { UserAuth } from "@contexts/userAuth/userAuth";
 import { useRouter } from "next/navigation";
 // import { Metadata } from "next";
 

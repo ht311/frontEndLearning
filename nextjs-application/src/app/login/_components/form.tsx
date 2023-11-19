@@ -1,6 +1,6 @@
 import { FormEventHandler } from "react";
-import { UserAuth } from "@/contexts/userAuth/userAuth";
-import InputTextForm from "@/components/elements/input/input-text-form";
+import { UserAuth } from "@contexts/userAuth/userAuth";
+import InputTextForm from "@components/elements/input/input-text-form";
 
 export type LoginFromArgs = {
     submitEvent: () => void;
@@ -31,11 +31,17 @@ export const LoginFrom: React.FC<LoginFromArgs> = ({ submitEvent }): JSX.Element
         <form onSubmit={handleSubmit}>
             <div>
                 url:
-                <InputTextForm inputName="url" />
+                <InputTextForm
+                    inputName="url"
+                    placeholder="https://{url}.backlog.comのurl部分を入力してください"
+                />
             </div>
             <div>
                 apikey:
-                <InputTextForm inputName="apikey" />
+                <InputTextForm
+                    inputName="apikey"
+                    placeholder="APIキーはbacklogの個人設定から払い出せます"
+                />
             </div>
             <input type="submit" value="ログイン！" />
         </form>

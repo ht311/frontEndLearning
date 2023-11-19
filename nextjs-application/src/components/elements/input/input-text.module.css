@@ -1,17 +1,30 @@
 .input_text {
-	font: 15px/24px sans-serif;
-	box-sizing: border-box;
-	width: 90%;
-	margin: 8px;
-	padding: 0.3em;
-	transition: 0.3s;
-	border: 1px solid #1b2538;
-	border-radius: 8px;
-	outline: none;
+    font: 15px/24px sans-serif;
+    box-sizing: border-box;
+    width: 90%;
+    margin: 8px;
+    padding: 0.3em;
+    transition: 0.3s;
+    border: 1px solid #1b2538;
+    border-radius: 8px;
+    outline: none;
 }
 .input_text:focus {
-	border-color: #da3c41;
+    border-color: #da3c41;
 }
 .input_text {
-	padding-left: 10px;
+    padding-left: 10px;
+}
+
+.error_message {
+    display: none;
+    color: red;
+    border: red solid 3px;
+}
+
+label:has(input:invalid) .error_message {
+    display: block;
+    width: 90%;
+    margin: 8px;
+    border-radius: 8px;
 }

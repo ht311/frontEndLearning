@@ -1,5 +1,5 @@
-import { BaseRequest, method } from "@/api/fetcher";
-import { UserAuth } from "@/contexts/userAuth/userAuth";
+import { BaseRequest, method } from "@api/fetcher";
+import { UserAuth } from "@contexts/userAuth/userAuth";
 
 /**
  * Backlogのactivity APIのrequest

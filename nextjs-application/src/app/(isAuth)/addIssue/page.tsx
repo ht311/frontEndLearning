@@ -1,10 +1,10 @@
 import { NextPage } from "next";
-import { Detail } from "./_components/detail";
+import { Form } from "./_components/form";
 
 const Activities: NextPage = () => {
     return (
         <>
-            <Detail />
+            <Form />
         </>
     );
 };
