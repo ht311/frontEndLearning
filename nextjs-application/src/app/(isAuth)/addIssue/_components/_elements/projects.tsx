@@ -37,6 +37,13 @@ export const Projects: React.FC<ProjectsProps> = ({ name = "" }: ProjectsProps):
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    return <Select options={options} inputName={name} />;
+    return (
+        <Select
+            options={options}
+            inputName={name}
+            placeholder="プロジェクトを選択してください"
+            required={true}
+        />
+    );
 };
 export default Projects;

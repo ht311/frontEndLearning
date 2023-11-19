@@ -32,6 +32,13 @@ export const Priorities: React.FC<PrioritiesProps> = ({ name }: PrioritiesProps)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    return <Select options={options} inputName={name} />;
+    return (
+        <Select
+            options={options}
+            inputName={name}
+            placeholder="優先度を選択してください"
+            required={true}
+        />
+    );
 };
 export default Priorities;

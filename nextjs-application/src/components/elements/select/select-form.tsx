@@ -6,11 +6,8 @@ export type SelectProps = {
      */
     options: Option[];
     inputName?: string;
-    value?: string | number;
-    /**
-     * inputのonChengeイベント
-     */
-    // onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    required?: boolean;
+    placeholder?: string;
     /**
      * 非表示にしたいときにtrue
      */
@@ -38,12 +35,18 @@ export const OptionsInit: Option[] = [
 export const Select = ({
     inputName = "",
     options,
-    //onChange,
+    placeholder,
+    required = false,
     disabled = false,
 }: SelectProps): JSX.Element => {
     return (
         <div className={style.selectbox}>
-            <select name={inputName} disabled={disabled}>
+            <select
+                name={inputName}
+                disabled={disabled}
+                placeholder={placeholder}
+                required={required}
+            >
                 {options.map((option) => (
                     <option key={option.value} value={option.value}>
                         {option.displayValue}

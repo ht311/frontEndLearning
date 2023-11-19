@@ -92,6 +92,16 @@ nextjs-application\components\template
 [Next.js 13](https://reffect.co.jp/react/next-js-13)
 [request-memoization](https://nextjs.org/docs/app/building-your-application/caching#request-memoization)
 
+## 課題
+- [ ] importのフォーマット(自動でimport文を並び変える)
+- [ ] 環境変数
+- [ ] ログイントークン
+  - [ ] jwt使う？(要検討)
+- [ ] スマホ対応
+  - [ ] cssに@mediaするとかでいける気はする(詳しい人教えて...)
+
+## その他参考
+[formについて](https://qiita.com/nuko-suke/items/1393995fd53ecaeb1cbc)
 
 ## Deploy on Vercel
 

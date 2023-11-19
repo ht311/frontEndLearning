@@ -43,7 +43,14 @@ export const IssueTypeIds: React.FC<IssueTypeIdsProps> = ({
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    return <Select options={selectOptions} inputName={name} />;
+    return (
+        <Select
+            options={selectOptions}
+            inputName={name}
+            placeholder="課題のタイプを選択してください"
+            required={true}
+        />
+    );
 };
 export default IssueTypeIds;
 

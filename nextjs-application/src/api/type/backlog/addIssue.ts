@@ -20,7 +20,7 @@ export class AddIssueRequest implements BaseRequest {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    setBody(body: FormData) {
+    setBody(params: RequestParams) {
         // const fetch = require("node-fetch");
         // let formBody: string[] = [];
         // Object.keys(body).forEach((key) => {
@@ -30,60 +30,25 @@ export class AddIssueRequest implements BaseRequest {
         //     formBody.push(encodedKey + "=" + encodedValue);
         // });
         // this.body = formBody.join("&");
-        this.body = new URLSearchParams([
-            ["projectId", "456956"],
-            ["summary", "test"],
-            ["issueTypeId", "2330943"],
-            ["priorityId", "3"],
-        ]);
+        const searchParams: string[][] = [];
+
+        for (const [key, value] of Object.entries(params)) {
+            searchParams.push([key.toString(), value.toString()]);
+        }
+        this.body = new URLSearchParams(searchParams);
     }
 }
+
+export type RequestParams = {
+    projectId: string;
+    summary: string;
+    issueTypeId: string;
+    priorityId: string;
+};
 
 /**
  * Backlogのadd-issue APIのresponse
  */
-export type AddIssueResponse = Activity[];
-
-type Activity = {
-    id: number;
-    project: {
-        id: number;
-        projectKey: string;
-        name: string;
-        chartEnabled: boolean;
-        useResolvedForChart: boolean;
-        subtaskingEnabled: boolean;
-        projectLeaderCanEditProjectLeader: boolean;
-        useWiki: boolean;
-        useFileSharing: boolean;
-        useWikiTreeView: boolean;
-        useOriginalImageSizeAtWiki: boolean;
-        textFormattingRule: string;
-        archived: boolean;
-        displayOrder: number;
-        useDevAttributes: boolean;
-    };
-    type: number;
-    content: {
-        id: number;
-        key_id: number;
-        summary?: string;
-        name?: string;
-        description: string;
-    };
-    createdUser: {
-        id: number;
-        userId: string;
-        name: string;
-        roleType: number;
-        lang: string;
-        mailAddress: string;
-        nulabAccount: {
-            nulabId: string;
-            name: string;
-            uniqueId: string;
-        };
-        keyword: string;
-        lastLoginTime: Date;
-    };
+export type AddIssueResponse = {
+    issueKey: string;
 };
