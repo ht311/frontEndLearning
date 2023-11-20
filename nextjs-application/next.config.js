@@ -33,6 +33,7 @@ const nextConfig = {
             "@api": path.resolve(__dirname, "api"),
             "@components": path.resolve(__dirname, "components"),
             "@contexts": path.resolve(__dirname, "contexts"),
+            "@lib": path.resolve(__dirname, "lib"),
         };
         return config;
     },

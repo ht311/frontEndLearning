@@ -29,20 +29,20 @@ export const LoginFrom: React.FC<LoginFromArgs> = ({ submitEvent }): JSX.Element
 
     return (
         <form onSubmit={handleSubmit}>
-            <div>
+            <label>
                 url:
                 <InputTextForm
                     inputName="url"
                     placeholder="https://{url}.backlog.comのurl部分を入力してください"
                 />
-            </div>
-            <div>
+            </label>
+            <label>
                 apikey:
                 <InputTextForm
                     inputName="apikey"
                     placeholder="APIキーはbacklogの個人設定から払い出せます"
                 />
-            </div>
+            </label>
             <input type="submit" value="ログイン！" />
         </form>
     );

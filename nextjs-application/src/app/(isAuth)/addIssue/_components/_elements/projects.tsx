@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 // import { useRouter } from "next/navigation";
 import { fetcher } from "@api/fetcher";
 import { GetProjectsRequest, GetProjectsResponse } from "@api/type/backlog/getProjects";
@@ -25,17 +25,18 @@ export const Projects: React.FC<ProjectsProps> = ({ name = "" }: ProjectsProps):
         const respose = await fetcher<GetProjectsResponse>(req);
         if (respose) {
             const addOption: Option[] = [];
-            respose.map((res) => addOption.push({ value: res.id, displayValue: res.name }));
+            respose?.map((res) => addOption.push({ value: res.id, displayValue: res.name }));
             setOptions([...options, ...addOption]);
         }
     };
-    useEffect(() => {
-        // if (!userAuth.isAuth) {
-        //     router.push("./login");
-        // }
-        fetch();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    fetch();
+    // useEffect(() => {
+    //     // if (!userAuth.isAuth) {
+    //     //     router.push("./login");
+    //     // }
+    //     fetch();
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, []);
 
     return (
         <Select

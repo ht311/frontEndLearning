@@ -23,7 +23,8 @@
             // "@/*": ["./src/*"],
             "@api/*": ["./src/api/*"],
             "@components/*": ["./src/components/*"],
-            "@contexts/*": ["./src/contexts/*"]
+            "@contexts/*": ["./src/contexts/*"],
+            "@lib/*": ["./src/lib/*"]
         }
     },
     "include": [
