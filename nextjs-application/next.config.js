@@ -30,6 +30,7 @@ const nextConfig = {
         config.resolve.alias = {
             ...config.resolve.alias,
             // ディレクトリ構成が変更されたときに下記とtsconfig.jsonを変更すれば済むように定義
+            "@types": path.resolve(__dirname, "types"),
             "@api": path.resolve(__dirname, "api"),
             "@components": path.resolve(__dirname, "components"),
             "@contexts": path.resolve(__dirname, "contexts"),

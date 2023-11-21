@@ -2,12 +2,13 @@
 import { fetcher } from "@api/fetcher";
 import { AddIssueRequest, AddIssueResponse, RequestParams } from "@api/type/backlog/addIssue";
 import InputTextForm from "@components/elements/input/input-text-form";
-import { UserAuth, UserAuthContext } from "@contexts/userAuth/userAuth";
-import { FormEventHandler, useContext, useState } from "react";
+import { UserAuth } from "@contexts/userAuth/userAuth";
+import { FormEventHandler, useState } from "react";
 import Projects from "./_elements/projects";
 import IssueTypeIds from "./_elements/issueTypeIds";
 import Priorities from "./_elements/priorities";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 /**
  * 課題追加ページのformcomponent
@@ -15,7 +16,13 @@ import Link from "next/link";
  */
 export const Form: React.FC = (): JSX.Element => {
     const [issueKey, setIssueKey] = useState<string>("");
-    const userAuth: UserAuth = useContext(UserAuthContext);
+    const { data: session } = useSession();
+
+    const userAuth: UserAuth = {
+        url: session?.user.url || "",
+        apikey: session?.user.apiKey || "",
+        isAuth: true,
+    };
 
     // form押下時の処理
     const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {

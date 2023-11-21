@@ -2,12 +2,19 @@
 import { fetcher } from "@api/fetcher";
 import { ActivityRequest, ActivityResponse } from "@api/type/backlog/activities";
 import Button from "@components/elements/button/button";
-import { UserAuth, UserAuthContext } from "@contexts/userAuth/userAuth";
-import { useContext, useEffect, useState } from "react";
+import { UserAuth } from "@contexts/userAuth/userAuth";
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 
 export const Detail: React.FC = (): JSX.Element => {
     const [activityResponse, setActivityResponse] = useState<ActivityResponse>();
-    const userAuth: UserAuth = useContext(UserAuthContext);
+    const { data: session } = useSession();
+
+    const userAuth: UserAuth = {
+        url: session?.user.url || "",
+        apikey: session?.user.apiKey || "",
+        isAuth: true,
+    };
     const onClick = async () => {
         const req = new ActivityRequest(userAuth);
         const res = await fetcher<ActivityResponse>(req);

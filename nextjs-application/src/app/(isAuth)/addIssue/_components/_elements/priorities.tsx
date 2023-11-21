@@ -1,9 +1,10 @@
 "use client";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetcher } from "@api/fetcher";
-import { UserAuth, UserAuthContext } from "@contexts/userAuth/userAuth";
+import { UserAuth } from "@contexts/userAuth/userAuth";
 import { Select, Option, OptionsInit } from "@components/elements/select/select-form";
 import { GetPrioritiesRequest, GetPrioritiesResponse } from "@api/type/backlog/getPriorities";
+import { useSession } from "next-auth/react";
 
 type PrioritiesProps = {
     name: string;
@@ -15,7 +16,13 @@ type PrioritiesProps = {
  * @returns 概要の通り
  */
 export const Priorities: React.FC<PrioritiesProps> = ({ name }: PrioritiesProps): JSX.Element => {
-    const userAuth: UserAuth = useContext(UserAuthContext);
+    const { data: session } = useSession();
+
+    const userAuth: UserAuth = {
+        url: session?.user.url || "",
+        apikey: session?.user.apiKey || "",
+        isAuth: true,
+    };
     const [options, setOptions] = useState<Option[]>(OptionsInit);
 
     const fetch = async () => {

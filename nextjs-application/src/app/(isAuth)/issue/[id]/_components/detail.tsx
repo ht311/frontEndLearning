@@ -1,8 +1,9 @@
 "use client";
 import { fetcher } from "@api/fetcher";
 import { GetIssueRequest, GetIssueResponse } from "@api/type/backlog/getIssue";
-import { UserAuth, UserAuthContext } from "@contexts/userAuth/userAuth";
-import { useContext, useEffect, useState } from "react";
+import { UserAuth } from "@contexts/userAuth/userAuth";
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 
 type DetailProps = {
     id: string;
@@ -10,7 +11,13 @@ type DetailProps = {
 
 export const Detail: React.FC<DetailProps> = ({ id }: DetailProps): JSX.Element => {
     const [issueResponse, setIssueResponse] = useState<GetIssueResponse>();
-    const userAuth: UserAuth = useContext(UserAuthContext);
+    const { data: session } = useSession();
+
+    const userAuth: UserAuth = {
+        url: session?.user.url || "",
+        apikey: session?.user.apiKey || "",
+        isAuth: true,
+    };
 
     const onload = async () => {
         const req = new GetIssueRequest(userAuth, id);

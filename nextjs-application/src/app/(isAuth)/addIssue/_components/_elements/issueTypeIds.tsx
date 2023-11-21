@@ -5,10 +5,11 @@ import {
     Select,
     Option as SelectOption,
 } from "@components/elements/select/select-form";
-import { UserAuth, UserAuthContext } from "@contexts/userAuth/userAuth";
-import { useContext, useEffect, useState } from "react";
+import { UserAuth } from "@contexts/userAuth/userAuth";
+import { useEffect, useState } from "react";
 import { GetProjectsRequest, GetProjectsResponse } from "@api/type/backlog/getProjects";
 import { GetIssueTypeIdsRequest, GetIssueTypeIdsResponse } from "@api/type/backlog/getIssueTypeIds";
+import { useSession } from "next-auth/react";
 
 type IssueTypeIdsProps = {
     name: string;
@@ -22,7 +23,13 @@ type IssueTypeIdsProps = {
 export const IssueTypeIds: React.FC<IssueTypeIdsProps> = ({
     name,
 }: IssueTypeIdsProps): JSX.Element => {
-    const userAuth: UserAuth = useContext(UserAuthContext);
+    const { data: session } = useSession();
+
+    const userAuth: UserAuth = {
+        url: session?.user.url || "",
+        apikey: session?.user.apiKey || "",
+        isAuth: true,
+    };
     const [selectOptions, setSelectOptions] = useState<SelectOption[]>(OptionsInit);
 
     useEffect(() => {
