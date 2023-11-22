@@ -2,6 +2,7 @@ import Link from "next/link";
 import Head from "next/head";
 import utilStyles from "../../../../styles/utils.module.css";
 import { NextPage } from "next";
+import LogoutButton from "@/components/elements/logout/logout-button";
 
 const Home: NextPage = () => {
     const siteTitle = "Next.js Sample Website";
@@ -44,6 +45,7 @@ const Home: NextPage = () => {
                     <Link href="../addIssue">課題追加</Link>
                 </div>
             </section>
+            <LogoutButton />
         </>
     );
 };

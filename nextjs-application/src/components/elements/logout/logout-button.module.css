@@ -1,0 +1,15 @@
+.button {
+    display: block;
+    width: 160px;
+    padding: 0.8em;
+    text-align: center;
+    text-decoration: none;
+    color: #ec407a;
+    border: 2px solid #ec407a;
+    border-radius: 3px;
+    transition: 0.4s;
+}
+.button:hover {
+    background: #ec407a;
+    color: #fff;
+}
