@@ -39,7 +39,7 @@ export const authOptions: NextAuthOptions = {
     ],
     pages: {
         // カスタムログインページを追加します。
-        signIn: "/login/page",
+        signIn: "/login",
     },
     callbacks: {
         // `jwt()`コールバックは`authorize()`の後に実行される

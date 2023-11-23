@@ -1,6 +1,5 @@
 import { BaseRequest, method } from "@api/fetcher";
-import { UserAuth } from "@contexts/userAuth/userAuth";
-
+import { User } from "next-auth";
 /**
  * Backlogのadd-issue APIのrequest
  * @link https://developer.nulab.com/ja/docs/backlog/api/2/add-issue/#
@@ -11,8 +10,11 @@ export class AddIssueRequest implements BaseRequest {
     headers: HeadersInit;
     body?: BodyInit;
 
-    constructor(userAuth: UserAuth) {
-        this.url = `https://${userAuth.url}.backlog.com/api/v2/issues?apiKey=${userAuth.apikey}`;
+    constructor(user: User | undefined) {
+        // 原則ありえない
+        if (!user) throw new Error("user未設定");
+
+        this.url = `https://${user.url}.backlog.com/api/v2/issues?apiKey=${user.apiKey}`;
         this.method = "POST";
         this.headers = {
             "Content-Type": "application/x-www-form-urlencoded",

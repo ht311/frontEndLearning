@@ -1,5 +1,5 @@
 import { BaseRequest, method } from "@api/fetcher";
-import { UserAuth } from "@contexts/userAuth/userAuth";
+import { User } from "next-auth";
 
 /**
  * Backlogの課題情報の取得 APIのrequest
@@ -9,8 +9,11 @@ export class GetIssueRequest implements BaseRequest {
     url: string;
     method: method;
 
-    constructor(userAuth: UserAuth, issueId: string) {
-        this.url = `https://${userAuth.url}.backlog.com/api/v2/issues/${issueId}?apiKey=${userAuth.apikey}`;
+    constructor(user: User | undefined, issueId: string) {
+        // 原則ありえない
+        if (!user) throw new Error("user未設定");
+
+        this.url = `https://${user.url}.backlog.com/api/v2/issues/${issueId}?apiKey=${user.apiKey}`;
         this.method = "GET";
     }
 }

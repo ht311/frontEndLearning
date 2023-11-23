@@ -1,5 +1,5 @@
 import { BaseRequest, method } from "@api/fetcher";
-import { UserAuth } from "@contexts/userAuth/userAuth";
+import { User } from "next-auth";
 
 /**
  * Backlogの優先度一覧の取得 APIのrequest
@@ -9,8 +9,11 @@ export class GetPrioritiesRequest implements BaseRequest {
     url: string;
     method: method;
 
-    constructor(userAuth: UserAuth) {
-        this.url = `https://${userAuth.url}.backlog.com/api/v2/priorities?apiKey=${userAuth.apikey}&archived=false`;
+    constructor(user: User | undefined) {
+        // 原則ありえない
+        if (!user) throw new Error("user未設定");
+
+        this.url = `https://${user.url}.backlog.com/api/v2/priorities?apiKey=${user.apiKey}&archived=false`;
         this.method = "GET";
     }
 }

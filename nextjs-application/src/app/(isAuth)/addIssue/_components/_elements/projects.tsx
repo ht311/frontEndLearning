@@ -1,11 +1,8 @@
-"use client";
-import { useEffect, useState } from "react";
-// import { useRouter } from "next/navigation";
 import { fetcher } from "@api/fetcher";
 import { GetProjectsRequest, GetProjectsResponse } from "@api/type/backlog/getProjects";
-import { UserAuth } from "@contexts/userAuth/userAuth";
 import { Select, Option, OptionsInit } from "@components/elements/select/select-form";
-import { useSession } from "next-auth/react";
+import { Session, getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 type ProjectsProps = {
     name: string;
@@ -16,38 +13,17 @@ type ProjectsProps = {
  * @param name componentのname
  * @returns 概要の通り
  */
-export const Projects: React.FC<ProjectsProps> = ({ name = "" }: ProjectsProps): JSX.Element => {
-    const { data: session } = useSession();
+export const Projects: React.FC<ProjectsProps> = async ({
+    name,
+}: ProjectsProps): Promise<JSX.Element> => {
+    const session = await getServerSession(authOptions);
+    if (!session) return <></>;
 
-    const userAuth: UserAuth = {
-        url: session?.user.url || "",
-        apikey: session?.user.apiKey || "",
-        isAuth: true,
-    };
-    const [options, setOptions] = useState<Option[]>(OptionsInit);
-    // const router = useRouter();
-
-    const fetch = async () => {
-        const req: GetProjectsRequest = new GetProjectsRequest(userAuth);
-        const respose = await fetcher<GetProjectsResponse>(req);
-        if (respose) {
-            const addOption: Option[] = [];
-            respose?.map((res) => addOption.push({ value: res.id, displayValue: res.name }));
-            setOptions([...options, ...addOption]);
-        }
-    };
-    // fetch();
-    useEffect(() => {
-        // if (!userAuth.isAuth) {
-        //     router.push("./login");
-        // }
-        fetch();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    const selectOptions: Option[] = [...OptionsInit, ...(await fetch(session))];
 
     return (
         <Select
-            options={options}
+            options={selectOptions}
             inputName={name}
             placeholder="プロジェクトを選択してください"
             required={true}
@@ -55,3 +31,15 @@ export const Projects: React.FC<ProjectsProps> = ({ name = "" }: ProjectsProps):
     );
 };
 export default Projects;
+
+const fetch = async (session: Session): Promise<Option[]> => {
+    const req: GetProjectsRequest = new GetProjectsRequest(session.user);
+    const respose = await fetcher<GetProjectsResponse>(req);
+    if (!respose) {
+        return [];
+    }
+
+    return respose.map((res) => {
+        return { value: res.id, displayValue: res.name };
+    });
+};

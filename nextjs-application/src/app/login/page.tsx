@@ -1,9 +1,10 @@
 "use client";
+import ErrorDiv from "@/components/elements/div/error-div";
 import InputTextForm from "@components/elements/input/input-text-form";
 import { NextPage } from "next";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { FormEventHandler } from "react";
+import { FormEventHandler, useState } from "react";
 
 /**
  * ログインページ
@@ -11,6 +12,7 @@ import { FormEventHandler } from "react";
  */
 const Page: NextPage = () => {
     const router = useRouter();
+    const [isError, setError] = useState(false);
 
     const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
         event.preventDefault();
@@ -24,7 +26,7 @@ const Page: NextPage = () => {
             apiKey,
         }).then((res) => {
             if (res?.error) {
-                console.log("err" + res.error);
+                setError(true);
             } else {
                 router.push("/home");
             }
@@ -32,27 +34,26 @@ const Page: NextPage = () => {
     };
 
     return (
-        <>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    url
-                    <InputTextForm
-                        inputName="url"
-                        placeholder="https://{url}.backlog.comのurl部分を入力してください"
-                        required={true}
-                    />
-                </div>
-                <div>
-                    apikey
-                    <InputTextForm
-                        inputName="apiKey"
-                        placeholder="APIキーはbacklogの個人設定から払い出せます"
-                        required={true}
-                    />
-                </div>
-                <button type="submit">ログイン</button>
-            </form>
-        </>
+        <form onSubmit={handleSubmit}>
+            <div>
+                url
+                <InputTextForm
+                    inputName="url"
+                    placeholder="https://{url}.backlog.comのurl部分を入力してください"
+                    required={true}
+                />
+            </div>
+            <div>
+                apikey
+                <InputTextForm
+                    inputName="apiKey"
+                    placeholder="APIキーはbacklogの個人設定から払い出せます"
+                    required={true}
+                />
+            </div>
+            {isError && <ErrorDiv>url、apikeyの組み合わせに誤りがあります。</ErrorDiv>}
+            <button type="submit">ログイン</button>
+        </form>
     );
 };
 export default Page;

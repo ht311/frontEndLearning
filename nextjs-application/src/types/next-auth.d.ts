@@ -8,6 +8,7 @@ declare module "next-auth" {
     // ここでは`apiKey`と`url`を追加しています。
     interface Session {
         user: {
+            id: string;
             apiKey?: string;
             url?: string;
         } & DefaultSession["user"];

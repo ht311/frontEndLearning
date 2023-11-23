@@ -1,10 +1,8 @@
-"use client";
-import { useEffect, useState } from "react";
 import { fetcher } from "@api/fetcher";
-import { UserAuth } from "@contexts/userAuth/userAuth";
-import { Select, Option, OptionsInit } from "@components/elements/select/select-form";
+import { Select, OptionsInit, Option } from "@components/elements/select/select-form";
 import { GetPrioritiesRequest, GetPrioritiesResponse } from "@api/type/backlog/getPriorities";
-import { useSession } from "next-auth/react";
+import { Session, getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 type PrioritiesProps = {
     name: string;
@@ -15,33 +13,17 @@ type PrioritiesProps = {
  * @param name componentのname
  * @returns 概要の通り
  */
-export const Priorities: React.FC<PrioritiesProps> = ({ name }: PrioritiesProps): JSX.Element => {
-    const { data: session } = useSession();
+export const Priorities: React.FC<PrioritiesProps> = async ({
+    name,
+}: PrioritiesProps): Promise<JSX.Element> => {
+    const session = await getServerSession(authOptions);
+    if (!session) return <></>;
 
-    const userAuth: UserAuth = {
-        url: session?.user.url || "",
-        apikey: session?.user.apiKey || "",
-        isAuth: true,
-    };
-    const [options, setOptions] = useState<Option[]>(OptionsInit);
-
-    const fetch = async () => {
-        const req: GetPrioritiesRequest = new GetPrioritiesRequest(userAuth);
-        const respose = await fetcher<GetPrioritiesResponse>(req);
-        if (respose) {
-            const addOption: Option[] = [];
-            respose.map((res) => addOption.push({ value: res.id, displayValue: res.name }));
-            setOptions([...options, ...addOption]);
-        }
-    };
-    useEffect(() => {
-        fetch();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    const selectOptions: Option[] = [...OptionsInit, ...(await fetch(session))];
 
     return (
         <Select
-            options={options}
+            options={selectOptions}
             inputName={name}
             placeholder="優先度を選択してください"
             required={true}
@@ -49,3 +31,15 @@ export const Priorities: React.FC<PrioritiesProps> = ({ name }: PrioritiesProps)
     );
 };
 export default Priorities;
+
+const fetch = async (session: Session): Promise<Option[]> => {
+    const req: GetPrioritiesRequest = new GetPrioritiesRequest(session.user);
+    const respose = await fetcher<GetPrioritiesResponse>(req);
+    if (!respose) {
+        return [];
+    }
+
+    return respose.map((res) => {
+        return { value: res.id, displayValue: res.name };
+    });
+};
