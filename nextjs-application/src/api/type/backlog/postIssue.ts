@@ -4,16 +4,13 @@ import { User } from "next-auth";
  * Backlogのadd-issue APIのrequest
  * @link https://developer.nulab.com/ja/docs/backlog/api/2/add-issue/#
  */
-export class AddIssueRequest implements BaseRequest {
+export class PostIssueRequest implements BaseRequest {
     url: string;
     method: method;
     headers: HeadersInit;
     body?: BodyInit;
 
-    constructor(user: User | undefined) {
-        // 原則ありえない
-        if (!user) throw new Error("user未設定");
-
+    constructor(user: User) {
         this.url = `https://${user.url}.backlog.com/api/v2/issues?apiKey=${user.apiKey}`;
         this.method = "POST";
         this.headers = {
@@ -21,19 +18,8 @@ export class AddIssueRequest implements BaseRequest {
         };
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     setBody(params: RequestParams) {
-        // const fetch = require("node-fetch");
-        // let formBody: string[] = [];
-        // Object.keys(body).forEach((key) => {
-        //     const encodedKey = encodeURIComponent(key);
-        //     const s = body.get(key)?.toString() || "";
-        //     const encodedValue = encodeURIComponent(s);
-        //     formBody.push(encodedKey + "=" + encodedValue);
-        // });
-        // this.body = formBody.join("&");
         const searchParams: string[][] = [];
-
         for (const [key, value] of Object.entries(params)) {
             searchParams.push([key.toString(), value.toString()]);
         }
@@ -51,6 +37,6 @@ export type RequestParams = {
 /**
  * Backlogのadd-issue APIのresponse
  */
-export type AddIssueResponse = {
+export type PostIssueResponse = {
     issueKey: string;
 };

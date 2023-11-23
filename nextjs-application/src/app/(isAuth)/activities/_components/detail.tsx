@@ -1,82 +1,21 @@
 "use client";
 import { fetcher } from "@api/fetcher";
-import { ActivityRequest, ActivityResponse } from "@api/type/backlog/activities";
+import { ActivityRequest, ActivityResponse } from "@api/type/backlog/getActivities";
 import Button from "@components/elements/button/button";
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export const Detail: React.FC = (): JSX.Element => {
     const [activityResponse, setActivityResponse] = useState<ActivityResponse>();
     const { data: session } = useSession();
 
     const onClick = async () => {
-        const req = new ActivityRequest(session?.user);
+        if (!session) return;
+
+        const req = new ActivityRequest(session.user);
         const res = await fetcher<ActivityResponse>(req);
+
         setActivityResponse(res);
-    };
-
-    useEffect(() => {
-        onClick();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    const typeJudge = (type: number): JSX.Element => {
-        switch (type) {
-            case 1:
-                return <div>課題の追加</div>;
-            case 2:
-                return <div>課題の更新</div>;
-            case 3:
-                return <div>課題にコメント</div>;
-            case 4:
-                return <div>課題の削除</div>;
-            case 5:
-                return <div>Wikiを追加</div>;
-            case 6:
-                return <div>Wikiを更新</div>;
-            case 7:
-                return <div>Wikiを削除</div>;
-            case 8:
-                return <div>共有ファイルを追加</div>;
-            case 9:
-                return <div>共有ファイルを更新</div>;
-            case 10:
-                return <div>共有ファイルを削除</div>;
-            case 11:
-                return <div>Subversionコミット</div>;
-            case 12:
-                return <div>GITプッシュ</div>;
-            case 13:
-                return <div>GITリポジトリ作成</div>;
-            case 14:
-                return <div>課題をまとめて更新</div>;
-            case 15:
-                return <div>ユーザーがプロジェクトに参加</div>;
-            case 16:
-                return <div>ユーザーがプロジェクトから脱退</div>;
-            case 17:
-                return <div>コメントにお知らせを追加</div>;
-            case 18:
-                return <div>プルリクエストの追加</div>;
-            case 19:
-                return <div>プルリクエストの更新</div>;
-            case 20:
-                return <div>プルリクエストにコメント</div>;
-            case 21:
-                return <div>プルリクエストの削除</div>;
-            case 22:
-                return <div>マイルストーンの追加</div>;
-            case 23:
-                return <div>マイルストーンの更新</div>;
-            case 24:
-                return <div>マイルストーンの削除</div>;
-            case 25:
-                return <div>グループがプロジェクトに参加</div>;
-            case 26:
-                return <div>グループがプロジェクトから脱退</div>;
-            default:
-                return <div>判定不能</div>;
-        }
     };
 
     return (
@@ -85,7 +24,7 @@ export const Detail: React.FC = (): JSX.Element => {
             <ul>
                 {activityResponse?.map((res) => (
                     <li key={res.id}>
-                        {typeJudge(res.type)}
+                        <div>{typeConvertName(res.type)}</div>
                         {res.content.name && <div>Name:{res.content.name}</div>}
                         {res.content.summary && <div>Summary:{res.content.summary}</div>}
                     </li>
@@ -95,3 +34,62 @@ export const Detail: React.FC = (): JSX.Element => {
     );
 };
 export default Detail;
+
+const typeConvertName = (type: number): string => {
+    switch (type) {
+        case 1:
+            return "課題の追加";
+        case 2:
+            return "課題の更新";
+        case 3:
+            return "課題にコメント";
+        case 4:
+            return "課題の削除";
+        case 5:
+            return "Wikiを追加";
+        case 6:
+            return "Wikiを更新";
+        case 7:
+            return "Wikiを削除";
+        case 8:
+            return "共有ファイルを追加";
+        case 9:
+            return "共有ファイルを更新";
+        case 10:
+            return "共有ファイルを削除";
+        case 11:
+            return "Subversionコミット";
+        case 12:
+            return "GITプッシュ";
+        case 13:
+            return "GITリポジトリ作成";
+        case 14:
+            return "課題をまとめて更新";
+        case 15:
+            return "ユーザーがプロジェクトに参加";
+        case 16:
+            return "ユーザーがプロジェクトから脱退";
+        case 17:
+            return "コメントにお知らせを追加";
+        case 18:
+            return "プルリクエストの追加";
+        case 19:
+            return "プルリクエストの更新";
+        case 20:
+            return "プルリクエストにコメント";
+        case 21:
+            return "プルリクエストの削除";
+        case 22:
+            return "マイルストーンの追加";
+        case 23:
+            return "マイルストーンの更新";
+        case 24:
+            return "マイルストーンの削除";
+        case 25:
+            return "グループがプロジェクトに参加";
+        case 26:
+            return "グループがプロジェクトから脱退";
+        default:
+            return "判定不能";
+    }
+};

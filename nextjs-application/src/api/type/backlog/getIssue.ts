@@ -9,10 +9,7 @@ export class GetIssueRequest implements BaseRequest {
     url: string;
     method: method;
 
-    constructor(user: User | undefined, issueId: string) {
-        // 原則ありえない
-        if (!user) throw new Error("user未設定");
-
+    constructor(user: User, issueId: string) {
         this.url = `https://${user.url}.backlog.com/api/v2/issues/${issueId}?apiKey=${user.apiKey}`;
         this.method = "GET";
     }

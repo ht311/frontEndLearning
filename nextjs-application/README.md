@@ -11,7 +11,8 @@
 3. VSCodeの拡張機能をインストール
    1. [eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
    2. [prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-4. `npm install`で依存するパッケージをインストール
+4. 本プロジェクトフォルダをVSCodeで開く
+5. ターミナル(ctrl+@で開く)で`npm install`を実行して依存するパッケージをインストール
 
 ## プロジェクトの起動方法
 - 開発者モードで起動
@@ -39,9 +40,13 @@
     - フォーマッター
   - [ESLint](https://eslint.org/)
     - 静的解析
+  - [NextAuth](https://next-auth.js.org/)
+    - 認証やセッション管理をしてくれるライブラリ、セッション管理はJWT、DBの選択も可能で便利
+      - 今回はJWTでセッション管理
 - CSS
   - [cssについて](https://nextjs.org/docs/app/building-your-application/styling)
     - [css in modules](https://nextjs.org/docs/app/building-your-application/styling/css-modules)
+      - CSSを専門のコーダーに任せるのであれば、CSS、TSXは分かれていたほうが開発が楽になるはず~~(なにより学習コストが低い)~~
 - ホスティング
   - [Vercel](https://vercel.com/)
 - API
@@ -93,22 +98,14 @@ nextjs-application\components\template
           - 例2：http://{domain}/(hoge) や http://{domain}/hoge は404となる
           - グループピングしたフォルダ配下に`layout.tsx` layout.tsxについては後述
 
-[Next.js 13](https://reffect.co.jp/react/next-js-13)
-[request-memoization](https://nextjs.org/docs/app/building-your-application/caching#request-memoization)
 
 ## 課題
 - [ ] importのフォーマット(自動でimport文を並び変える)
 - [ ] 環境変数
-- [ ] ログイントークン
-  - [ ] jwt使う？(要検討)
 - [ ] スマホ対応
   - [ ] cssに@mediaするとかでいける気はする(詳しい人教えて...)
 
 ## その他参考
 [formについて](https://qiita.com/nuko-suke/items/1393995fd53ecaeb1cbc)
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[Next.js 13](https://reffect.co.jp/react/next-js-13)
+[request-memoization](https://nextjs.org/docs/app/building-your-application/caching#request-memoization)

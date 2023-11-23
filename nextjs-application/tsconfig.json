@@ -20,7 +20,8 @@
         ],
         "paths": {
             // ディレクトリ構成が変更されたときに下記とnext.config.jsを変更すれば済むように定義
-            "@/*": ["./src/*"],
+            "@app/*": ["./src/app/*"],
+            "@util/*": ["./src/util/*"],
             "@types/*": ["./src/types/*"],
             "@api/*": ["./src/api/*"],
             "@components/*": ["./src/components/*"],

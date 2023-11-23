@@ -9,17 +9,10 @@ export class ActivityRequest implements BaseRequest {
     url: string;
     method: method;
 
-    constructor(user: User | undefined) {
-        // 原則ありえない
-        if (!user) throw new Error("user未設定");
-
+    constructor(user: User) {
         this.url = `https://${user.url}.backlog.com/api/v2/space/activities?apiKey=${user.apiKey}`;
         this.method = "GET";
     }
-    // constructor(url: string, apiKey: string) {
-    //     this.url = `https://${url}.backlog.com/api/v2/space/activities?apiKey=${apiKey}`;
-    //     this.method = "GET";
-    // }
 }
 
 /**

@@ -1,8 +1,8 @@
 import { fetcher } from "@api/fetcher";
 import { GetProjectsRequest, GetProjectsResponse } from "@api/type/backlog/getProjects";
 import { Select, Option, OptionsInit } from "@components/elements/select/select-form";
-import { Session, getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { Session } from "next-auth";
+import { getServerSession } from "@util/sessionUtil";
 
 type ProjectsProps = {
     name: string;
@@ -16,10 +16,9 @@ type ProjectsProps = {
 export const Projects: React.FC<ProjectsProps> = async ({
     name,
 }: ProjectsProps): Promise<JSX.Element> => {
-    const session = await getServerSession(authOptions);
-    if (!session) return <></>;
+    const session = await getServerSession();
 
-    const selectOptions: Option[] = [...OptionsInit, ...(await fetch(session))];
+    const selectOptions: Option[] = await fetch(session);
 
     return (
         <Select
@@ -36,10 +35,13 @@ const fetch = async (session: Session): Promise<Option[]> => {
     const req: GetProjectsRequest = new GetProjectsRequest(session.user);
     const respose = await fetcher<GetProjectsResponse>(req);
     if (!respose) {
-        return [];
+        return OptionsInit;
     }
 
-    return respose.map((res) => {
-        return { value: res.id, displayValue: res.name };
-    });
+    return [
+        ...OptionsInit,
+        ...respose.map((res) => {
+            return { value: res.id, displayValue: res.name };
+        }),
+    ];
 };

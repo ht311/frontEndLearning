@@ -1,6 +1,6 @@
 export { default } from "next-auth/middleware";
 
-// middleware.ts;
 export const config = {
+    // login配下以外は、アクセスに認証を必要とする
     matcher: ["/((?!login).*)"],
 };

@@ -1,8 +1,8 @@
 import { fetcher } from "@api/fetcher";
 import { Select, OptionsInit, Option } from "@components/elements/select/select-form";
 import { GetPrioritiesRequest, GetPrioritiesResponse } from "@api/type/backlog/getPriorities";
-import { Session, getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { Session } from "next-auth";
+import { getServerSession } from "@util/sessionUtil";
 
 type PrioritiesProps = {
     name: string;
@@ -16,10 +16,9 @@ type PrioritiesProps = {
 export const Priorities: React.FC<PrioritiesProps> = async ({
     name,
 }: PrioritiesProps): Promise<JSX.Element> => {
-    const session = await getServerSession(authOptions);
-    if (!session) return <></>;
+    const session = await getServerSession();
 
-    const selectOptions: Option[] = [...OptionsInit, ...(await fetch(session))];
+    const selectOptions: Option[] = await fetch(session);
 
     return (
         <Select
@@ -34,12 +33,17 @@ export default Priorities;
 
 const fetch = async (session: Session): Promise<Option[]> => {
     const req: GetPrioritiesRequest = new GetPrioritiesRequest(session.user);
-    const respose = await fetcher<GetPrioritiesResponse>(req);
-    if (!respose) {
-        return [];
+    const res: GetPrioritiesResponse = await fetcher<GetPrioritiesResponse>(req);
+    if (!res) {
+        return OptionsInit;
     }
 
-    return respose.map((res) => {
-        return { value: res.id, displayValue: res.name };
-    });
+    return [
+        ...OptionsInit,
+        ...res.map((res) => {
+            // type型を返す都合で省略記法が使えない。下記で書けると嬉しい
+            // respose.map((res) => { value: res.id, displayValue: res.name });
+            return { value: res.id, displayValue: res.name };
+        }),
+    ];
 };

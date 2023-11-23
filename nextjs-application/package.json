@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "dev": "eslint src --fix && prettier --write 'src/**/*.{js,tsx,ts}' && next dev",
-        "dev --noFormat": "next dev",
+        "dev-noFormat": "next dev",
         "build": "eslint src --fix && prettier --write 'src/**/*.{js,tsx,ts}' && next build",
         "start": "next start",
         "format": "eslint src --fix && prettier --write 'src/**/*.{js,tsx,ts}'"

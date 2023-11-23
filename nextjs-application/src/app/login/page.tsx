@@ -1,5 +1,5 @@
 "use client";
-import ErrorDiv from "@/components/elements/div/error-div";
+import ErrorDiv from "@components/elements/div/error-div";
 import InputTextForm from "@components/elements/input/input-text-form";
 import { NextPage } from "next";
 import { signIn } from "next-auth/react";
