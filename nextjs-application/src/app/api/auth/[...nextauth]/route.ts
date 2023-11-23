@@ -3,7 +3,7 @@ import {} from "next-auth/jwt";
 import Credentials from "next-auth/providers/credentials";
 
 export const authOptions: NextAuthOptions = {
-    secret: process.env.NEXTAUTH_SECRET,
+    secret: process.env.NEXT_PUBLIC_VERCEL_URL,
     session: { strategy: "jwt" },
     providers: [
         Credentials({
