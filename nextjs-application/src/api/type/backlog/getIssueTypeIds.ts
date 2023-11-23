@@ -1,5 +1,5 @@
 import { BaseRequest, method } from "@api/fetcher";
-import { UserAuth } from "@contexts/userAuth/userAuth";
+import { User } from "next-auth";
 
 /**
  * Backlogの種別一覧の取得 APIのrequest
@@ -9,8 +9,8 @@ export class GetIssueTypeIdsRequest implements BaseRequest {
     url: string;
     method: method;
 
-    constructor(userAuth: UserAuth, projectId: number) {
-        this.url = `https://${userAuth.url}.backlog.com/api/v2/projects/${projectId}/issueTypes?apiKey=${userAuth.apikey}`;
+    constructor(user: User, projectId: number) {
+        this.url = `https://${user.url}.backlog.com/api/v2/projects/${projectId}/issueTypes?apiKey=${user.apiKey}`;
         this.method = "GET";
     }
 }

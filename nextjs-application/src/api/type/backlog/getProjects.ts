@@ -1,5 +1,5 @@
 import { BaseRequest, method } from "@api/fetcher";
-import { UserAuth } from "@contexts/userAuth/userAuth";
+import { User } from "next-auth";
 
 /**
  * Backlogのプロジェクト一覧の取得 APIのrequest
@@ -9,8 +9,8 @@ export class GetProjectsRequest implements BaseRequest {
     url: string;
     method: method;
 
-    constructor(userAuth: UserAuth) {
-        this.url = `https://${userAuth.url}.backlog.com/api/v2/projects?apiKey=${userAuth.apikey}&archived=false`;
+    constructor(user: User) {
+        this.url = `https://${user.url}.backlog.com/api/v2/projects?apiKey=${user.apiKey}&archived=false`;
         this.method = "GET";
     }
 }

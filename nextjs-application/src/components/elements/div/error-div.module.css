@@ -1,0 +1,8 @@
+.error_message {
+    display: block;
+    width: 90%;
+    margin: 8px;
+    border-radius: 8px;
+    color: red;
+    border: red solid 3px;
+}

@@ -16,7 +16,7 @@ const ToDo: NextPage = () => {
     // 追加ボタン押下
     const inputButtonClick = () => {
         if (!inputValue) {
-            alert("タスクは入力してください！");
+            alert("タスクを入力してください！");
             return;
         }
         toDoList.push(inputValue);

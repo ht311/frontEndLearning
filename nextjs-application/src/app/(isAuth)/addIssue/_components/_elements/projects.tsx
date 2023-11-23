@@ -1,10 +1,8 @@
-"use client";
-import { useContext, useEffect, useState } from "react";
-// import { useRouter } from "next/navigation";
 import { fetcher } from "@api/fetcher";
 import { GetProjectsRequest, GetProjectsResponse } from "@api/type/backlog/getProjects";
-import { UserAuth, UserAuthContext } from "@contexts/userAuth/userAuth";
 import { Select, Option, OptionsInit } from "@components/elements/select/select-form";
+import { Session } from "next-auth";
+import { getServerSession } from "@util/sessionUtil";
 
 type ProjectsProps = {
     name: string;
@@ -15,31 +13,16 @@ type ProjectsProps = {
  * @param name componentのname
  * @returns 概要の通り
  */
-export const Projects: React.FC<ProjectsProps> = ({ name = "" }: ProjectsProps): JSX.Element => {
-    const userAuth: UserAuth = useContext(UserAuthContext);
-    const [options, setOptions] = useState<Option[]>(OptionsInit);
-    // const router = useRouter();
+export const Projects: React.FC<ProjectsProps> = async ({
+    name,
+}: ProjectsProps): Promise<JSX.Element> => {
+    const session = await getServerSession();
 
-    const fetch = async () => {
-        const req: GetProjectsRequest = new GetProjectsRequest(userAuth);
-        const respose = await fetcher<GetProjectsResponse>(req);
-        if (respose) {
-            const addOption: Option[] = [];
-            respose.map((res) => addOption.push({ value: res.id, displayValue: res.name }));
-            setOptions([...options, ...addOption]);
-        }
-    };
-    useEffect(() => {
-        // if (!userAuth.isAuth) {
-        //     router.push("./login");
-        // }
-        fetch();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    const selectOptions: Option[] = await fetch(session);
 
     return (
         <Select
-            options={options}
+            options={selectOptions}
             inputName={name}
             placeholder="プロジェクトを選択してください"
             required={true}
@@ -47,3 +30,18 @@ export const Projects: React.FC<ProjectsProps> = ({ name = "" }: ProjectsProps):
     );
 };
 export default Projects;
+
+const fetch = async (session: Session): Promise<Option[]> => {
+    const req: GetProjectsRequest = new GetProjectsRequest(session.user);
+    const respose = await fetcher<GetProjectsResponse>(req);
+    if (!respose) {
+        return OptionsInit;
+    }
+
+    return [
+        ...OptionsInit,
+        ...respose.map((res) => {
+            return { value: res.id, displayValue: res.name };
+        }),
+    ];
+};

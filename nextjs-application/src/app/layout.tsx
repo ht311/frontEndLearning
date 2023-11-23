@@ -1,12 +1,15 @@
 import { ReactNode } from "react";
 import "../../styles/global.css";
 import { Metadata } from "next";
+// import { NextAuthProvider } from "./providers";
 
 const App = ({ children }: { children: ReactNode }) => {
     return (
         <html lang="ja">
             <body>
+                {/* <NextAuthProvider> */}
                 <main>{children}</main>
+                {/* </NextAuthProvider> */}
             </body>
         </html>
     );

@@ -1,5 +1,5 @@
 import { BaseRequest, method } from "@api/fetcher";
-import { UserAuth } from "@contexts/userAuth/userAuth";
+import { User } from "next-auth";
 
 /**
  * Backlogのactivity APIのrequest
@@ -9,8 +9,8 @@ export class ActivityRequest implements BaseRequest {
     url: string;
     method: method;
 
-    constructor(userAuth: UserAuth) {
-        this.url = `https://${userAuth.url}.backlog.com/api/v2/space/activities?apiKey=${userAuth.apikey}`;
+    constructor(user: User) {
+        this.url = `https://${user.url}.backlog.com/api/v2/space/activities?apiKey=${user.apiKey}`;
         this.method = "GET";
     }
 }

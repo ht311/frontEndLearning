@@ -2,11 +2,10 @@ import Link from "next/link";
 import Head from "next/head";
 import utilStyles from "../../../../styles/utils.module.css";
 import { NextPage } from "next";
+import LogoutButton from "@components/common/logout/logout-button";
 
 const Home: NextPage = () => {
     const siteTitle = "Next.js Sample Website";
-
-    // const userAuth:UserAuth = useContext(UserAuthContext)
 
     return (
         <>
@@ -44,26 +43,9 @@ const Home: NextPage = () => {
                     <Link href="../addIssue">課題追加</Link>
                 </div>
             </section>
+            <LogoutButton />
         </>
     );
 };
 
 export default Home;
-
-//afoo
-// API読み込みバージョン
-// export const getStaticProps:GetStaticProps<HomeProps> = async()=>{
-//     const res = await fetch('それっぽいurl')
-//     return res.json()
-// }
-
-// ファイル読み込みバージョン
-// export const getStaticProps: GetStaticProps<any> = async () => {
-//     const allPostsData = getSortedPostsData()
-
-//     return {
-//         props: {
-//             allPostsData
-//         }
-//     }
-// }

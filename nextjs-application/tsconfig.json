@@ -20,10 +20,13 @@
         ],
         "paths": {
             // ディレクトリ構成が変更されたときに下記とnext.config.jsを変更すれば済むように定義
-            // "@/*": ["./src/*"],
+            "@app/*": ["./src/app/*"],
+            "@util/*": ["./src/util/*"],
+            "@types/*": ["./src/types/*"],
             "@api/*": ["./src/api/*"],
             "@components/*": ["./src/components/*"],
-            "@contexts/*": ["./src/contexts/*"]
+            "@contexts/*": ["./src/contexts/*"],
+            "@lib/*": ["./src/lib/*"]
         }
     },
     "include": [
@@ -32,7 +35,8 @@
         "**/*.tsx",
         ".next/types/**/*.ts",
         "./.eslintrc.yml",
-        "./next.config.js"
+        "./next.config.js",
+        "src/___/_"
     ],
     "exclude": ["node_modules"]
 }
