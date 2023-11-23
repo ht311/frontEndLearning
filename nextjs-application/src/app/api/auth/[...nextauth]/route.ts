@@ -1,10 +1,11 @@
+import { fetcher } from "@api/fetcher";
+import { MyselfRequest, MyselfResponse } from "@api/type/backlog/getMyself";
 import NextAuth, { NextAuthOptions, User } from "next-auth";
 import {} from "next-auth/jwt";
 import Credentials from "next-auth/providers/credentials";
 
 export const authOptions: NextAuthOptions = {
     secret: process.env.NEXTAUTH_SECRET,
-    //secret: "Ey7nTKnggBc0bRN8WUjyShw2qzOZ6KW4fUyqcKBePxY=",
     session: { strategy: "jwt" },
     providers: [
         Credentials({
@@ -29,8 +30,8 @@ export const authOptions: NextAuthOptions = {
                 }
 
                 const user: User = {
-                    id: "1",
-                    name: "foo bar",
+                    id: res.userId,
+                    name: res.name,
                     url,
                     apiKey,
                 };
@@ -44,17 +45,19 @@ export const authOptions: NextAuthOptions = {
     },
     callbacks: {
         // `jwt()`コールバックは`authorize()`の後に実行される
-        // `user`に追加したプロパティ`url`と`apiKey`を`token`に設定
         jwt({ token, user }) {
             if (user) {
+                token.id = user.id;
+                token.name = user.name;
                 token.url = user.url;
                 token.apiKey = user.apiKey;
             }
             return token;
         },
         // `session()`コールバックは`jwt()`の後に実行される
-        // `token`に追加したプロパティ`url`と`apiKey`を`session`に設定
         session({ session, token }) {
+            session.user.id = token.id;
+            session.user.name = token.name;
             session.user.url = token.url;
             session.user.apiKey = token.apiKey;
             return session;
@@ -68,19 +71,16 @@ export { handler as GET, handler as POST };
 
 type LoginResult = {
     isOk: boolean;
+} & MyselfResponse;
+
+const loginHandler = async (url: string, apikey: string): Promise<LoginResult> => {
+    // 認証ユーザー情報を取得
+    const myselfRequest: MyselfRequest = new MyselfRequest(url, apikey);
+    const myselfResponse: MyselfResponse = await fetcher<MyselfResponse>(myselfRequest);
+
+    if (!myselfResponse) {
+        return { isOk: false, name: "", userId: "" };
+    }
+
+    return { isOk: true, name: myselfResponse.name, userId: myselfResponse.userId };
 };
-
-const loginHandler = async (url: string, apikey: string): Promise<LoginResult> =>
-    // 適当なAPIを叩いて200点代が帰ってくるならログイン可とする
-    fetch(`https://${url}.backlog.com/api/v2/space?apiKey=${apikey}`)
-        .then((response) => {
-            if (!response.ok) {
-                return { isOk: false };
-            }
-
-            return { isOk: true };
-        })
-        .catch((error: Error) => {
-            console.error(error);
-            return { isOk: false };
-        });

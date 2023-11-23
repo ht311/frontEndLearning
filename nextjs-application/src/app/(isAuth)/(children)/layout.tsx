@@ -1,12 +1,12 @@
 import { ReactNode } from "react";
-import Header from "@components/common/header/header";
+import Footer from "@components/common/footer/footer";
 
 const App = ({ children }: { children: ReactNode }) => {
     return (
         <>
-            <Header />
             {/* <UserAuthProvider userAuth={userAuth}>{children}</UserAuthProvider> */}
             {children}
+            <Footer />
         </>
     );
 };
