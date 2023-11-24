@@ -1,20 +1,12 @@
-"use client";
 import { NextPage } from "next";
 import { Detail } from "./_components/detail";
-import { useParams } from "next/navigation";
 
-const Page: NextPage = () => {
-    const params = useParams();
-    let id;
-    if (Array.isArray(params.id)) {
-        id = params.id[0];
-    } else {
-        id = params.id;
-    }
-    return (
-        <>
-            <Detail id={id} />
-        </>
-    );
+type PageProps = { params: { id: string } };
+
+// このidはディレクトリ[id]の値
+// http://{domain}/issue/hogeの場合、idはhogeが入る
+// 詳細は動的ルーティングで検索
+const Page: NextPage<PageProps> = ({ params }: PageProps) => {
+    return <Detail id={params.id} />;
 };
 export default Page;

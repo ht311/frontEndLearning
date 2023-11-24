@@ -1,0 +1,72 @@
+.sidemenu {
+    position: fixed;
+    z-index: 0;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    width: 3.5em;
+    height: 100%;
+    -webkit-transition: width 0.6s ease;
+    transition: width 0.6s ease;
+    -webkit-transform: translateZ(0) scale(1, 1);
+    transform: translateZ(0) scale(1, 1);
+    border-right: 1px solid #e5e5e5;
+    background: #4caf93;
+}
+.sidemenu:hover {
+    overflow: visible;
+    width: 17em;
+}
+.sidemenu ul {
+    margin: 7px 0;
+    padding: 0;
+    outline: 0;
+}
+.sidemenu li {
+    position: relative;
+    display: block;
+    width: 17em;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+.sidemenu li a {
+    position: relative;
+    display: table;
+    border-spacing: 0;
+    border-collapse: collapse;
+    text-decoration: none;
+    color: #ffffff;
+}
+.sidemenu li:before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: -17em;
+    height: 100%;
+    width: 17em;
+    background: rgba(240, 98, 146, 0.5);
+    -webkit-transition: all 0.6s ease;
+    transition: all 0.6s ease;
+}
+.sidemenu li:hover:before {
+    left: 0;
+}
+.sidemenu span {
+    position: relative;
+    display: table-cell;
+    width: 14em;
+    vertical-align: middle;
+}
+.sidemenu > ul.control {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.sidemenu ul li i {
+    font-size: 1.5em;
+    display: inline-block;
+    padding: 0.5em;
+    vertical-align: middle;
+}

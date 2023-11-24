@@ -16,6 +16,7 @@ body {
         sans-serif;
     line-height: 1.6;
     font-size: 18px;
+    background-color: #f0f0f0;
 }
 
 * {
@@ -31,7 +32,7 @@ a:hover {
     text-decoration: underline;
 }
 
-img {
+/* img {
     max-width: 100%;
     display: block;
-}
+} */

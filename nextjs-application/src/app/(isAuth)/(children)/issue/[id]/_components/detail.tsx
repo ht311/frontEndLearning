@@ -1,35 +1,27 @@
-"use client";
 import { fetcher } from "@api/fetcher";
 import { GetIssueRequest, GetIssueResponse } from "@api/type/backlog/getIssue";
-import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { getServerSession } from "@util/sessionUtil";
+import { Session, User } from "next-auth";
 
 type DetailProps = {
     id: string;
 };
 
-export const Detail: React.FC<DetailProps> = ({ id }: DetailProps): JSX.Element => {
-    const [issueResponse, setIssueResponse] = useState<GetIssueResponse>();
-    const { data: session } = useSession();
-    if (!session) return <></>;
-
-    const onload = async () => {
-        const req = new GetIssueRequest(session.user, id);
-        const res = await fetcher<GetIssueResponse>(req);
-        setIssueResponse(res);
-    };
-
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useEffect(() => {
-        onload();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+export const Detail: React.FC<DetailProps> = async ({ id }: DetailProps): Promise<JSX.Element> => {
+    const session: Session = await getServerSession();
+    const res = await fetch(session.user, id);
 
     return (
         <>
-            {issueResponse?.summary && <div>課題名:{issueResponse.summary}</div>}
-            {issueResponse?.issueKey && <div>課題キー:{issueResponse.issueKey}</div>}
+            {res?.summary && <div>課題名:{res.summary}</div>}
+            {res?.issueKey && <div>課題キー:{res.issueKey}</div>}
         </>
     );
 };
 export default Detail;
+
+const fetch = async (user: User, id: string): Promise<GetIssueResponse> => {
+    const req = new GetIssueRequest(user, id);
+    const res = await fetcher<GetIssueResponse>(req);
+    return res;
+};
