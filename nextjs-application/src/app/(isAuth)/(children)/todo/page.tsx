@@ -32,7 +32,7 @@ const ToDo: NextPage = () => {
 
     return (
         <>
-            <h1>ToDo リスト</h1>
+            <h3>ToDo リスト</h3>
 
             <div style={{ display: "flex" }}>
                 <InputText

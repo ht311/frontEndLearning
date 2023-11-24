@@ -1,27 +1,26 @@
+import Favicon from "/public/images/favicon.ico";
 import { ReactNode } from "react";
 import "../../styles/global.css";
 import { Metadata } from "next";
-// import { NextAuthProvider } from "./providers";
 
-const App = ({ children }: { children: ReactNode }) => {
+const Layout = ({ children }: { children: ReactNode }) => {
     return (
         <html lang="ja">
             <body>
-                {/* <NextAuthProvider> */}
                 <main>{children}</main>
-                {/* </NextAuthProvider> */}
             </body>
         </html>
     );
 };
 
-export default App;
+export default Layout;
 
 export const metadata: Metadata = {
-    title: "title",
-    // 以下のように template を使用すると、他のレイアウトで title を設定時に `title | AppName` という形になる
-    // title: {
-    //   template: '%s | AppName',
-    // },
-    description: "description",
+    title: {
+        // このleyout配下にMetadataが定義されている かつ titleを設定している場合、%s | Nextjs-Sampleの形式でタイトルが表示される
+        default: "Nextjs-Sample",
+        template: "%s | Nextjs-Sample",
+    },
+    description: "Nextjs v13で作成したアプリケーションです",
+    icons: [{ rel: "icon", url: Favicon.src }],
 };

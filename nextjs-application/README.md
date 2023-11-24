@@ -30,12 +30,12 @@
 - 言語
   - [TypeScript](https://www.typescriptlang.org/)
 - フレームワーク
-  - [Next.js 13](https://nextjs.org/blog/next-13)
-    - 14にするかは考慮するべき
+  - [Next.js v13](https://nextjs.org/blog/next-13)
+    - v14にするかは考慮するべき
 - ライブラリ
   - 破壊的変更に備え依存は最低限にする  
       追加する場合は、ライブラリをラップして使いたい
-  - [React 18](https://ja.react.dev/)
+  - [React v18](https://ja.react.dev/)
   - [Prettier](https://prettier.io/)
     - フォーマッター
   - [ESLint](https://eslint.org/)
@@ -46,7 +46,7 @@
 - CSS
   - [cssについて](https://nextjs.org/docs/app/building-your-application/styling)
     - [css in modules](https://nextjs.org/docs/app/building-your-application/styling/css-modules)
-      - CSSを専門のコーダーに任せるのであれば、CSS、TSXは分かれていたほうが開発が楽になるはず~~(なにより学習コストが低い)~~
+      - CSSを専門のコーダーに任せるのであれば、CSS、TSXは分かれていたほうが開発が楽になるはず ~~(学習コストが低い)~~
 - ホスティング
   - [Vercel](https://vercel.com/)
 - API
@@ -101,11 +101,11 @@ nextjs-application\components\template
 
 ## 課題
 - [ ] importのフォーマット(自動でimport文を並び変える)
-- [ ] 環境変数
 - [ ] スマホ対応
-  - [ ] cssに@mediaするとかでいける気はする(詳しい人教えて...)
+  - [ ] cssに@mediaを適用でいけるはず(詳しい人教えて...)
 
 ## その他参考
-[formについて](https://qiita.com/nuko-suke/items/1393995fd53ecaeb1cbc)
-[Next.js 13](https://reffect.co.jp/react/next-js-13)
-[request-memoization](https://nextjs.org/docs/app/building-your-application/caching#request-memoization)
+- [formについて](https://qiita.com/nuko-suke/items/1393995fd53ecaeb1cbc)
+- [Next.js 13](https://reffect.co.jp/react/next-js-13)
+- [request-memoization](https://nextjs.org/docs/app/building-your-application/caching#request-memoization)
+  

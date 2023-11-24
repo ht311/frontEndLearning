@@ -9,20 +9,21 @@ declare module "next-auth" {
     interface Session {
         user: {
             id: string;
-            apiKey?: string;
-            url?: string;
+            apiKey: string;
+            url: string;
         } & DefaultSession["user"];
     }
     interface User {
-        apiKey?: string;
-        url?: string;
+        apiKey: string;
+        url: string;
     }
 }
 
 declare module "next-auth/jwt" {
     // "jwt"コールバックのtokenパラメータに任意のプロパティを追加します。
     interface JWT {
-        apiKey?: string;
-        url?: string;
+        id: string;
+        apiKey: string;
+        url: string;
     }
 }
