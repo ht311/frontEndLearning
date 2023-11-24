@@ -4,10 +4,10 @@
     "private": true,
     "scripts": {
         "dev": "eslint src --fix && prettier --write 'src/**/*.{js,tsx,ts}' && next dev",
-        "dev-noFormat": "next dev",
+        "dev-nolint": "next dev",
         "build": "eslint src --fix && prettier --write 'src/**/*.{js,tsx,ts}' && next build",
         "start": "next start",
-        "format": "eslint src --fix && prettier --write 'src/**/*.{js,tsx,ts}'"
+        "lint": "eslint src --fix && prettier --write 'src/**/*.{js,tsx,ts}'"
     },
     "dependencies": {
         "next": "13.5.5",

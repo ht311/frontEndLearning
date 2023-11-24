@@ -18,7 +18,7 @@
 - 開発者モードで起動
   - `npm run dev`
     - 実行時に静的解析、フォーマットも実行  
-        静的解析が不要な場合は、`npm run dev-noFormat`を実行
+        静的解析が不要な場合は、`npm run dev-nolint`を実行
 - 起動
   - `npm run start`
 - ビルド
