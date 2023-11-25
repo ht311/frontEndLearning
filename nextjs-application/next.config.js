@@ -37,6 +37,7 @@ const nextConfig = {
             "@components": path.resolve(__dirname, "components"),
             "@contexts": path.resolve(__dirname, "contexts"),
             "@lib": path.resolve(__dirname, "lib"),
+            "@styles": path.resolve(__dirname, "styles"),
         };
         return config;
     },
