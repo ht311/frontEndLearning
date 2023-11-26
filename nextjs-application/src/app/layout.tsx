@@ -1,6 +1,6 @@
 import Favicon from "/public/images/favicon.ico";
 import { ReactNode } from "react";
-import "../../styles/global.css";
+import "@styles/global.css";
 import { Metadata } from "next";
 
 const Layout = ({ children }: { children: ReactNode }) => {

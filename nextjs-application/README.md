@@ -1,9 +1,12 @@
 
 ## 使い方
+
 本プロジェクトはデプロイ済でアクセス可能  
 [デプロイ済のアプリを触る](https://nextjs-application-coral.vercel.app/home)
 
+
 ## 環境構築
+
 本プロジェクトはVSCodeでの開発を推奨
 
 1. [VSCode](https://code.visualstudio.com/)をインストール
@@ -14,11 +17,13 @@
 4. 本プロジェクトフォルダをVSCodeで開く
 5. ターミナル(ctrl+@で開く)で`npm install`を実行して依存するパッケージをインストール
 
+
 ## プロジェクトの起動方法
+
 - 開発者モードで起動
   - `npm run dev`
     - 実行時に静的解析、フォーマットも実行  
-        静的解析が不要な場合は、`npm run dev-noFormat`を実行
+        静的解析が不要な場合は、`npm run dev-nolint`を実行
 - 起動
   - `npm run start`
 - ビルド
@@ -26,7 +31,9 @@
 - 静的解析、フォーマット
   - `npm run format`
 
+
 ## 使用技術
+
 - 言語
   - [TypeScript](https://www.typescriptlang.org/)
 - フレームワーク
@@ -56,7 +63,9 @@
 
 
 ## ディレクトリ構成
+
 参考にしたのは下記
+
 - [ディレクトリ構成参考](https://zenn.dev/yutabeee/articles/5e32a99a3cab97)
   
 components\parts
@@ -64,7 +73,10 @@ components\parts
 
 nextjs-application\components\template
 ヘッダーフッターなどの共通的に使えるある程度の塊を定義
+
+
 ### 詳細
+
 - public
   - 画像などのstaticでpublicなファイルを格納
 - src
@@ -100,12 +112,25 @@ nextjs-application\components\template
 
 
 ## 課題
+
 - [ ] importのフォーマット(自動でimport文を並び変える)
 - [ ] スマホ対応
   - [ ] cssに@mediaを適用でいけるはず(詳しい人教えて...)
 
+
 ## その他参考
+
 - [formについて](https://qiita.com/nuko-suke/items/1393995fd53ecaeb1cbc)
 - [Next.js 13](https://reffect.co.jp/react/next-js-13)
 - [request-memoization](https://nextjs.org/docs/app/building-your-application/caching#request-memoization)
-  
+-[デザインパターン](https://zenn.dev/ficilcom/articles/app_router_design_pattern)
+https://zenn.dev/morinokami/books/learning-patterns-1/viewer/presentational-container-pattern
+
+||Container|Presentational|
+|:---|:---|:---|
+|責務|ロジック|UI|
+|状態|持つ|原則持たない|
+|データの受け取り元|状態管理ライブラリ、API等|Props|
+|UT|必要|最低限|
+|IT|最低限|必要|
+

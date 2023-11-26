@@ -3,8 +3,9 @@ import { Detail } from "./_components/detail";
 
 type PageProps = { params: { id: string } };
 
-// このidはディレクトリ[id]の値
-// http://{domain}/issue/hogeの場合、idはhogeが入る
+// 引数のparams.idについては下記。
+// このページの場合、ルーティングがapp\issue\[id]のため、
+// URLがhttp://{domain}/issue/hogeの場合、idはhogeが入る
 // 詳細は動的ルーティングで検索
 const Page: NextPage<PageProps> = ({ params }: PageProps) => {
     return <Detail id={params.id} />;

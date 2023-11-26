@@ -43,7 +43,7 @@ const ToDo: NextPage = () => {
                 <Button onClick={inputButtonClick}>追加</Button>
             </div>
 
-            {toDoList && (
+            {toDoList.length ? (
                 <table>
                     {toDoList.map((toDo, index) => (
                         <tr key={index}>
@@ -55,6 +55,8 @@ const ToDo: NextPage = () => {
                         </tr>
                     ))}
                 </table>
+            ) : (
+                <div>タスクを登録してください。</div>
             )}
         </>
     );

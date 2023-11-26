@@ -13,7 +13,7 @@ export type method = "GET" | "POST";
 /**
  * APIを発行するためのラッパー関数
  * @example <caption>\api\type\backlog\activities.tsを使用する場合の実装例</caption>
- * const req = new ActivityRequest(userAuth)
+ * const req = new ActivityRequest(user)
  * const res = await fetcher<ActivityResponse>(req)
  * @param request BaseRequestを継承したクラス
  * @returns APIの戻り値をResponseにパースした結果
