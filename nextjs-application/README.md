@@ -123,4 +123,14 @@ nextjs-application\components\template
 - [formについて](https://qiita.com/nuko-suke/items/1393995fd53ecaeb1cbc)
 - [Next.js 13](https://reffect.co.jp/react/next-js-13)
 - [request-memoization](https://nextjs.org/docs/app/building-your-application/caching#request-memoization)
-  
+-[デザインパターン](https://zenn.dev/ficilcom/articles/app_router_design_pattern)
+https://zenn.dev/morinokami/books/learning-patterns-1/viewer/presentational-container-pattern
+
+||Container|Presentational|
+|:---|:---|:---|
+|責務|ロジック|UI|
+|状態|持つ|原則持たない|
+|データの受け取り元|状態管理ライブラリ、API等|Props|
+|UT|必要|最低限|
+|IT|最低限|必要|
+

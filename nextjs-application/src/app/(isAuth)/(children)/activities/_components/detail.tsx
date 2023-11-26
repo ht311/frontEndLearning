@@ -2,15 +2,16 @@
 import { fetcher } from "@api/fetcher";
 import { ActivityRequest, ActivityResponse } from "@api/type/backlog/getActivities";
 import Button from "@components/elements/button/button";
+import { Session } from "next-auth";
 import { useSession } from "next-auth/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Detail: React.FC = (): JSX.Element => {
-    const [activityResponse, setActivityResponse] = useState<ActivityResponse>();
     const { data: session } = useSession();
+    const [activityResponse, setActivityResponse] = useState<ActivityResponse>();
 
-    const onClick = async () => {
-        if (!session) return;
+    const onClick = async (session: Session) => {
+        setActivityResponse(undefined);
 
         const req = new ActivityRequest(session.user);
         const res = await fetcher<ActivityResponse>(req);
@@ -18,18 +19,40 @@ export const Detail: React.FC = (): JSX.Element => {
         setActivityResponse(res);
     };
 
+    useEffect(() => {
+        const abortController = new AbortController();
+
+        if (!session) return;
+        onClick(session);
+
+        return () => {
+            abortController.abort();
+        };
+    }, [session]);
+
     return (
         <>
-            <Button onClick={onClick}>activityを更新する</Button>
-            <ul>
-                {activityResponse?.map((res) => (
-                    <li key={res.id}>
-                        <div>{typeConvertName(res.type)}</div>
-                        {res.content.name && <div>Name:{res.content.name}</div>}
-                        {res.content.summary && <div>Summary:{res.content.summary}</div>}
-                    </li>
-                ))}
-            </ul>
+            <Button onClick={() => session && onClick(session)}>activityを更新する</Button>
+            {/* loading...を毎回実装するのは面倒なので、本来はcomponent化するべきかも
+                componentイメージ
+                type props<T> = { children: React.ReactNode; loadingJudge: T | undefined };
+                const component = <T,>(props: Props<T>): JSX.Element => {
+                    return <>{props.loadingJudge ? props.children : <div>loading...</div>}</>;
+                };
+            */}
+            {activityResponse ? (
+                <ul>
+                    {activityResponse.map((res) => (
+                        <li key={res.id}>
+                            <div>{typeConvertName(res.type)}</div>
+                            {res.content.name && <div>Name:{res.content.name}</div>}
+                            {res.content.summary && <div>Summary:{res.content.summary}</div>}
+                        </li>
+                    ))}
+                </ul>
+            ) : (
+                <div>loading...</div>
+            )}
         </>
     );
 };

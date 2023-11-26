@@ -1,4 +1,5 @@
 .input_text {
+    display: "flex";
     font: 15px/24px sans-serif;
     box-sizing: border-box;
     width: 90%;
