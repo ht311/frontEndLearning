@@ -1,8 +1,8 @@
 import { fetcher } from "@api/fetcher";
 import { GetProjectsRequest, GetProjectsResponse } from "@api/type/backlog/getProjects";
-import { Select, Option, OptionsInit } from "@components/elements/select/select-form";
-import { Session } from "next-auth";
+import Select, { Option, OptionsInit } from "@components/elements/select/select-form";
 import { getServerSession } from "@util/sessionUtil";
+import { Session } from "next-auth";
 
 type ProjectsProps = {
     name: string;
@@ -20,14 +20,7 @@ export const Projects: React.FC<ProjectsProps> = async ({
 
     const selectOptions: Option[] = await fetch(session);
 
-    return (
-        <Select
-            options={selectOptions}
-            inputName={name}
-            placeholder="プロジェクトを選択してください"
-            required={true}
-        />
-    );
+    return <Select options={selectOptions} inputName={name} required={true} />;
 };
 export default Projects;
 
@@ -39,7 +32,6 @@ const fetch = async (session: Session): Promise<Option[]> => {
     }
 
     return [
-        ...OptionsInit,
         ...respose.map((res) => {
             return { value: res.id, displayValue: res.name };
         }),

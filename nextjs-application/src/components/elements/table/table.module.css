@@ -1,0 +1,27 @@
+.tableStyle *,
+.tableStyle *:before,
+.tableStyle *:after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.tableStyle {
+    width: 100%;
+    border-collapse: collapse;
+}
+.tableStyle th {
+    width: 13%;
+    background: #f4f4f4;
+    padding: 10px;
+    border: 1px solid #dddddd;
+}
+.tableStyle td {
+    text-align: left;
+    vertical-align: top;
+    padding: 10px;
+    border: 1px solid #dddddd;
+}
+.tableStyle td:first-child {
+    text-align: left;
+    vertical-align: middle;
+    font-weight: bold;
+}

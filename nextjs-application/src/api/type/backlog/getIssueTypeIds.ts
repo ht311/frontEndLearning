@@ -25,3 +25,11 @@ export type IssueTypeIdsResponse = {
     projectId: number;
     name: string;
 };
+
+export const IssueTypeIdsResponseInit: IssueTypeIdsResponse[] = [
+    {
+        id: 0,
+        projectId: 0,
+        name: "",
+    },
+];

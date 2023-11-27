@@ -1,8 +1,8 @@
 import { NextPage } from "next";
-import { Form } from "./_components/form";
-import FormItems from "./_components/formItems";
 
 import { NextAuthProvider } from "@components/common/session/providers";
+import Form from "./Form";
+import FormItems from "./FormItems";
 
 const Activities: NextPage = () => {
     return (

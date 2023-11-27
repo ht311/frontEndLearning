@@ -20,7 +20,7 @@ export class ActivityRequest implements BaseRequest {
  */
 export type ActivityResponse = Activity[];
 
-type Activity = {
+export type Activity = {
     id: number;
     project: {
         id: number;

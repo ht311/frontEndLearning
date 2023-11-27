@@ -1,63 +1,75 @@
-"use client";
+// Presenterに依存してはいけない
 import { fetcher } from "@api/fetcher";
-import { ActivityRequest, ActivityResponse } from "@api/type/backlog/getActivities";
-import Button from "@components/elements/button/button";
-import { Session } from "next-auth";
+import { Activity, ActivityRequest } from "@api/type/backlog/getActivities";
+import { User } from "next-auth";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
-export const Detail: React.FC = (): JSX.Element => {
+type ReturnProps = {
+    /**
+     * 再fetchしたい場合に呼ぶ
+     */
+    fetchActivity: () => void;
+    /**
+     * fetch中はfalse
+     */
+    isLoading: boolean;
+    /**
+     * isLoadingがtrueの場合、応答値
+     * falseの場合、undefined
+     */
+    activityResponse: CustomActivityResponse[] | undefined;
+};
+
+type CustomActivityResponse = { name: string } & Activity;
+
+const useFetchActivities = (): ReturnProps => {
     const { data: session } = useSession();
-    const [activityResponse, setActivityResponse] = useState<ActivityResponse>();
+    const [activityResponse, setActivityResponse] = useState<CustomActivityResponse[]>();
+    const [isLoading, setLoading] = useState(true);
 
-    const onClick = async (session: Session) => {
-        setActivityResponse(undefined);
+    const fetchActivity = async () => {
+        if (!session) return;
+        setLoading(true);
 
-        const req = new ActivityRequest(session.user);
-        const res = await fetcher<ActivityResponse>(req);
+        const res = await fetch(session.user);
 
         setActivityResponse(res);
+        setLoading(false);
     };
 
-    useEffect(() => {
-        const abortController = new AbortController();
+    useEffect(
+        () => {
+            const abortController = new AbortController();
 
-        if (!session) return;
-        onClick(session);
+            if (!session) return;
+            fetchActivity();
 
-        return () => {
-            abortController.abort();
-        };
-    }, [session]);
-
-    return (
-        <>
-            <Button onClick={() => session && onClick(session)}>activityを更新する</Button>
-            {/* loading...を毎回実装するのは面倒なので、本来はcomponent化するべきかも
-                componentイメージ
-                type props<T> = { children: React.ReactNode; loadingJudge: T | undefined };
-                const component = <T,>(props: Props<T>): JSX.Element => {
-                    return <>{props.loadingJudge ? props.children : <div>loading...</div>}</>;
-                };
-            */}
-            {activityResponse ? (
-                <ul>
-                    {activityResponse.map((res) => (
-                        <li key={res.id}>
-                            <div>{typeConvertName(res.type)}</div>
-                            {res.content.name && <div>Name:{res.content.name}</div>}
-                            {res.content.summary && <div>Summary:{res.content.summary}</div>}
-                        </li>
-                    ))}
-                </ul>
-            ) : (
-                <div>loading...</div>
-            )}
-        </>
+            return () => {
+                abortController.abort();
+            };
+        },
+        // fetchActivityがsessionに依存するため警告がでるが問題無し
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [session],
     );
-};
-export default Detail;
 
+    return { fetchActivity, isLoading, activityResponse };
+};
+export default useFetchActivities;
+
+const fetch = async (user: User): Promise<CustomActivityResponse[]> => {
+    const req = new ActivityRequest(user);
+
+    const res = await fetcher<CustomActivityResponse[]>(req);
+    res.forEach((r) => {
+        r.name = typeConvertName(r.type);
+    });
+    return res;
+};
+
+// utilとかに移すべき
+// hooksでビジネスロジックを解決するのは正しいはず
 const typeConvertName = (type: number): string => {
     switch (type) {
         case 1:
