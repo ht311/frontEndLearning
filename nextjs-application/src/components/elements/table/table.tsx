@@ -12,7 +12,7 @@ export const Table = ({ head, body }: TableProps): JSX.Element => {
         <table className={style.tableStyle}>
             <thead>
                 <tr>
-                    <th />
+                    <th key={"no"}>No</th>
                     {head.map((h, index) => (
                         <th key={index}>{h}</th>
                     ))}
@@ -21,6 +21,7 @@ export const Table = ({ head, body }: TableProps): JSX.Element => {
             <tbody>
                 {body.map((b, index) => (
                     <tr key={index}>
+                        <td key={"no" + index + 1}>{index + 1}</td>
                         {b.map((bChild, bChildIndex) => (
                             <td key={bChildIndex}>{bChild}</td>
                         ))}

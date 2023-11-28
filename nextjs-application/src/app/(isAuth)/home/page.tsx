@@ -1,46 +1,43 @@
 import Link from "next/link";
-import Head from "next/head";
 import utilStyles from "@styles/utils.module.css";
 import { NextPage } from "next";
 
 const Home: NextPage = () => {
-    const siteTitle = "Next.js Sample Website";
-
     return (
         <>
-            <Head>
-                <title>{siteTitle}</title>
-            </Head>
-            <section className={utilStyles.headingMd}>
-                <p>[Your Selt Introduction]</p>
-                <p>
-                    (This is a sample website - you’ll be building a site like this on{" "}
-                    <Link href="https://nextjs.org/learn" target="_blank">
-                        our Next.js tutorial
+            <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+                <h3>概要</h3>
+                このサイトはNext.js(v13) × TypeScriptで作成されています。
+                <br />
+                <li>
+                    <Link href="https://github.com/ht311/react/tree/master" target="_blank">
+                        {/* TODO:_blankのときに、別タブで開くアイコンを表示する */}
+                        Github(別タブで開きます)
                     </Link>
-                    .)
-                </p>
+                </li>
             </section>
             <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-                <h2 className={utilStyles.headingLg}>Login</h2>
-                <div>
-                    <Link href="../../login">Login</Link>
-                </div>
+                <hr />
+                <h3>Backlog</h3>
+                <li>
+                    <Link href="../activities">最近の更新を見る</Link>
+                </li>
+                <li>
+                    <Link href="../addIssue">課題を追加する</Link>
+                </li>
+                <li>
+                    <Link href="../issues">課題の一覧を見る</Link>
+                </li>
             </section>
-            <section className={utilStyles.headingMd}>
-                <h2>Util</h2>
-                <div>
-                    <Link href="../todo">ToDoList</Link>
-                </div>
-                <div>
+            <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+                <hr />
+                <h3>その他</h3>
+                <li>
+                    <Link href="../todo">ToDoListを使ってみる</Link>
+                </li>
+                <li>
                     <Link href="../cat">猫ちゃんの画像を見る</Link>
-                </div>
-                <div>
-                    <Link href="../activities">アクティビティ参照</Link>
-                </div>
-                <div>
-                    <Link href="../addIssue">課題追加</Link>
-                </div>
+                </li>
             </section>
         </>
     );

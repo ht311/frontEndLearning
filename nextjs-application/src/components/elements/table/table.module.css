@@ -7,9 +7,9 @@
 .tableStyle {
     width: 100%;
     border-collapse: collapse;
+    display: flexbox;
 }
 .tableStyle th {
-    width: 13%;
     background: #f4f4f4;
     padding: 10px;
     border: 1px solid #dddddd;
