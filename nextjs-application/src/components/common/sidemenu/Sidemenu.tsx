@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "./sidemenu.module.css";
+import styles from "./Sidemenu.module.css";
 import Image from "next/image";
 
 const Sidemenu = (): JSX.Element => {
