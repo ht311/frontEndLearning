@@ -15,7 +15,7 @@ export type ButtonProps = {
      */
     disabled?: boolean;
 };
-//wth
+
 /**
  * ボタンcomponent
  * @param ButtonProps
