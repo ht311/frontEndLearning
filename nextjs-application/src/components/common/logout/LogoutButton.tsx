@@ -1,6 +1,6 @@
 "use client";
 import { signOut } from "next-auth/react";
-import style from "./logout-button.module.css";
+import style from "./LogoutButton.module.css";
 
 export const LogoutButton = (): JSX.Element => {
     return (

@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import { ActivitiesPresenter } from "./ActivitiesPresenter";
-import { NextAuthProvider } from "@components/common/session/providers";
+import { NextAuthProvider } from "@components/common/session/Providers";
 
 const Activities: NextPage = () => {
     return (

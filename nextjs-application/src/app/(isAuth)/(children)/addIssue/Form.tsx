@@ -2,6 +2,7 @@
 import { ReactNode, Suspense } from "react";
 import Link from "next/link";
 import useFormAddIssue from "./useFormAddIssue";
+import styles from "./Form.module.css";
 
 /**
  * 課題追加ページのformcomponent
@@ -16,7 +17,14 @@ export const Form = ({ children }: { children: ReactNode }): JSX.Element => {
                 <Suspense fallback={<div>読み込み中</div>}>{children}</Suspense>
             </form>
             {postIssueResponse && (
-                <Link href={`./issue/${postIssueResponse.issueKey}`}>課題が追加されました</Link>
+                <>
+                    <hr className={styles.hr} />
+                    <h3>
+                        <Link href={`./issue/${postIssueResponse.issueKey}`}>
+                            課題が追加されました
+                        </Link>
+                    </h3>
+                </>
             )}
         </>
     );

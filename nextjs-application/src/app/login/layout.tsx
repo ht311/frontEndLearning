@@ -1,16 +1,13 @@
 import { ReactNode } from "react";
+import styles from "./layout.module.css";
 
 const App = ({ children }: { children: ReactNode }) => {
-    return <div>{children}</div>;
+    return <div className={styles.container}>{children}</div>;
 };
 
 export default App;
 
 export const metadata = {
-    title: "title",
-    // 以下のように template を使用すると、他のレイアウトで title を設定時に `title | AppName` という形になる
-    // title: {
-    //   template: '%s | AppName',
-    // },
+    title: "Login",
     description: "description",
 };

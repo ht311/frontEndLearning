@@ -1,6 +1,7 @@
-import InputTextForm from "@components/elements/input/input-text-form";
-import GroupSelect, { GroupOption } from "@components/elements/select/select-group-form";
-import Select, { Option } from "@components/elements/select/select-form";
+import InputTextForm from "@components/elements/input/InputTextForm";
+import GroupSelect, { GroupOption } from "@components/elements/select/SelectFroupForm";
+import Select, { Option } from "@components/elements/select/SelectForm";
+import Submit from "@components/elements/submit/Submit";
 
 type FormItemsPresenterProps = {
     /** project */
@@ -47,7 +48,7 @@ export const FormItemsPresenter = ({
                     errorMessage="20文字以内で入力してください"
                 />
             </div>
-            <input type="submit" value="追加" />
+            <Submit value="追加" />
         </>
     );
 };

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import utilStyles from "@styles/utils.module.css";
 import { NextPage } from "next";
+import LinkBlank from "@components/elements/link/LinkBlank";
 
 const Home: NextPage = () => {
     return (
@@ -10,10 +11,7 @@ const Home: NextPage = () => {
                 このサイトはNext.js(v13) × TypeScriptで作成されています。
                 <br />
                 <li>
-                    <Link href="https://github.com/ht311/react/tree/master" target="_blank">
-                        {/* TODO:_blankのときに、別タブで開くアイコンを表示する */}
-                        Github(別タブで開きます)
-                    </Link>
+                    <LinkBlank href="https://github.com/ht311/react/tree/master">Github</LinkBlank>
                 </li>
             </section>
             <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
