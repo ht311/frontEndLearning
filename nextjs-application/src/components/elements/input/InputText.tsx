@@ -1,4 +1,4 @@
-import style from "./input-text.module.css";
+import style from "./InputText.module.css";
 
 export type InputTextProps = {
     inputName?: string;

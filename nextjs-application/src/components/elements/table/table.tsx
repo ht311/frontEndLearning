@@ -1,10 +1,11 @@
-import style from "./table.module.css";
+import { ReactNode } from "react";
+import style from "./Table.module.css";
 
 export type TableProps = {
     /** th */
     head: string[];
     /** td */
-    body: string[][];
+    body: ReactNode[][];
 };
 
 export const Table = ({ head, body }: TableProps): JSX.Element => {

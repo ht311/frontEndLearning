@@ -1,7 +1,7 @@
 "use client";
 import { NextPage } from "next";
-import InputText from "@components/elements/input/input-text";
-import Button from "@components/elements/button/button";
+import InputText from "@components/elements/input/InputText";
+import Button from "@components/elements/button/Button";
 import { useState } from "react";
 
 const ToDo: NextPage = () => {

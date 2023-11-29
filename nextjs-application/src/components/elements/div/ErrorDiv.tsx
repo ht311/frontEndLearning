@@ -1,4 +1,4 @@
-import style from "./error-div.module.css";
+import style from "./ErrorDiv.module.css";
 
 export type ErrorDivProps = {
     children: React.ReactNode;

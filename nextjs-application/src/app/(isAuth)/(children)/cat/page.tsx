@@ -1,18 +1,19 @@
 "use client";
-import Button from "@components/elements/button/button";
+import Button from "@components/elements/button/Button";
 import { NextPage } from "next";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const Page: NextPage = () => {
     // React Hooks
-    // useStateは単項目だけ管理するdtoに近いイメージ、imageUrlは変数、setImageUrlはsetter、useStateで指定した""は初期値
-    const [imageUrl, setImageUrl] = useState("");
+    // useStateは1つのオブジェクトだけを管理するdtoに近いイメージ
+    // imageUrlは変数、setImageUrlはsetter、useStateで指定した""は初期値
+    const [imageUrl, setImageUrl] = useState<string>("");
 
     // ボタン押下時の処理
     // ただの関数定義なので、呼ばれない限りは動かない
     // async function onClick() { 書き方が違うだけで同じ
-    // 7行目のconst Page: NextPageも関数定義なので、これはクロージャ
+    // 7行目のconst Page: NextPageも関数定義
     const onClick = async () => {
         // falsyな値を格納して、今表示している画像を消してloading...を表示する
         setImageUrl("");
@@ -66,6 +67,9 @@ export default Page;
  */
 type ImageResponse = {
     url: string;
+    // 画像に紐づくwidth,heightが返ってくるので動的に変更するのもあり
+    width: number;
+    height: number;
 };
 
 /**

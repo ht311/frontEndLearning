@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { Detail } from "./_components/detail";
+import { Detail } from "./_components/Detail";
 
 type PageProps = { params: { id: string } };
 

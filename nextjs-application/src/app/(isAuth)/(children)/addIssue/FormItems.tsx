@@ -2,8 +2,8 @@ import { fetcher } from "@api/fetcher";
 import { GetProjectsRequest, GetProjectsResponse } from "@api/type/backlog/getProjects";
 import { GetPrioritiesRequest, GetPrioritiesResponse } from "@api/type/backlog/getPriorities";
 import { GetIssueTypeIdsRequest, GetIssueTypeIdsResponse } from "@api/type/backlog/getIssueTypeIds";
-import { GroupOption } from "@components/elements/select/select-group-form";
-import { OptionsInit, Option } from "@components/elements/select/select-form";
+import { GroupOption } from "@components/elements/select/SelectFroupForm";
+import { OptionsInit, Option } from "@components/elements/select/SelectForm";
 import { getServerSession } from "@util/sessionUtil";
 import { User } from "next-auth";
 import FormItemsPresenter from "./FormItemsPresenter";
@@ -13,14 +13,16 @@ import FormItemsPresenter from "./FormItemsPresenter";
  * Form.tsxと資産を分ける理由は、FormItemsに紐づく資産をサーバーサイドでレンダリングするため
  * @returns 概要の通り
  * ※Form.tsxに直接実装すると、
- *   server componentのPrioritiesなどが
- *   client component扱いされてしまうため、
+ *   このserver componentが、client component扱いされてしまい、
  *   ブラウザから各APIを発行することになり効率が悪い
  */
 export const FormItems = async (): Promise<JSX.Element> => {
     const session = await getServerSession();
 
-    // bff層があれば、フロントエンドはAPI1本発行で済む
+    // bffがあれば、フロントエンドはAPIを1本発行で済む
+    // nextjsはapi routesが使えるため、app/api配下にapi用のエンドポイントを作成できる
+    // これによって本プロジェクト内でbff層の実装まで可能だが、
+    // bffとフロントエンドを同じプロジェクトに実装するのは微妙な気がする...
     const projects: GetProjectsResponse = await fetchProjects(session.user);
     const projectOptions = projectsToOptions(projects);
 

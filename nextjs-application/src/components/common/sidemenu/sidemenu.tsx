@@ -6,8 +6,8 @@ const Sidemenu = (): JSX.Element => {
     return (
         <nav className={styles.sidemenu}>
             <ul>
-                <li>
-                    <Link href="../addIssue">
+                <Link href="../addIssue">
+                    <li>
                         <Image
                             src="/images/addIssueIcon.png"
                             alt={"課題を追加"}
@@ -15,10 +15,10 @@ const Sidemenu = (): JSX.Element => {
                             width={35}
                         />
                         <span>課題を追加</span>
-                    </Link>
-                </li>
-                <li>
-                    <Link href="../issues">
+                    </li>
+                </Link>
+                <Link href="../issues">
+                    <li>
                         <Image
                             src="/images/issusIcon.png"
                             alt={"課題一覧"}
@@ -26,8 +26,8 @@ const Sidemenu = (): JSX.Element => {
                             width={35}
                         />
                         <span>課題一覧</span>
-                    </Link>
-                </li>
+                    </li>
+                </Link>
             </ul>
 
             <ul className={styles.control}>
