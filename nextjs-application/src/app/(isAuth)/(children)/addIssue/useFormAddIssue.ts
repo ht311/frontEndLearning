@@ -1,16 +1,26 @@
-"use client";
 import { fetcher } from "@api/fetcher";
 import { PostIssueRequest, PostIssueResponse, RequestParams } from "@api/type/backlog/postIssue";
-import { FormEventHandler, ReactNode, Suspense, useState } from "react";
-import Link from "next/link";
+import { FormEvent, FormEventHandler, useState } from "react";
 import { useSession } from "next-auth/react";
 
+type ReturnProps = {
+    /**
+     * form押下時にcall
+     */
+    handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
+    /**
+     * submitした結果
+     * 一度もsubmitしていない場合、undefined
+     */
+    postIssueResponse: PostIssueResponse | undefined;
+};
+
 /**
- * 課題追加ページのformcomponent
- * @returns 概要の通り
+ * 課題追加ページのフォーム押下のhooks
+ * @returns ReturnProps参照
  */
-export const Form = ({ children }: { children: ReactNode }): JSX.Element => {
-    const [issueKey, setIssueKey] = useState<string>("");
+const useFormAddIssue = (): ReturnProps => {
+    const [postIssueResponse, setPostIssueResponse] = useState<PostIssueResponse>();
     const { data: session } = useSession();
 
     // form押下時の処理
@@ -31,20 +41,9 @@ export const Form = ({ children }: { children: ReactNode }): JSX.Element => {
         req.setBody(params);
 
         const respose = await fetcher<PostIssueResponse>(req);
-
-        if (respose) {
-            setIssueKey(respose.issueKey);
-        }
+        setPostIssueResponse(respose);
     };
 
-    return (
-        <>
-            <form onSubmit={handleSubmit}>
-                <Suspense fallback={<div>読み込み中</div>}>{children}</Suspense>
-                <input type="submit" value="追加" />
-            </form>
-            {issueKey && <Link href={`./issue/${issueKey}`}>課題が追加されました</Link>}
-        </>
-    );
+    return { handleSubmit, postIssueResponse };
 };
-export default Form;
+export default useFormAddIssue;

@@ -41,7 +41,7 @@
     - v14にするかは考慮するべき
 - ライブラリ
   - 破壊的変更に備え依存は最低限にする  
-      追加する場合は、ライブラリをラップして使いたい
+      追加する場合は、ライブラリをラップする
   - [React v18](https://ja.react.dev/)
   - [Prettier](https://prettier.io/)
     - フォーマッター
@@ -60,6 +60,8 @@
   - [backlog API](https://developer.nulab.com/ja/docs/backlog/#)
 - ディレクトリ
   - ディレクトリ構成を参照
+- デザインパターン
+  - backlog API使用箇所は[コンテナ・プレゼンテーションパターン](https://zenn.dev/morinokami/books/learning-patterns-1/viewer/presentational-container-pattern)を適用
 
 
 ## ディレクトリ構成
@@ -123,10 +125,10 @@ nextjs-application\components\template
 - [formについて](https://qiita.com/nuko-suke/items/1393995fd53ecaeb1cbc)
 - [Next.js 13](https://reffect.co.jp/react/next-js-13)
 - [request-memoization](https://nextjs.org/docs/app/building-your-application/caching#request-memoization)
--[デザインパターン](https://zenn.dev/ficilcom/articles/app_router_design_pattern)
-https://zenn.dev/morinokami/books/learning-patterns-1/viewer/presentational-container-pattern
+- [デザインパターン](https://zenn.dev/ficilcom/articles/app_router_design_pattern)
 
-||Container|Presentational|
+
+||Container|Presenter|
 |:---|:---|:---|
 |責務|ロジック|UI|
 |状態|持つ|原則持たない|

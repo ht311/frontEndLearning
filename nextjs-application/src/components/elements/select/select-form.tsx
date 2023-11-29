@@ -7,7 +7,6 @@ export type SelectProps = {
     options: Option[];
     inputName?: string;
     required?: boolean;
-    placeholder?: string;
     /**
      * 非表示にしたいときにtrue
      */
@@ -35,18 +34,14 @@ export const OptionsInit: Option[] = [
 export const Select = ({
     inputName = "",
     options,
-    placeholder,
     required = false,
     disabled = false,
 }: SelectProps): JSX.Element => {
     return (
         <div className={style.selectbox}>
-            <select
-                name={inputName}
-                disabled={disabled}
-                placeholder={placeholder}
-                required={required}
-            >
+            <select name={inputName} disabled={disabled} required={required}>
+                {/* 未選択 "" 固定は微妙かも */}
+                <option value={""} />
                 {options.map((option) => (
                     <option key={option.value} value={option.value}>
                         {option.displayValue}

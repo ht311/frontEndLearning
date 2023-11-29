@@ -1,12 +1,12 @@
 import { NextPage } from "next";
-import { ActivitiesPresenter } from "./ActivitiesPresenter";
+import IssuesPresenter from "./IssuesPresenter";
 import { NextAuthProvider } from "@components/common/session/providers";
 
-const Activities: NextPage = () => {
+const Page: NextPage = () => {
     return (
         <NextAuthProvider>
-            <ActivitiesPresenter />
+            <IssuesPresenter />
         </NextAuthProvider>
     );
 };
-export default Activities;
+export default Page;

@@ -1,8 +1,8 @@
 import { fetcher } from "@api/fetcher";
-import { Select, OptionsInit, Option } from "@components/elements/select/select-form";
 import { GetPrioritiesRequest, GetPrioritiesResponse } from "@api/type/backlog/getPriorities";
-import { Session } from "next-auth";
+import Select, { OptionsInit, Option } from "@components/elements/select/select-form";
 import { getServerSession } from "@util/sessionUtil";
+import { Session } from "next-auth";
 
 type PrioritiesProps = {
     name: string;
@@ -20,14 +20,7 @@ export const Priorities: React.FC<PrioritiesProps> = async ({
 
     const selectOptions: Option[] = await fetch(session);
 
-    return (
-        <Select
-            options={selectOptions}
-            inputName={name}
-            placeholder="優先度を選択してください"
-            required={true}
-        />
-    );
+    return <Select options={selectOptions} inputName={name} required={true} />;
 };
 export default Priorities;
 
@@ -39,7 +32,6 @@ const fetch = async (session: Session): Promise<Option[]> => {
     }
 
     return [
-        ...OptionsInit,
         ...res.map((res) => {
             // type型を返す都合で省略記法が使えない。下記で書けると嬉しい
             // respose.map((res) => { value: res.id, displayValue: res.name });

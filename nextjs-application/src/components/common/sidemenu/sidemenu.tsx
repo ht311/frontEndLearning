@@ -1,36 +1,36 @@
+import Link from "next/link";
 import styles from "./sidemenu.module.css";
+import Image from "next/image";
 
 const Sidemenu = (): JSX.Element => {
     return (
         <nav className={styles.sidemenu}>
             <ul>
                 <li>
-                    <a href="#">
-                        <i></i>
-                        <span>Menu1</span>
-                    </a>
+                    <Link href="../addIssue">
+                        <Image
+                            src="/images/addIssueIcon.png"
+                            alt={"課題を追加"}
+                            height={35}
+                            width={35}
+                        />
+                        <span>課題を追加</span>
+                    </Link>
                 </li>
                 <li>
-                    <a href="#">
-                        <i></i>
-                        <span>Menu2</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i></i>
-                        <span>Menu3</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i></i>
-                        <span>Menu4</span>
-                    </a>
+                    <Link href="../issues">
+                        <Image
+                            src="/images/issusIcon.png"
+                            alt={"課題一覧"}
+                            height={35}
+                            width={35}
+                        />
+                        <span>課題一覧</span>
+                    </Link>
                 </li>
             </ul>
 
-            <ul className="control">
+            <ul className={styles.control}>
                 <li>
                     <a href="#">
                         <i></i>
