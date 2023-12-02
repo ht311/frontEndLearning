@@ -21,7 +21,6 @@ export type SearchItemsContainerProps = {
  */
 export const SearchItemsContainer = async (): Promise<SearchItemsContainerProps> => {
     const session = await getServerSession();
-
     if (!session) throw new Error();
     if (!session.user) throw new Error();
 

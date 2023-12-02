@@ -25,19 +25,19 @@ export const FormItemsPresenter = ({
         <>
             <div>
                 project:
-                <Select options={projectOptions} inputName="projectId" required={true} />
+                <Select options={projectOptions} selectName="projectId" required={true} />
             </div>
             <div>
                 タスクのタイプ:
                 <GroupSelect
                     groupOptions={issueTypeIdsOptions}
-                    inputName="issueTypeId"
+                    selectName="issueTypeId"
                     required={true}
                 />
             </div>
             <div>
                 優先度:
-                <Select options={prioritiesOptions} inputName="priorityId" required={true} />
+                <Select options={prioritiesOptions} selectName="priorityId" required={true} />
             </div>
             <div>
                 課題の件名:

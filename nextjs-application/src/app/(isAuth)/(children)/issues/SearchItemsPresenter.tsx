@@ -25,15 +25,15 @@ export const SearchItemsPresenter = ({
         <>
             <div>
                 project:
-                <Select options={projectOptions} inputName="projectId[]" />
+                <Select options={projectOptions} selectName="projectId[]" />
             </div>
             <div>
                 タスクのタイプ:
-                <GroupSelect groupOptions={issueTypeIdsOptions} inputName="issueTypeId[]" />
+                <GroupSelect groupOptions={issueTypeIdsOptions} selectName="issueTypeId[]" />
             </div>
             <div>
                 優先度:
-                <Select options={prioritiesOptions} inputName="priorityId[]" />
+                <Select options={prioritiesOptions} selectName="priorityId[]" />
             </div>
             <Submit value="課題を取得する" />
         </>

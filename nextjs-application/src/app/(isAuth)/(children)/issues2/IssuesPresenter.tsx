@@ -21,15 +21,15 @@ const IssuesPresenter = (props: IssuesPresenterProps): JSX.Element => {
     return (
         <>
             <h3>課題一覧</h3>
-            <Suspense fallback={<div>読み込み中</div>}>
+            <Suspense fallback={<div>loading...</div>}>
                 <SearchItemsPresenter
                     projectOptions={props.projectOptions}
                     issueTypeIdsOptions={props.issueTypeIdsOptions}
                     prioritiesOptions={props.prioritiesOptions}
                     onChange={onChange}
-                ></SearchItemsPresenter>
+                />
             </Suspense>
-            <hr></hr>
+            <hr />
             {isLoading ? (
                 <div>loading...</div>
             ) : (

@@ -1,7 +1,9 @@
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 type ReturnProps = {
+    // このhooksを使う側の資産の可読性のために敢えて冗長な変数名にしている
+    // 使う側の資産でasを使えばいいが、ここで解決できるならそうするべきと判断
     /**
      * queryStringの値を更新したい場合に呼ぶ
      * キーが重複した場合、上書きする
@@ -26,7 +28,7 @@ type ReturnProps = {
  * queryStringを扱うHooks
  */
 const useQueryString = (): ReturnProps => {
-    const [params, setParams] = useState(new URLSearchParams());
+    const [params, setParams] = useState(new URLSearchParams(useSearchParams()));
     const path = usePathname();
 
     /**
@@ -81,4 +83,5 @@ const useQueryString = (): ReturnProps => {
 
     return { updateQueryString, removeQueryString, getQueryString };
 };
+
 export default useQueryString;

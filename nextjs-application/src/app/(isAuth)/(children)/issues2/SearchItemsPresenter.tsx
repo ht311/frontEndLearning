@@ -2,6 +2,7 @@
 import GroupSelect, { GroupOption } from "@components/elements/select/SelectFroupForm";
 import Select, { Option } from "@components/elements/select/SelectForm";
 import { ChangeEvent } from "react";
+import { useSearchParams } from "next/navigation";
 
 export type SearchItemsPresenterProps = {
     /** project */
@@ -24,23 +25,36 @@ export const SearchItemsPresenter = ({
     prioritiesOptions,
     onChange,
 }: SearchItemsPresenterProps): JSX.Element => {
+    const params = useSearchParams();
+
     return (
         <>
             <div>
                 project:
-                <Select options={projectOptions} inputName="projectId[]" onChange={onChange} />
+                <Select
+                    options={projectOptions}
+                    selectName="projectId[]"
+                    onChange={onChange}
+                    selected={params.get("projectId[]") || ""}
+                />
             </div>
             <div>
                 タスクのタイプ:
                 <GroupSelect
                     groupOptions={issueTypeIdsOptions}
-                    inputName="issueTypeId[]"
+                    selectName="issueTypeId[]"
                     onChange={onChange}
+                    selected={params.get("issueTypeId[]") || ""}
                 />
             </div>
             <div>
                 優先度:
-                <Select options={prioritiesOptions} inputName="priorityId[]" onChange={onChange} />
+                <Select
+                    options={prioritiesOptions}
+                    selectName="priorityId[]"
+                    onChange={onChange}
+                    selected={params.get("priorityId[]") || ""}
+                />
             </div>
         </>
     );

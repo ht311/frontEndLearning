@@ -50,8 +50,8 @@ const useFetchIssues = (): ReturnProps => {
     const search = (event: FormEvent<HTMLFormElement>) => {
         // const search = (event: ChangeEvent<HTMLInputElement>) => {
         // console.log(searchParams.toString());
-        // event.preventDefault();
         fetchIssueList(searchParams.toString());
+        event.preventDefault();
         // event.target.nodeValue;
         // const form = new FormData(event.currentTarget);
         // // // eslint-disable-next-line @typescript-eslint/no-unused-vars

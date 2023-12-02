@@ -33,15 +33,30 @@ export type CustomIssueResponse = { projectName: string } & GetIssueResponse;
 /**
  * 課題検索をするHooks
  * NOTE:Hooksの責務はビジネスロジック
- * HACK:もう少し綺麗に書けそうだが、データフェッチの箇所をbffに任せればいいだけ？
+ * HACK:もう少し綺麗に書けそう
  */
 const useFetchIssues = (): ReturnProps => {
     const { data: session } = useSession();
     const [issues, setIssues] = useState<CustomIssueResponse[]>();
     const [isLoading, setLoading] = useState(true);
-    const { updateQueryString, getQueryString } = useQueryString();
+    const { updateQueryString, removeQueryString, getQueryString } = useQueryString();
 
-    // 検索処理
+    /**
+     * queryStringに下記を行う
+     * - valueがfalsyの場合、remove
+     * - 上記以外の場合、update
+     */
+    const changeQueryString = (key: string, value: string) => {
+        if (value) {
+            updateQueryString(key, value);
+        } else {
+            removeQueryString(key);
+        }
+    };
+
+    /**
+     * 検索処理
+     */
     const fetchIssueList = async (queryString: string) => {
         if (!session) return;
         setLoading(true);
@@ -51,8 +66,14 @@ const useFetchIssues = (): ReturnProps => {
         setLoading(false);
     };
 
+    /**
+     * 紐づくelementのname,valueを元にqueryStringを更新
+     * 更新後にAPIを叩く
+     */
     const onChange = (event: ChangeEvent<HTMLSelectElement>) => {
-        updateQueryString(event.target.name, event.target.value);
+        const { name, value } = event.target;
+        changeQueryString(name, value);
+
         fetchIssueList(getQueryString());
     };
 

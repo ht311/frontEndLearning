@@ -7,9 +7,9 @@ import IssuesPresenter from "./IssuesPresenter";
  * - IssuesPresenter
  *  - クライアントサイドで実行
  *  - 内部でSearchItemsPresenterが依存しているため、SearchItemsContainerの応答値を引数に持つ
- * 依存関係が複雑になっているがservercomponent、clientcomponentの使用上、仕方ない気もする...
- * パフォーマンスを無視して、SearchItemsContainerに紐づくデータフェッチをクライアントサイドで実行する場合、
- * IssuesPresenter内部でSearchItemsContainerを実行するだけなので依存関係はすっきりする
+ *  - 依存関係が複雑になっているがservercomponent、clientcomponentの使用上、仕方ない気もする...
+ *  - パフォーマンスを無視して、SearchItemsContainerに紐づくデータフェッチをクライアントサイドで実行する場合、
+ *  - IssuesPresenter内部でSearchItemsContainerを実行するだけなので依存関係はすっきりする
  */
 const Issues = async (): Promise<JSX.Element> => {
     const { projectOptions, issueTypeIdsOptions, prioritiesOptions } = await SearchItemsContainer();
