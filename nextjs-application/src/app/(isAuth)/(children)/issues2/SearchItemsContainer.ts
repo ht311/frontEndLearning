@@ -6,12 +6,20 @@ import { GroupOption } from "@components/elements/select/SelectFroupForm";
 import { OptionsInit, Option } from "@components/elements/select/SelectForm";
 import { User } from "next-auth";
 import { getServerSession } from "@util/sessionUtil";
-import { IssuesPresenterProps } from "./IssuesPresenter";
+
+export type SearchItemsContainerProps = {
+    /** project */
+    projectOptions: Option[];
+    /** タスクのタイプ */
+    issueTypeIdsOptions: GroupOption[];
+    /** 優先度 */
+    prioritiesOptions: Option[];
+};
 
 /**
  * 課題検索ページの検索項目をfetchする
  */
-export const SearchItemsContainer = async (): Promise<IssuesPresenterProps> => {
+export const SearchItemsContainer = async (): Promise<SearchItemsContainerProps> => {
     const session = await getServerSession();
 
     if (!session) throw new Error();

@@ -51,9 +51,9 @@ const useQueryString = (): ReturnProps => {
      * @param value キーに紐づく値
      */
     const updateQueryString = (key: string, value: string) => {
-        console.log(key.toString() + value.toString());
         params.set(key, value);
         setParams(params);
+
         updateAddressBar();
     };
 
@@ -66,6 +66,7 @@ const useQueryString = (): ReturnProps => {
         if (params.has(key)) {
             params.delete(key);
             setParams(params);
+
             updateAddressBar();
         }
     };

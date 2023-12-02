@@ -12,7 +12,6 @@ export class GetIssueRequest implements BaseRequest {
     constructor(user: User, queryString: string) {
         this.url = `https://${user.url}.backlog.com/api/v2/issues?apiKey=${user.apiKey}&count=100&${queryString}`;
         this.method = "GET";
-        console.log(this.url.toString());
     }
 }
 
