@@ -118,6 +118,7 @@ nextjs-application\components\template
 - [ ] importのフォーマット(自動でimport文を並び変える)
 - [ ] スマホ対応
   - [ ] cssに@mediaを適用でいけるはず(詳しい人教えて...)
+- [ ] エラー画面のカスタム
 
 
 ## その他参考
