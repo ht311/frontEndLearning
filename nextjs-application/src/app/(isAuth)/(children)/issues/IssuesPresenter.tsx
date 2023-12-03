@@ -23,7 +23,7 @@ const IssuesPresenter = ({ children }: { children: React.ReactNode }): JSX.Eleme
                             head={["Project名", "タスク名", "期限"]}
                             body={issues.map((issue, index) => [
                                 issue.projectName,
-                                <Link href={`./issue/${issue.issueKey}`} key={index}>
+                                <Link href={`./updateIssue/${issue.issueKey}`} key={index}>
                                     {issue.summary}
                                 </Link>,
                                 issue.dueDate?.toString() || "未設定",
