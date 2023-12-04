@@ -38,6 +38,7 @@ const nextConfig = {
             "@contexts": path.resolve(__dirname, "contexts"),
             "@lib": path.resolve(__dirname, "lib"),
             "@styles": path.resolve(__dirname, "styles"),
+            "@hooks": path.resolve(__dirname, "hooks"),
         };
         return config;
     },

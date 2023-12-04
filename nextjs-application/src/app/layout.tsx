@@ -1,13 +1,15 @@
 import Favicon from "/public/images/favicon.ico";
-import { ReactNode } from "react";
 import "@styles/global.css";
 import { Metadata } from "next";
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const Layout = ({ children, modal }: { children: React.ReactNode; modal: React.ReactNode }) => {
     return (
         <html lang="ja">
             <body>
-                <main>{children}</main>
+                <main>
+                    {children}
+                    {modal}
+                </main>
             </body>
         </html>
     );

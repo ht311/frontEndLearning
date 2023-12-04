@@ -1,7 +1,6 @@
-import { ReactNode } from "react";
 import Footer from "@components/common/footer/footer";
 
-const App = ({ children }: { children: ReactNode }) => {
+const App = ({ children }: { children: React.ReactNode }) => {
     return (
         <>
             {children}

@@ -2,6 +2,9 @@ import { ReactNode } from "react";
 import style from "./Table.module.css";
 
 export type TableProps = {
+    // データ構造が微妙、componentとしても使いまわしが効きづらい
+    // テーブルはその画面専用のcomponentとして定義するようにしてcssを使いまわすのがベター？
+    // あるいはこのcomponentを<table className={style.tableStyle}>{children}</table>にするとか？
     /** th */
     head: string[];
     /** td */

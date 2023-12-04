@@ -23,11 +23,17 @@ type ReturnProps = {
 
 type CustomActivityResponse = { name: string } & Activity;
 
+/**
+ * アクティビティを参照するHooks
+ */
 const useFetchActivities = (): ReturnProps => {
     const { data: session } = useSession();
     const [activityResponse, setActivityResponse] = useState<CustomActivityResponse[]>();
     const [isLoading, setLoading] = useState(true);
 
+    /**
+     * APIを発行
+     */
     const fetchActivity = async () => {
         if (!session) return;
         setLoading(true);

@@ -15,9 +15,8 @@ export const ActivitiesPresenter: React.FC = (): JSX.Element => {
                     {activityResponse?.map((res) => (
                         <li key={res.id}>
                             <div>{res.name}</div>
-                            <div>{res.id}</div>
                             {res.content.name && <div>Name:{res.content.name}</div>}
-                            {res.content.summary && <div>Summary:{res.content.summary}</div>}
+                            {res.content.summary && <div>タスク名:{res.content.summary}</div>}
                         </li>
                     ))}
                 </ul>

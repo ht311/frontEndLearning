@@ -3,8 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "eslint src --fix && prettier --write 'src/**/*.{js,tsx,ts}' && next dev",
-        "dev-nolint": "next dev",
+        "dev": "next dev",
         "build": "eslint src --fix && prettier --write 'src/**/*.{js,tsx,ts}' && next build",
         "start": "next start",
         "lint": "eslint src --fix && prettier --write 'src/**/*.{js,tsx,ts}'"

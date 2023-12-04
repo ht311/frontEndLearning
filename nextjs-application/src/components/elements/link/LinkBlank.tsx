@@ -11,7 +11,7 @@ export const LinkBlank = ({ href, children }: LinkBlankProps): JSX.Element => {
     return (
         <Link href={href} target="_blank">
             {children}
-            <Image src="/images/blank.png" alt={"課題一覧"} height={15} width={15} />
+            <Image src="/images/blank.png" alt="" height={15} width={15} />
         </Link>
     );
 };

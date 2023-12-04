@@ -1,3 +1,4 @@
+import { ChangeEvent } from "react";
 import style from "./select.module.css";
 
 export type SelectProps = {
@@ -5,12 +6,14 @@ export type SelectProps = {
      * セレクタのoptionタグ
      */
     options: Option[];
-    inputName?: string;
+    selectName?: string;
     required?: boolean;
     /**
      * 非表示にしたいときにtrue
      */
     disabled?: boolean;
+    onChange?: (event: ChangeEvent<HTMLSelectElement>) => void;
+    selected?: string | number;
 };
 
 export type Option = {
@@ -32,14 +35,22 @@ export const OptionsInit: Option[] = [
 ];
 
 export const Select = ({
-    inputName = "",
+    selectName: inputName = "",
     options,
     required = false,
     disabled = false,
+    onChange,
+    selected = "",
 }: SelectProps): JSX.Element => {
     return (
         <div className={style.selectbox}>
-            <select name={inputName} disabled={disabled} required={required}>
+            <select
+                name={inputName}
+                disabled={disabled}
+                required={required}
+                onChange={onChange}
+                defaultValue={selected}
+            >
                 {/* 未選択 "" 固定は微妙かも */}
                 <option value={""} />
                 {options.map((option) => (

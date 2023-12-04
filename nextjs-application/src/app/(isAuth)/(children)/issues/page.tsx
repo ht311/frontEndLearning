@@ -1,11 +1,14 @@
 import { NextPage } from "next";
 import IssuesPresenter from "./IssuesPresenter";
 import { NextAuthProvider } from "@components/common/session/Providers";
+import SearchItems from "./SearchItems";
 
 const Page: NextPage = () => {
     return (
         <NextAuthProvider>
-            <IssuesPresenter />
+            <IssuesPresenter>
+                <SearchItems />
+            </IssuesPresenter>
         </NextAuthProvider>
     );
 };

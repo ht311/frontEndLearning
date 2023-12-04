@@ -2,76 +2,92 @@
 import { fetcher } from "@api/fetcher";
 import { GetIssueRequest, Response as GetIssueResponse } from "@api/type/backlog/getIssueList";
 import { GetProjectsRequest, GetProjectsResponse } from "@api/type/backlog/getProjects";
+import useQueryString from "@hooks/useQueryString";
 import { User } from "next-auth";
 import { useSession } from "next-auth/react";
-import { useSearchParams } from "next/navigation";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { ChangeEvent, FormEvent, FormEventHandler, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 type ReturnProps = {
     /**
-     * 再fetchしたい場合に呼ぶ
+     * onChangeイベント
+     * elementに依存させることで、onChange発火時にAPIを発行して、issuesを更新する
      */
-    // search: (event: ChangeEvent<HTMLInputElement>) => void;
-    search: (event: FormEvent<HTMLFormElement>) => void;
+    onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
     /**
-     * fetch中はfalse
+     * fetch中(API発行中)はfalse
      */
     isLoading: boolean;
     /**
-     * isLoadingがtrueの場合、応答値
+     * isLoadingがtrueの場合、課題検索結果
      * falseの場合、undefined
      */
     issues: CustomIssueResponse[] | undefined;
 };
 
-// 型を拡張して、プロジェクト名を定義
+// 型を拡張して、プロジェクト名を追加で定義
+// ※javaでDTOをextendsして、メンバを追加するのと同じ
 // ※課題一覧APIの応答値には、プロジェクトIDは存在するが、プロジェクト名は存在しないため、
 //   他のAPIを発行してプロジェクト名を導出する
-type CustomIssueResponse = { projectName: string } & GetIssueResponse;
+export type CustomIssueResponse = { projectName: string } & GetIssueResponse;
 
+/**
+ * 課題検索をするHooks
+ * NOTE:Hooksの責務はビジネスロジック
+ * HACK:もう少し綺麗に書けそう
+ */
 const useFetchIssues = (): ReturnProps => {
     const { data: session } = useSession();
-    const searchParams = useSearchParams();
     const [issues, setIssues] = useState<CustomIssueResponse[]>();
     const [isLoading, setLoading] = useState(true);
+    const { updateQueryString, removeQueryString, getQueryString } = useQueryString();
 
-    // 検索処理
+    /**
+     * queryStringに下記を行う
+     * - valueがfalsyの場合、remove
+     * - 上記以外の場合、update
+     */
+    const changeQueryString = (key: string, value: string) => {
+        if (value) {
+            updateQueryString(key, value);
+        } else {
+            removeQueryString(key);
+        }
+    };
+
+    /**
+     * 検索処理
+     */
     const fetchIssueList = async (queryString: string) => {
         if (!session) return;
         setLoading(true);
+        console.log("検索");
         const res = await fetch(session.user, queryString);
 
         setIssues(res);
         setLoading(false);
     };
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const search = (event: FormEvent<HTMLFormElement>) => {
-        // const search = (event: ChangeEvent<HTMLInputElement>) => {
-        // console.log(searchParams.toString());
-        fetchIssueList(searchParams.toString());
-        event.preventDefault();
-        // event.target.nodeValue;
-        // const form = new FormData(event.currentTarget);
-        // // // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        // const params = {
-        //     projectId: form.get("projectId")?.toString() || "",
-        //     summary: form.get("summary")?.toString() || "",
-        //     issueTypeId: form.get("issueTypeId")?.toString() || "",
-        //     priorityId: form.get("priorityId")?.toString() || "",
-        // };
+    /**
+     * 紐づくelementのname,valueを元にqueryStringを更新
+     * 更新後にAPIを叩く
+     */
+    const onChange = (event: ChangeEvent<HTMLSelectElement>) => {
+        const { name, value } = event.target;
+        changeQueryString(name, value);
 
-        // const res = await fetch(session.user);
+        fetchIssueList(getQueryString());
     };
 
-    // 画面初期表示時の検索
+    /**
+     * 画面初期表示時の検索処理
+     * マルチブラウザで操作していてsessionが変わった際にも動く
+     */
     useEffect(
         () => {
             const abortController = new AbortController();
 
             if (!session) return;
-            fetchIssueList(searchParams.toString());
+            fetchIssueList(getQueryString());
 
             return () => {
                 abortController.abort();
@@ -81,7 +97,7 @@ const useFetchIssues = (): ReturnProps => {
         [session],
     );
 
-    return { search, isLoading, issues };
+    return { onChange, isLoading, issues };
 };
 export default useFetchIssues;
 

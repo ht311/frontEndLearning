@@ -20,16 +20,18 @@
 
 ## プロジェクトの起動方法
 
+コマンドの詳細は`package.json`の`scripts`を参照
+
 - 開発者モードで起動
   - `npm run dev`
-    - 実行時に静的解析、フォーマットも実行  
-        静的解析が不要な場合は、`npm run dev-nolint`を実行
-- 起動
-  - `npm run start`
 - ビルド
   - `npm run build`
+    - 実行時に静的解析、フォーマットも実行  
+- 起動
+  - `npm run start`
 - 静的解析、フォーマット
   - `npm run format`
+
 
 
 ## 使用技術
@@ -50,6 +52,8 @@
   - [NextAuth](https://next-auth.js.org/)
     - 認証やセッション管理をしてくれるライブラリ、セッション管理はJWT、DBの選択も可能で便利
       - 今回はJWTでセッション管理
+  - その他
+    - `package.json`の`dependencies`、`devDependencies`を参照
 - CSS
   - [cssについて](https://nextjs.org/docs/app/building-your-application/styling)
     - [css in modules](https://nextjs.org/docs/app/building-your-application/styling/css-modules)
@@ -118,6 +122,7 @@ nextjs-application\components\template
 - [ ] importのフォーマット(自動でimport文を並び変える)
 - [ ] スマホ対応
   - [ ] cssに@mediaを適用でいけるはず(詳しい人教えて...)
+- [ ] エラー画面のカスタム
 
 
 ## その他参考
@@ -125,6 +130,9 @@ nextjs-application\components\template
 - [formについて](https://qiita.com/nuko-suke/items/1393995fd53ecaeb1cbc)
 - [Next.js 13](https://reffect.co.jp/react/next-js-13)
 - [request-memoization](https://nextjs.org/docs/app/building-your-application/caching#request-memoization)
+- モーダル関連
+  - [Intercepting Routes](https://nextjs.org/docs/app/building-your-application/routing/intercepting-routes)
+  - [Parallel Routes](https://nextjs.org/docs/app/building-your-application/routing/parallel-routes)
 - [デザインパターン](https://zenn.dev/ficilcom/articles/app_router_design_pattern)
 
 
@@ -132,8 +140,9 @@ nextjs-application\components\template
 |:---|:---|:---|
 |責務|ロジック|UI|
 |状態|持つ|原則持たない|
-|データの受け取り元|状態管理ライブラリ、API等|Props|
+|データの受け取り元|状態管理ライブラリ、API等|Props、Hooks|
 |UT|必要|最低限|
 |IT|最低限|必要|
 
 
+- [ ] updateissueに更新機能を追加
