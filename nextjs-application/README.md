@@ -130,6 +130,9 @@ nextjs-application\components\template
 - [formについて](https://qiita.com/nuko-suke/items/1393995fd53ecaeb1cbc)
 - [Next.js 13](https://reffect.co.jp/react/next-js-13)
 - [request-memoization](https://nextjs.org/docs/app/building-your-application/caching#request-memoization)
+- モーダル関連
+  - [Intercepting Routes](https://nextjs.org/docs/app/building-your-application/routing/intercepting-routes)
+  - [Parallel Routes](https://nextjs.org/docs/app/building-your-application/routing/parallel-routes)
 - [デザインパターン](https://zenn.dev/ficilcom/articles/app_router_design_pattern)
 
 
@@ -142,3 +145,4 @@ nextjs-application\components\template
 |IT|最低限|必要|
 
 
+- [ ] updateissueに更新機能を追加

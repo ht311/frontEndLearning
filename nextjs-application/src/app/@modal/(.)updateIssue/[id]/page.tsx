@@ -1,6 +1,6 @@
 import Modal from "@components/common/modal/Modal";
 import { NextPage } from "next";
-import { Detail } from "./_components/Detail";
+import { Detail } from "@app/(isAuth)/(children)/updateIssue/[id]/_components/Detail";
 
 type PageProps = { params: { id: string } };
 

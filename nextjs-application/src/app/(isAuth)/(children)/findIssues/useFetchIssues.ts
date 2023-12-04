@@ -60,6 +60,7 @@ const useFetchIssues = (): ReturnProps => {
     const fetchIssueList = async (queryString: string) => {
         if (!session) return;
         setLoading(true);
+        console.log("検索");
         const res = await fetch(session.user, queryString);
 
         setIssues(res);

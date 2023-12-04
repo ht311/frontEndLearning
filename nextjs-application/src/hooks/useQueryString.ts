@@ -1,4 +1,4 @@
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 type ReturnProps = {
@@ -30,6 +30,7 @@ type ReturnProps = {
 const useQueryString = (): ReturnProps => {
     const [params, setParams] = useState(new URLSearchParams(useSearchParams()));
     const path = usePathname();
+    const router = useRouter();
 
     /**
      * アドレスバーを更新する
@@ -40,9 +41,19 @@ const useQueryString = (): ReturnProps => {
     const updateAddressBar = () => {
         const queryString = params.toString();
         if (queryString) {
-            history.pushState("", "", path + "?" + queryString);
+            // routerで制御しない場合、他の資産でrouter.back()等による制御ができなくなるが、
+            // アドレスバーの更新だけのために、router.replaceやpushを使いたくない
+            // 機能追加を待つか、拡張するかのどちらか？
+            // ※主にmodalがIntercepting Routes、Parallel Routesを採用しているため、
+            //   公式の推奨通りモーダルはrouter.backで閉じたい
+            // https://nextjs.org/docs/app/api-reference/functions/use-router
+            // https://nextjs.org/docs/app/building-your-application/routing/intercepting-routes
+            // https://nextjs.org/docs/app/building-your-application/routing/parallel-routes
+            router.replace(path + "?" + queryString);
+            // history.state("", "", path + "?" + queryString);
         } else {
-            history.pushState("", "", path);
+            router.replace(path);
+            // history.state("", "", path);
         }
     };
 
@@ -65,12 +76,13 @@ const useQueryString = (): ReturnProps => {
      * @param key 削除するキー
      */
     const removeQueryString = (key: string) => {
-        if (params.has(key)) {
-            params.delete(key);
-            setParams(params);
-
-            updateAddressBar();
+        if (!params.has(key)) {
+            return;
         }
+        params.delete(key);
+        setParams(params);
+
+        updateAddressBar();
     };
 
     /**

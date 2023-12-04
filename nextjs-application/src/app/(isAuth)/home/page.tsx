@@ -26,6 +26,9 @@ const Home: NextPage = () => {
                 <li>
                     <Link href="../issues">課題の一覧を見る</Link>
                 </li>
+                <li>
+                    <Link href="../findIssues">課題の一覧を見る</Link>
+                </li>
             </section>
             <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
                 <hr />

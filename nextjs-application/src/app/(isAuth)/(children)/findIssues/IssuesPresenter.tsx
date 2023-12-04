@@ -39,7 +39,11 @@ const IssuesPresenter = (props: IssuesPresenterProps): JSX.Element => {
                             head={["Project名", "タスク名", "期限"]}
                             body={issues.map((issue, index) => [
                                 issue.projectName,
-                                <Link href={`./issue/${issue.issueKey}`} key={index}>
+                                <Link
+                                    href={`./updateIssue/${issue.issueKey}`}
+                                    key={index}
+                                    scroll={false}
+                                >
                                     {issue.summary}
                                 </Link>,
                                 issue.dueDate?.toString() || "未設定",
