@@ -84,27 +84,53 @@ nextjs-application\components\template
 ### 詳細
 
 - public
-  - 画像などのstaticでpublicなファイルを格納
+  - 画像などのpublicでstaticなファイルを格納
 - src
   - api
     - Rest APIに接続するための資産を定義
-      - パスに紐づくページは`page.tsx`で定義する
-        - 例：`app/home`のページは`app/home/page.tsx`
+      - type配下にそれぞれのAPIのRequest、Responseを定義
+      - fetcher.tsを通してAPI発行
   - app
-    - 本プロジェクトはApp Routerを適用
-    - page専用のcomponentを定義する場合、`_components`フォルダに定義する
+    - 本プロジェクトはApp Routerを適用。特殊な意味合いを持つフォルダを除き、フォルダ通りにルーティングされる。
+      - 詳細はApp Routerを参照
   - components
     - 汎用のcomponentを定義
-    - elements
-      - ボタンやラベルなどの、pageからのパラメータに大きく依存するcomponentを定義
-      - モーダルあたりまではここに定義
-    - layouts
+    - common
       - ヘッダーやフッターなどの、pageからのパラメータに大きく依存しないcomponentを定義
         - ここで定義する大きく依存とは、パラメータによりcomponentが全く異なる挙動をすることとする
           - 例：ボタンであれば異なるAPIを発火するため、全く異なる挙動をするといえる
-  - contexts
-    - コンテキストを定義
+    - elements
+      - ボタンやラベルなどのHTML Elementをスタイリング、ラップしたcomponentを定義
+  - hooks
+    - カスタムHookを定義 ※ドメインオブジェクトに近いイメージ
+      - クライアントサイドで処理するロジックの場合、カスタムHookになりがち
+      - 処理Aの実現のために、[React Hooks](https://udemy.benesse.co.jp/development/react-hooks.html)を複数使用する場合、  
+       1つの関数Component(カスタムHook)にまとめて再利用可能にしたり、可読性の向上、テスタブルにする目的がある
+        - 文章だけだと伝わりづらいので、hooks配下の資産を確認することを推奨
+  - util
+    - カスタムHookではないビジネスロジックを定義
+      - 主にサーバーサイドで処理させるロジック
+  - types
+    - ライブラリの型定義の拡張を定義
+- styles
+  - globalなcssを定義
+- その他設定ファイル
+  - .env
+    - 環境変数を定義
+  - .eslintrc.yml
+    - 静的解析ツールESLintの設定
+  - .prettierrc.yml
+    - フォーマッターPrettierの設定
+  - next-env.d.ts
+    - Next.js の型を TypeScript コンパイラで認識できるようにするためのファイル
+  - next.config.js
+    - Next.jsのコンフィグ
+  - package.json
+    - 依存しているライブラリや、プロジェクト名、スクリプト等を定義。mavenのpom.xmlみたいなもの
+  - tsconfig.json
+    - TypeScriptの設定
 
+#### App routerについて
   - app
     - app routerを使用
     - page専用のcomponentを定義する場合、`_components`フォルダに定義する
