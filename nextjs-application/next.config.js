@@ -1,6 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require("path");
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const withPlugins = require("next-compose-plugins");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     // リダイレクト定義
@@ -44,5 +47,17 @@ const nextConfig = {
     },
 };
 
+// バンドルアナライザ
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+    enabled: process.env.ANALYZE === "true",
+});
+
+// ネストしたい順に配列に渡す
+const plugins = [withBundleAnalyzer];
+
 // next.config.js
-module.exports = nextConfig;
+module.exports = withPlugins(plugins, nextConfig);
+// module.exports = withPlugins([nextConfig, withBundleAnalyzer({})]);
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
