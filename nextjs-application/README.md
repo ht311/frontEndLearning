@@ -172,3 +172,4 @@ nextjs-application\components\template
 
 
 - [ ] updateissueに更新機能を追加
+- [ ] jest,storybook
