@@ -11,7 +11,7 @@ const Header = async (): Promise<JSX.Element> => {
 
     return (
         <header className={styles.header}>
-            <Link href="/home">
+            <Link href="/home" aria-label="ホームに戻る">
                 <span title="ホームに戻る">
                     <Image src="/images/homebutton.png" alt={name} height={40} width={40} />
                 </span>
