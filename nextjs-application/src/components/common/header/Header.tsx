@@ -17,9 +17,9 @@ const Header = async (): Promise<JSX.Element> => {
                 </span>
             </Link>
             <nav>
-                <ul>
-                    <li>{name}</li>
-                    <li>
+                <ul className={styles.ul}>
+                    <li className={styles.li}>{name}</li>
+                    <li className={styles.li}>
                         <LogoutButton />
                     </li>
                 </ul>
