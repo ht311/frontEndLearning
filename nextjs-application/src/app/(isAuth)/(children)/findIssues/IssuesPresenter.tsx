@@ -28,30 +28,30 @@ const IssuesPresenter = (props: IssuesPresenterProps): JSX.Element => {
                     prioritiesOptions={props.prioritiesOptions}
                     onChange={onChange}
                 />
+                <hr />
+                {isLoading ? (
+                    <div>loading...</div>
+                ) : (
+                    <>
+                        {issues && (
+                            <Table
+                                head={["Project名", "タスク名", "期限"]}
+                                body={issues.map((issue, index) => [
+                                    issue.projectName,
+                                    <Link
+                                        href={`./updateIssue/${issue.issueKey}`}
+                                        key={index}
+                                        scroll={false}
+                                    >
+                                        {issue.summary}
+                                    </Link>,
+                                    issue.dueDate?.toString() || "未設定",
+                                ])}
+                            />
+                        )}
+                    </>
+                )}
             </Suspense>
-            <hr />
-            {isLoading ? (
-                <div>loading...</div>
-            ) : (
-                <>
-                    {issues && (
-                        <Table
-                            head={["Project名", "タスク名", "期限"]}
-                            body={issues.map((issue, index) => [
-                                issue.projectName,
-                                <Link
-                                    href={`./updateIssue/${issue.issueKey}`}
-                                    key={index}
-                                    scroll={false}
-                                >
-                                    {issue.summary}
-                                </Link>,
-                                issue.dueDate?.toString() || "未設定",
-                            ])}
-                        />
-                    )}
-                </>
-            )}
         </>
     );
 };

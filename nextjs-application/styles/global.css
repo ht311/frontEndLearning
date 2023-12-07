@@ -2,7 +2,7 @@ html,
 body {
     padding: 0;
     margin: 0;
-    font-family:
+    /* font-family:
         system-ui,
         -apple-system,
         BlinkMacSystemFont,
@@ -13,7 +13,7 @@ body {
         Cantarell,
         "Open Sans",
         "Helvetica Neue",
-        sans-serif;
+        sans-serif; */
     line-height: 1.6;
     font-size: 18px;
     background-color: #f0f0f0;

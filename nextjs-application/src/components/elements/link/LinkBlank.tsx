@@ -5,11 +5,12 @@ import { ReactNode } from "react";
 export type LinkBlankProps = {
     href: string;
     children: ReactNode;
+    ariaLabel: string;
 };
 
-export const LinkBlank = ({ href, children }: LinkBlankProps): JSX.Element => {
+export const LinkBlank = ({ href, children, ariaLabel }: LinkBlankProps): JSX.Element => {
     return (
-        <Link href={href} target="_blank">
+        <Link href={href} target="_blank" aria-label={ariaLabel}>
             {children}
             <Image src="/images/blank.png" alt="" height={15} width={15} />
         </Link>

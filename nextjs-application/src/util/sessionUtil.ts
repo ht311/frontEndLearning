@@ -11,3 +11,11 @@ export const getServerSession = async (): Promise<Session> => {
 
     return session;
 };
+
+/**
+ * sessionを取得
+ * server component用
+ */
+export const getServerSessionNonValidate = async (): Promise<Session | null> => {
+    return getServerSessionNextAuth(authOptions);
+};

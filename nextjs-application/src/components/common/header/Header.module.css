@@ -11,11 +11,13 @@
     box-sizing: border-box;
 }
 
-.header ul {
+.ul {
     list-style: none;
     display: flex;
+    padding: 10px 15px;
+    color: #333;
 }
-.header ul li {
+.li {
     padding: 10px 15px;
     color: #333;
 }

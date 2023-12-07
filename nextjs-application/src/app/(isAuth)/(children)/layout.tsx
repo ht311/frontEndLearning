@@ -1,6 +1,6 @@
 import Footer from "@components/common/footer/footer";
 
-const App = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
     return (
         <>
             {children}
@@ -9,4 +9,4 @@ const App = ({ children }: { children: React.ReactNode }) => {
     );
 };
 
-export default App;
+export default Layout;
