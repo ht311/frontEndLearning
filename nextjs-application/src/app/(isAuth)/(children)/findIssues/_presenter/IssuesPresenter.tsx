@@ -55,7 +55,7 @@ const IssuesPresenter = (props: IssuesPresenterProps): JSX.Element => {
                 <>
                     {issues && (
                         <Table
-                            head={["Project名", "タスク名", "期限"]}
+                            head={["Project名", "タスク名", "担当者", "優先度", "期限"]}
                             body={issues.map((issue, index) => [
                                 issue.projectName,
                                 <Link
@@ -65,6 +65,8 @@ const IssuesPresenter = (props: IssuesPresenterProps): JSX.Element => {
                                 >
                                     {issue.summary}
                                 </Link>,
+                                issue.assignee?.name || "未設定",
+                                issue.priority?.name || "未設定",
                                 getFormattedDate(issue.dueDate, "未設定"),
                             ])}
                         />

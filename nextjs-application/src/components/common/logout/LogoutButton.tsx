@@ -4,7 +4,6 @@ import style from "./LogoutButton.module.css";
 
 export const LogoutButton = (): JSX.Element => {
     return (
-        // <button onClick={() => signOut({ redirect: true, callbackUrl: '/api/auth/logout' })}>
         <button
             className={style.button}
             onClick={() => signOut({ redirect: true, callbackUrl: "/login" })}

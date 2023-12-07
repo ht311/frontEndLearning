@@ -17,7 +17,7 @@ const Sidemenu = (): JSX.Element => {
                         <span>課題を追加</span>
                     </li>
                 </Link>
-                <Link href="../issues" aria-label="課題一覧">
+                <Link href="../findIssues" aria-label="課題一覧">
                     <li>
                         <Image
                             src="/images/issusIcon.png"

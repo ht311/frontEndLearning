@@ -1,5 +1,7 @@
+import { notFound } from "next/navigation";
+
 const Default = () => {
-    return null;
+    notFound();
 };
 
 export default Default;
