@@ -1,6 +1,6 @@
 "use client";
 import Button from "@components/elements/button/Button";
-import useFetchActivities from "./useFetchActivities";
+import useFetchActivities from "../_container/useFetchActivities";
 
 export const ActivitiesPresenter: React.FC = (): JSX.Element => {
     const { fetchActivity, isLoading, activityResponse } = useFetchActivities();

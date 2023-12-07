@@ -1,4 +1,4 @@
-import SearchItemsContainer from "./SearchItemsContainer";
+import SearchItemsContainer from "../_container/SearchItemsContainer";
 import IssuesPresenter from "./IssuesPresenter";
 
 /**
