@@ -60,7 +60,6 @@ const useFetchIssues = (): ReturnProps => {
     const fetchIssueList = async (queryString: string) => {
         if (!session) return;
         setLoading(true);
-        console.log("検索");
         const res = await fetch(session.user, queryString);
 
         setIssues(res);
@@ -116,6 +115,7 @@ const fetch = async (user: User, queryString: string): Promise<CustomIssueRespon
         const projectName = projects.find((project) => project.id === issue.projectId)?.name || "";
         issue.projectName = projectName;
     });
+
     return issues;
 };
 

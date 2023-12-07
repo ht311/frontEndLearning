@@ -6,7 +6,7 @@ import { GroupOption } from "@components/elements/select/SelectFroupForm";
 import { OptionsInit, Option } from "@components/elements/select/SelectForm";
 import { getServerSession } from "@util/sessionUtil";
 import { User } from "next-auth";
-import FormItemsPresenter from "./FormItemsPresenter";
+import FormItemsPresenter from "../_presenter/FormItemsPresenter";
 
 /**
  * 課題追加ページのformに紐づく要素

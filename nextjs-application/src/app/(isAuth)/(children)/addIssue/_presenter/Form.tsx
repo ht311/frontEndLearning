@@ -1,7 +1,7 @@
 "use client";
 import { ReactNode, Suspense } from "react";
 import Link from "next/link";
-import useFormAddIssue from "./useFormAddIssue";
+import useFormAddIssue from "../_container/useFormAddIssue";
 import styles from "./Form.module.css";
 
 /**

@@ -37,5 +37,5 @@ export type Response = {
         id: number;
         name: string;
     };
-    dueDate?: Date; //"2023-11-22T00:00:00Z",
+    dueDate: Date | null; //"2023-11-22T00:00:00Z",
 };
