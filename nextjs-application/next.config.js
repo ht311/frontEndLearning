@@ -58,6 +58,3 @@ const plugins = [withBundleAnalyzer];
 
 // next.config.js
 module.exports = withPlugins(plugins, nextConfig);
-// module.exports = withPlugins([nextConfig, withBundleAnalyzer({})]);
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires

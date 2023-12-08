@@ -31,7 +31,8 @@
   - `npm run start`
 - 静的解析、フォーマット
   - `npm run format`
-
+- bundleサイズ解析
+  - `npm run analyzer`
 
 
 ## 使用技術
