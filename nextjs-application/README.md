@@ -31,7 +31,8 @@
   - `npm run start`
 - 静的解析、フォーマット
   - `npm run format`
-
+- bundleサイズ解析
+  - `npm run analyzer`
 
 
 ## 使用技術
@@ -166,7 +167,7 @@ nextjs-application\components\template
 |:---|:---|:---|
 |責務|ロジック|UI|
 |状態|持つ|原則持たない|
-|データの受け取り元|状態管理ライブラリ、API等|Props、Hooks|
+|データの受け取り元|Hooks、API等|Props|
 |UT|必要|最低限|
 |IT|最低限|必要|
 

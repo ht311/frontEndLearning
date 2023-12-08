@@ -8,7 +8,7 @@ export type InputTextProps = {
      * inputのonChengeイベント
      */
     // eslint-disable-next-line no-unused-vars
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     /**
      * 非表示にしたいときにtrue
      */

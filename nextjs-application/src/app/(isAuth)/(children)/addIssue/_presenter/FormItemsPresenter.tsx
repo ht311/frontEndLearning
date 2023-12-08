@@ -16,7 +16,7 @@ type FormItemsPresenterProps = {
  * FormItemsのプレゼンター
  * MVCモデルのView相当
  */
-export const FormItemsPresenter = ({
+const FormItemsPresenter = ({
     projectOptions,
     issueTypeIdsOptions,
     prioritiesOptions,
@@ -26,6 +26,15 @@ export const FormItemsPresenter = ({
             <div>
                 project:
                 <Select options={projectOptions} selectName="projectId" required={true} />
+            </div>
+            <div>
+                課題の件名:
+                <InputTextForm
+                    inputName="summary"
+                    placeholder="課題の件名を入力してください"
+                    pattern=".{0,20}"
+                    errorMessage="20文字以内で入力してください"
+                />
             </div>
             <div>
                 タスクのタイプ:
@@ -38,15 +47,6 @@ export const FormItemsPresenter = ({
             <div>
                 優先度:
                 <Select options={prioritiesOptions} selectName="priorityId" required={true} />
-            </div>
-            <div>
-                課題の件名:
-                <InputTextForm
-                    inputName="summary"
-                    placeholder="任意の課題の件名を入力してください"
-                    pattern=".{0,20}"
-                    errorMessage="20文字以内で入力してください"
-                />
             </div>
             <Submit value="追加" />
         </>

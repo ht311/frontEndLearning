@@ -43,7 +43,7 @@ export const Select = ({
     selected = "",
 }: SelectProps): JSX.Element => {
     return (
-        <div className={style.selectbox}>
+        <label className={style.selectbox}>
             <select
                 name={inputName}
                 disabled={disabled}
@@ -59,7 +59,7 @@ export const Select = ({
                     </option>
                 ))}
             </select>
-        </div>
+        </label>
     );
 };
 

@@ -29,11 +29,6 @@ const HomePresenter = (): JSX.Element => {
                     </Link>
                 </li>
                 <li>
-                    <Link href="../issues" aria-label="課題の一覧を見る">
-                        課題の一覧を見る
-                    </Link>
-                </li>
-                <li>
                     <Link href="../findIssues" aria-label="課題の一覧を見る">
                         課題の一覧を見る
                     </Link>

@@ -10,7 +10,7 @@ export class GetIssueRequest implements BaseRequest {
     method: method;
 
     constructor(user: User, queryString: string) {
-        this.url = `https://${user.url}.backlog.com/api/v2/issues?apiKey=${user.apiKey}&count=100&${queryString}`;
+        this.url = `https://${user.url}.backlog.com/api/v2/issues?apiKey=${user.apiKey}&count=10&${queryString}`;
         this.method = "GET";
     }
 }
@@ -28,12 +28,12 @@ export type Response = {
         id: number;
         name: string;
     };
-    priority: { id: number; name: string };
+    priority?: { id: number; name: string };
     status: {
         id: number;
         name: string;
     };
-    assignee: {
+    assignee?: {
         id: number;
         name: string;
     };

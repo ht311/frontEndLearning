@@ -1,6 +1,7 @@
 "use client";
 import ErrorDiv from "@components/elements/div/ErrorDiv";
 import InputTextForm from "@components/elements/input/InputTextForm";
+import Submit from "@components/elements/submit/Submit";
 import { NextPage } from "next";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -52,7 +53,7 @@ const Page: NextPage = () => {
                 />
             </div>
             {isError && <ErrorDiv>url、apikeyの組み合わせに誤りがあります。</ErrorDiv>}
-            <button type="submit">ログイン</button>
+            <Submit value={"ログイン"} />
         </form>
     );
 };

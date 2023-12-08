@@ -2,19 +2,17 @@
     display: "flex";
     font: 15px/24px sans-serif;
     box-sizing: border-box;
-    width: 90%;
+    width: 60%;
     margin: 8px;
     padding: 0.3em;
     transition: 0.3s;
     border: 1px solid #1b2538;
     border-radius: 8px;
     outline: none;
+    padding-left: 10px;
 }
 .input_text:focus {
     border-color: #da3c41;
-}
-.input_text {
-    padding-left: 10px;
 }
 
 .error_message {

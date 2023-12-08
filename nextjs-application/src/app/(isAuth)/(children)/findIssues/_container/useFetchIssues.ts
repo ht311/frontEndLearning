@@ -107,7 +107,7 @@ const fetch = async (user: User, queryString: string): Promise<CustomIssueRespon
     // 課題一覧API発行
     const issues = await fetchIssues(user, queryString);
     // プロジェクト名を導出するために、プロジェクト一覧API発行
-    // ここは初回一回だけ発行で良いので性能改善の余地あり
+    // プロジェクト一覧は基本的には不変なので、初回一回だけ発行で良い。性能改善の余地あり
     const projects = await fetchProjects(user);
 
     // 課題一覧APIの応答値のプロジェクトIDから、プロジェクト名を導出
