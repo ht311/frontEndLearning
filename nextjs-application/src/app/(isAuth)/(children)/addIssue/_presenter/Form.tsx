@@ -19,11 +19,15 @@ export const Form = ({ children }: { children: ReactNode }): JSX.Element => {
             {postIssueResponse && (
                 <>
                     <hr className={styles.hr} />
-                    <h3>
-                        <Link href={`./issue/${postIssueResponse.issueKey}`}>
-                            課題が追加されました
-                        </Link>
-                    </h3>
+                    {postIssueResponse.issueKey ? (
+                        <h3>
+                            <Link href={`./issue/${postIssueResponse.issueKey}`}>
+                                課題が追加されました
+                            </Link>
+                        </h3>
+                    ) : (
+                        <h3>課題の追加に失敗しました</h3>
+                    )}
                 </>
             )}
         </>

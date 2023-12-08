@@ -66,7 +66,7 @@ export const GroupSelect = ({
     selected = "",
 }: SelectGroupProps): JSX.Element => {
     return (
-        <div className={style.selectbox}>
+        <label className={style.selectbox}>
             <select
                 name={inputName}
                 disabled={disabled}
@@ -86,7 +86,7 @@ export const GroupSelect = ({
                     </optgroup>
                 ))}
             </select>
-        </div>
+        </label>
     );
 };
 
