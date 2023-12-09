@@ -1,3 +1,4 @@
+// "use server";
 import { fetcher } from "@api/fetcher";
 import { GetProjectsRequest, GetProjectsResponse } from "@api/type/backlog/getProjects";
 import { GetPrioritiesRequest, GetPrioritiesResponse } from "@api/type/backlog/getPriorities";

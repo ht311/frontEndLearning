@@ -10,7 +10,7 @@
         "analyzer": "set ANALYZE=true&&next dev"
     },
     "dependencies": {
-        "next": "13.5.5",
+        "next": "^14.0.0",
         "next-auth": "^4.24.5",
         "react": "^18",
         "react-dom": "^18"
