@@ -1,7 +1,7 @@
 import { fetcher } from "@api/fetcher";
 import { GetIssueRequest, GetIssueResponse } from "@api/type/backlog/getIssue";
 import InputText from "@components/elements/input/InputText";
-import { getServerSession } from "@util/sessionUtil";
+import { getServerSession } from "@lib/nextAuth/util/sessionUtil";
 import { Session, User } from "next-auth";
 
 type DetailProps = {

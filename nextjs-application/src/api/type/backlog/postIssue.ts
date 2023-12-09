@@ -1,3 +1,4 @@
+import { Builer } from "@lib/designPattern/Builder";
 import { BaseRequest, method } from "@api/fetcher";
 import { User } from "next-auth";
 /**
@@ -8,29 +9,53 @@ export class PostIssueRequest implements BaseRequest {
     url: string;
     method: method;
     headers: HeadersInit;
-    body?: BodyInit;
+    body: BodyInit;
 
-    constructor(user: User) {
+    private constructor(user: User, body: BodyInit) {
         this.url = `https://${user.url}.backlog.com/api/v2/issues?apiKey=${user.apiKey}`;
         this.method = "POST";
         this.headers = {
             "Content-Type": "application/x-www-form-urlencoded",
         };
+        this.body = body;
     }
 
-    setBody(params: RequestParams) {
-        const searchParams: string[][] = [];
-        for (const [key, value] of Object.entries(params)) {
-            searchParams.push([key.toString(), value.toString()]);
+    // Builderパターン
+    public static Builder = class PostIssueRequestBuilder implements Builer<PostIssueRequest> {
+        user: User;
+        requestParams?: RequestParams;
+
+        constructor(user: User) {
+            this.user = user;
         }
-        this.body = new URLSearchParams(searchParams);
-    }
+
+        params(params: RequestParams): PostIssueRequestBuilder {
+            this.requestParams = params;
+            return this;
+        }
+
+        // @Override
+        build(): PostIssueRequest {
+            if (!this.requestParams) throw new Error("パラメータ未設定");
+
+            const body = this.buildBody(this.requestParams);
+            return new PostIssueRequest(this.user, body);
+        }
+
+        private buildBody(params: RequestParams): BodyInit {
+            const searchParams: string[][] = [];
+            for (const [key, value] of Object.entries(params)) {
+                searchParams.push([key.toString(), value.toString()]);
+            }
+            return new URLSearchParams(searchParams);
+        }
+    };
 }
 
 export type RequestParams = {
-    projectId: string;
-    summary: string;
-    issueTypeId: string;
+    projectId?: string;
+    summary?: string;
+    issueTypeId?: string;
     priorityId: string;
 };
 

@@ -1,12 +1,13 @@
 "use server";
 import { fetcher } from "@api/fetcher";
 import { PostIssueRequest, PostIssueResponse, RequestParams } from "@api/type/backlog/postIssue";
-import { getServerSession } from "@util/sessionUtil";
+import { getServerSession } from "@lib/nextAuth/util/sessionUtil";
 
 type FormAddIssueActionResponse = PostIssueResponse | undefined;
 
 /**
- * 課題追加ページのフォーム押下のserver Action
+ * 課題追加ページのフォーム押下のserverAction
+ * serverActionにすることで、ブラウザがDLするjsを削減できる
  */
 const FormAddIssueAction = async (
     _state: FormAddIssueActionResponse,
@@ -21,8 +22,9 @@ const FormAddIssueAction = async (
         issueTypeId: form.get("issueTypeId")?.toString() || "",
         priorityId: form.get("priorityId")?.toString() || "",
     };
-    const req: PostIssueRequest = new PostIssueRequest((await session).user);
-    req.setBody(params);
+    const req: PostIssueRequest = new PostIssueRequest.Builder((await session).user)
+        .params(params)
+        .build();
 
     // fetch
     return fetcher<FormAddIssueActionResponse>(req);

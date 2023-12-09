@@ -45,6 +45,9 @@ const nextConfig = {
         };
         return config;
     },
+    experimental: {
+        webpackBuildWorker: true,
+    },
 };
 
 // バンドルアナライザ
