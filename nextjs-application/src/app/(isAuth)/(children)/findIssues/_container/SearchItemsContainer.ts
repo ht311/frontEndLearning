@@ -5,7 +5,7 @@ import { GetIssueTypeIdsRequest, GetIssueTypeIdsResponse } from "@api/type/backl
 import { GroupOption } from "@components/elements/select/SelectFroupForm";
 import { OptionsInit, Option } from "@components/elements/select/SelectForm";
 import { User } from "next-auth";
-import { getServerSession } from "@util/sessionUtil";
+import { getServerSession } from "@lib/nextAuth/util/sessionUtil";
 
 export type SearchItemsContainerProps = {
     /** project */

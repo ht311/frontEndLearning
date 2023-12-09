@@ -1,7 +1,8 @@
 "use client";
 import { ReactNode, Suspense } from "react";
+import { useFormState } from "react-dom";
 import Link from "next/link";
-import useFormAddIssue from "../_container/useFormAddIssue";
+import FormAddIssueAction from "../_container/FormAddIssueAction";
 import styles from "./Form.module.css";
 
 /**
@@ -9,13 +10,13 @@ import styles from "./Form.module.css";
  * @returns 概要の通り
  */
 export const Form = ({ children }: { children: ReactNode }): JSX.Element => {
-    const { handleSubmit, postIssueResponse } = useFormAddIssue();
+    const [postIssueResponse, handleSubmit] = useFormState(FormAddIssueAction, undefined);
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <Suspense fallback={<div>読み込み中</div>}>{children}</Suspense>
-            </form>
+            <Suspense fallback={<>loading...</>}>
+                <form action={handleSubmit}>{children}</form>
+            </Suspense>
             {postIssueResponse && (
                 <>
                     <hr className={styles.hr} />
@@ -26,7 +27,7 @@ export const Form = ({ children }: { children: ReactNode }): JSX.Element => {
                             </Link>
                         </h3>
                     ) : (
-                        <h3>課題の追加に失敗しました</h3>
+                        <h3>課題の追加に失敗しました{postIssueResponse.issueKey}</h3>
                     )}
                 </>
             )}

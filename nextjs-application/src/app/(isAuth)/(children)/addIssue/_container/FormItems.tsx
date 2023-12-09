@@ -4,14 +4,14 @@ import { GetPrioritiesRequest, GetPrioritiesResponse } from "@api/type/backlog/g
 import { GetIssueTypeIdsRequest, GetIssueTypeIdsResponse } from "@api/type/backlog/getIssueTypeIds";
 import { GroupOption } from "@components/elements/select/SelectFroupForm";
 import { OptionsInit, Option } from "@components/elements/select/SelectForm";
-import { getServerSession } from "@util/sessionUtil";
+import { getServerSession } from "@lib/nextAuth/util/sessionUtil";
 import { User } from "next-auth";
 import FormItemsPresenter from "../_presenter/FormItemsPresenter";
 
 /**
- * 課題追加ページのformに紐づく要素
+ * 課題追加ページのformに紐づく情報を取得
  * Form.tsxと資産を分ける理由は、FormItemsに紐づく資産をサーバーサイドでレンダリングするため
- * @returns 概要の通り
+ * @returns FormItemsPresenter(view)にパラメータを渡して返す
  * ※Form.tsxに直接実装すると、
  *   このserver componentが、client component扱いされてしまい、
  *   ブラウザから各APIを発行することになり効率が悪い

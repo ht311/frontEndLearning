@@ -113,6 +113,9 @@ nextjs-application\components\template
       - 主にサーバーサイドで処理させるロジック
   - types
     - ライブラリの型定義の拡張を定義
+  - lib
+    - ライブラリのラッパーを定義
+    - デザインパターンのinterfaceを定義
 - styles
   - globalなcssを定義
 - その他設定ファイル
@@ -150,6 +153,9 @@ nextjs-application\components\template
 - [ ] スマホ対応
   - [ ] cssに@mediaを適用でいけるはず(詳しい人教えて...)
 - [ ] エラー画面のカスタム
+- [ ] APIのエラー応答考慮
+<!-- - [ ] ビルド時にMiddlewareに対して「not supported in the Edge Runtime」の警告が走る
+  - [ ] Middlewareに[jose](https://www.npmjs.com/package/jose)を適用すれば対応可能らしい  あるいはnextjs v13に下げる ~~nextjsのバージョンアップで対応される気はする~~ -->
 
 
 ## その他参考

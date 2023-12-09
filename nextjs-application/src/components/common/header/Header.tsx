@@ -1,8 +1,8 @@
 import styles from "./Header.module.css";
 import Link from "next/link";
-import { getServerSession } from "@util/sessionUtil";
+import { getServerSession } from "@lib/nextAuth/util/sessionUtil";
 import { Session } from "next-auth";
-import { LogoutButton } from "@components/common/logout/LogoutButton";
+import { LogoutButton } from "@lib/nextAuth/logout/LogoutButton";
 import Image from "next/image";
 
 const Header = async (): Promise<JSX.Element> => {
