@@ -7,7 +7,7 @@ const HomePresenter = (): JSX.Element => {
         <>
             <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
                 <h3>概要</h3>
-                このサイトはNext.js(v13) × TypeScriptで作成されています。
+                このサイトはNext.js(v14) × TypeScriptで作成されています。
                 <br />
                 <li>
                     <LinkBlank href="https://github.com/ht311/react/tree/master" ariaLabel="Github">

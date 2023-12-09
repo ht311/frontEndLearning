@@ -40,8 +40,7 @@
 - 言語
   - [TypeScript](https://www.typescriptlang.org/)
 - フレームワーク
-  - [Next.js v13](https://nextjs.org/blog/next-13)
-    - v14にするかは考慮するべき
+  - [Next.js v14](https://nextjs.org/blog/next-14)
 - ライブラリ
   - 破壊的変更に備え依存は最低限にする  
       追加する場合は、ライブラリをラップする
