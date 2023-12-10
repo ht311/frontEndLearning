@@ -1,8 +1,9 @@
 import { fetcher } from "@api/fetcher";
 import { GetIssueRequest, GetIssueResponse } from "@api/type/backlog/getIssue";
+import InputTextForm from "@components/elements/input/InputTextForm";
+import Select from "@components/elements/select/SelectForm";
 import { getServerSession } from "@lib/nextAuth/util/sessionUtil";
 import { Session, User } from "next-auth";
-import Link from "next/link";
 
 type DetailProps = {
     id: string;
@@ -13,11 +14,24 @@ export const Detail: React.FC<DetailProps> = async ({ id }: DetailProps): Promis
     const res = await fetch(session.user, id);
 
     return (
-        <>
-            {res?.summary && <div>課題名:{res.summary}</div>}
-            {res?.issueKey && <div>課題キー:{res.issueKey}</div>}
-            <Link href="../issues">課題一覧に移動する</Link>
-        </>
+        <form>
+            <div>
+                課題の件名：
+                <InputTextForm inputName={"summary"} defaultValue={res.summary}></InputTextForm>
+            </div>
+            <div>
+                タスクのタイプ:
+                <Select options={issueTypeIdsOptions} selectName="issueTypeId" required={true} />
+            </div>
+            <div>
+                優先度:
+                <Select options={prioritiesOptions} selectName="priorityId" required={true} />
+            </div>
+            <div>
+                状態:
+                <Select options={prioritiesOptions} selectName="status" />
+            </div>
+        </form>
     );
 };
 export default Detail;
