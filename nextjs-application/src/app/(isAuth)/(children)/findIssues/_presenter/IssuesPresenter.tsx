@@ -21,7 +21,6 @@ const IssuesPresenter = (props: IssuesPresenterProps): JSX.Element => {
 
     return (
         <>
-            <h3>課題一覧</h3>
             <Suspense
                 fallback={
                     <>

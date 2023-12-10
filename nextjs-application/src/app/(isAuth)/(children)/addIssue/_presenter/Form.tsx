@@ -9,7 +9,7 @@ import styles from "./Form.module.css";
  * 課題追加ページのformcomponent
  * @returns 概要の通り
  */
-export const Form = ({ children }: { children: ReactNode }): JSX.Element => {
+const Form = ({ children }: { children: ReactNode }): JSX.Element => {
     const [postIssueResponse, handleSubmit] = useFormState(FormAddIssueAction, undefined);
 
     return (

@@ -13,6 +13,7 @@ export type InputTextProps = {
      * 非表示にしたいときにtrue
      */
     disabled?: boolean;
+    defaultValue?: string;
 };
 
 export const InputText = ({
@@ -21,6 +22,7 @@ export const InputText = ({
     placeholder,
     onChange,
     disabled = false,
+    defaultValue = "",
 }: InputTextProps): JSX.Element => {
     return (
         <input
@@ -31,6 +33,7 @@ export const InputText = ({
             disabled={disabled}
             onChange={onChange}
             value={value}
+            defaultValue={defaultValue}
         ></input>
     );
 };

@@ -1,12 +1,10 @@
 import Favicon from "/public/images/favicon.ico";
 import "@styles/global.css";
 import { Metadata } from "next";
-// import styles from "./layout.module.css";
 
 const Layout = ({ children, modal }: { children: React.ReactNode; modal: React.ReactNode }) => {
     return (
         <html lang="ja">
-            {/* <body className={styles.body}> */}
             <body>
                 <main>
                     {children}

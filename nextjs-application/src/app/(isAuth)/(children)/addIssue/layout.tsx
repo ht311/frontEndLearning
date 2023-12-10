@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { ReactNode } from "react";
 
 const App = ({ children }: { children: ReactNode }) => {
@@ -10,3 +11,7 @@ const App = ({ children }: { children: ReactNode }) => {
 };
 
 export default App;
+
+export const metadata: Metadata = {
+    title: "課題の追加",
+};
