@@ -4,9 +4,9 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
-        "build": "eslint src --fix && prettier --write 'src/**/*.{js,tsx,ts}' && next build",
+        "build": "eslint src --fix && prettier --write 'src/**/*.{js,jsx,ts,tsx}' && next build",
         "start": "next start",
-        "lint": "eslint src --fix && prettier --write 'src/**/*.{js,tsx,ts}'",
+        "lint": "eslint src --fix && prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
         "analyzer": "set ANALYZE=true&&next dev"
     },
     "dependencies": {
