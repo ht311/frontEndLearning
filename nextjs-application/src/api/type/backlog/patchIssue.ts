@@ -74,9 +74,7 @@ export type RequestParams = {
 /**
  * Backlogの課題情報の更新 APIのresponse
  */
-export type PatchIssueResponse = Response[];
-
-type Response = {
+export type PatchIssueResponse = {
     id: number;
     name: string;
 };
