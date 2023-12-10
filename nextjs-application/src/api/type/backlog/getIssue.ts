@@ -20,5 +20,18 @@ export class GetIssueRequest implements BaseRequest {
  */
 export type GetIssueResponse = {
     summary: string;
+    projectId: number;
     issueKey: string;
+    issueType: {
+        id: number;
+        name: string;
+    };
+    status: {
+        id: number;
+        name: string;
+    };
+    priority: {
+        id: number;
+        name: string;
+    };
 };
