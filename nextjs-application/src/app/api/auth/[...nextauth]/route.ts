@@ -10,7 +10,6 @@ export const authOptions: NextAuthOptions = {
     providers: [
         Credentials({
             name: "credentials",
-            // `credentials`は、サインインページでフォームを生成するために使用される
             credentials: {
                 url: { label: "url", type: "text" },
                 apiKey: { label: "apiKey", type: "text" },

@@ -52,7 +52,7 @@ const fetchProjects = async (user: User): Promise<GetProjectsResponse> => {
  * projectsをOption[]に変換する
  */
 const projectsToOptions = (projects: GetProjectsResponse) => {
-    return [...projects.map((res) => ({ value: res.id, displayValue: res.name }))];
+    return [...projects.map((project) => ({ value: project.id, displayValue: project.name }))];
 };
 
 /**
@@ -71,9 +71,10 @@ const fetchIssueTypeIds = async (
 
         // 課題の種別をセレクタのoptionに変換
         const options = [
-            ...issueTypes.map((issueType) => {
-                return { value: issueType.id, displayValue: issueType.name };
-            }),
+            ...issueTypes.map((issueType) => ({
+                value: issueType.id,
+                displayValue: issueType.name,
+            })),
         ];
 
         groupOptions.push({

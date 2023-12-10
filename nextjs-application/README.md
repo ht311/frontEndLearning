@@ -24,6 +24,7 @@
 
 - 開発者モードで起動
   - `npm run dev`
+    - turbopackで起動は[バグ](https://github.com/vercel/turbo/issues/4979)に遭遇するため不可
 - ビルド
   - `npm run build`
     - 実行時に静的解析、フォーマットも実行  
@@ -50,7 +51,7 @@
   - [ESLint](https://eslint.org/)
     - 静的解析
   - [NextAuth](https://next-auth.js.org/)
-    - 認証やセッション管理をしてくれるライブラリ、セッション管理はJWT、DBの選択も可能で便利
+    - 認証やセッション管理をしてくれるライブラリ、セッション管理はJWT(json web token)、DBの選択も可能で便利
       - 今回はJWTでセッション管理
   - その他
     - `package.json`の`dependencies`、`devDependencies`を参照
@@ -71,15 +72,7 @@
 ## ディレクトリ構成
 
 参考にしたのは下記
-
 - [ディレクトリ構成参考](https://zenn.dev/yutabeee/articles/5e32a99a3cab97)
-  
-components\parts
-ボタンやラベルなどの簡単なパーツを定義
-
-nextjs-application\components\template
-ヘッダーフッターなどの共通的に使えるある程度の塊を定義
-
 
 ### 詳細
 
@@ -154,7 +147,7 @@ nextjs-application\components\template
 - [ ] エラー画面のカスタム
 - [ ] APIのエラー応答考慮
 <!-- - [ ] ビルド時にMiddlewareに対して「not supported in the Edge Runtime」の警告が走る
-  - [ ] Middlewareに[jose](https://www.npmjs.com/package/jose)を適用すれば対応可能らしい  あるいはnextjs v13に下げる ~~nextjsのバージョンアップで対応される気はする~~ -->
+  - [ ] Middlewareに[jose](https://www.npmjs.com/package/jose)を適用すれば対応可能らしい  あるいはnextjs v13に下げる ~~nextjsのマイナーリリースで対応される気はする~~ -->
 
 
 ## その他参考
