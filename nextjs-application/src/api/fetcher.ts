@@ -29,6 +29,11 @@ export const fetcher = async <Response>(request: BaseRequest): Promise<Response>
         .then((response) => {
             if (!response.ok) {
                 // return response.text();
+                console.error("url:" + request.url);
+                console.error("method:" + request.method);
+                console.error("headers:" + request.headers);
+                console.error("body:" + request.body);
+                console.error("status:" + response.status);
                 return Promise.reject(new Error("API失敗"));
             }
 

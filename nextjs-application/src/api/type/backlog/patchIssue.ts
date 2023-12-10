@@ -13,7 +13,7 @@ export class PatchIssueRequest implements BaseRequest {
     body: BodyInit;
 
     private constructor({ url, apiKey }: User, issueIdOrKey: string, body: BodyInit) {
-        this.url = `https://${url}.backlog.com/api/v2/issues/${issueIdOrKey}/statuses?apiKey=${apiKey}`;
+        this.url = `https://${url}.backlog.com/api/v2/issues/${issueIdOrKey}?apiKey=${apiKey}`;
         this.method = "PATCH";
         this.headers = {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -53,6 +53,7 @@ export class PatchIssueRequest implements BaseRequest {
 
                 searchParams.push([key.toString(), v]);
             }
+
             return new URLSearchParams(searchParams);
         }
     };
