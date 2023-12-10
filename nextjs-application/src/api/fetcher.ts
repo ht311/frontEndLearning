@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+
 /**
  * fetcherのrequestクラスの基底
  */
@@ -8,7 +10,7 @@ export interface BaseRequest {
     body?: BodyInit;
 }
 
-export type method = "GET" | "POST";
+export type method = "GET" | "POST" | "PATCH";
 
 /**
  * APIを発行するためのラッパー関数
@@ -26,17 +28,14 @@ export const fetcher = async <Response>(request: BaseRequest): Promise<Response>
     })
         .then((response) => {
             if (!response.ok) {
-                return response.text();
-                // return Promise.reject(new Error("API失敗"));
+                // return response.text();
+                return Promise.reject(new Error("API失敗"));
             }
 
             return response.json();
         })
-        // .then((text) => {
-        //     console.log(text);
-        //     return Promise.reject(new Error("API失敗"));
-        // })
         .catch((error: Error) => {
             console.error(error);
-            throw error;
+            // 一旦全部404扱いにする
+            throw notFound();
         });
