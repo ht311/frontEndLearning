@@ -27,7 +27,7 @@ const fetchDetail = async (user: User, id: string): Promise<GetIssueResponse> =>
     return res;
 };
 
-export type FormItemsPresenterProps = {
+type FormItemsPresenterProps = {
     /** project */
     statusesOptions: Option[];
     /** タスクのタイプ */

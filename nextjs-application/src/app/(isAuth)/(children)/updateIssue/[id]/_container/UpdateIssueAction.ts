@@ -2,18 +2,26 @@
 import { fetcher } from "@api/fetcher";
 import { PatchIssueRequest, PatchIssueResponse, RequestParams } from "@api/type/backlog/patchIssue";
 import { getServerSession } from "@lib/nextAuth/util/sessionUtil";
-import { UpdateIssueActionResponse } from "./types";
+
+type UpdateIssueActionResponse =
+    | (PatchIssueResponse & {
+          errorMessage?: string;
+          issueIdOrKey?: string;
+      })
+    | undefined;
+
 /**
  * 課題追加ページのフォーム押下のserverAction
  * serverActionにすることで、ブラウザがDLするjsを削減できる
  */
 const UpdateIssueAction = async (
-    state: UpdateIssueActionResponse,
+    _state: UpdateIssueActionResponse,
     form: FormData,
 ): Promise<UpdateIssueActionResponse> => {
     const session = getServerSession();
 
     // make request
+    const issueIdOrKey = form.get("issueIdOrKey")?.toString() || "";
     const params: RequestParams = {
         summary: form.get("summary")?.toString() || "",
         statusId: form.get("statusId")?.toString() || "",
@@ -21,7 +29,7 @@ const UpdateIssueAction = async (
         priorityId: form.get("priorityId")?.toString() || "",
     };
 
-    const req = new PatchIssueRequest.Builder((await session).user, state.issueIdOrKey || "")
+    const req = new PatchIssueRequest.Builder((await session).user, issueIdOrKey)
         .params(params)
         .build();
 
