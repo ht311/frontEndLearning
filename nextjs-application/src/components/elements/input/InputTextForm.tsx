@@ -4,9 +4,10 @@ export type InputTextFormProps = {
     inputName: string;
     defaultValue?: string | number;
     placeholder?: string;
-    disabled?: boolean;
     required?: boolean;
+    /** 正規表現で指定 */
     pattern?: string;
+    /** requiredまたはpatternでNGの場合に活性 */
     errorMessage?: string;
 };
 
@@ -14,7 +15,6 @@ export const InputTextForm = ({
     inputName,
     defaultValue,
     placeholder,
-    disabled = false,
     required = false,
     pattern,
     errorMessage,
@@ -26,7 +26,6 @@ export const InputTextForm = ({
                 type="text"
                 name={inputName}
                 placeholder={placeholder}
-                disabled={disabled}
                 defaultValue={defaultValue}
                 pattern={pattern}
                 required={required}

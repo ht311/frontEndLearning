@@ -5,9 +5,12 @@ import { ReactNode } from "react";
 export type LinkBlankProps = {
     href: string;
     children: ReactNode;
-    ariaLabel: string;
+    ariaLabel?: string;
 };
 
+/**
+ * target="_blank"で開くときに使用。target="_blank"で開くことがわかるような画像をリンクの右に配置
+ */
 export const LinkBlank = ({ href, children, ariaLabel }: LinkBlankProps): JSX.Element => {
     return (
         <Link href={href} target="_blank" aria-label={ariaLabel}>

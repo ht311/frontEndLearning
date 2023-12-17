@@ -11,22 +11,7 @@ parserOptions:
 ignorePatterns:
     - node_modules
     - dist
+    - "**/*.js"
 rules:
     no-undef: # TypeScriptのコンパイラが未定義はエラーにしてくれるため
         - off
-# overrides:
-#   files:
-#     - ['*.ts', '*.tsx']
-#   rules:
-#     - no-undef: off
-
-#   "parserOptions": {
-#     "babelOptions": {
-#       "presets": ["require.resolve(\"next/babel\")"]
-#     }
-#   },
-#   "rules": {
-#     "camelcase": ["error", { "properties": "never" }],
-#     "no-unreachable": "error"
-#   }
-# }

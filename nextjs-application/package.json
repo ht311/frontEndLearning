@@ -19,14 +19,14 @@
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^14.0.3",
-    "@storybook/addon-essentials": "^7.6.5",
-    "@storybook/addon-interactions": "^7.6.5",
-    "@storybook/addon-links": "^7.6.5",
+    "@storybook/addon-essentials": "^8.0.0-alpha.3",
+    "@storybook/addon-interactions": "^8.0.0-alpha.3",
+    "@storybook/addon-links": "^8.0.0-alpha.3",
     "@storybook/addon-onboarding": "^1.0.10",
-    "@storybook/blocks": "^7.6.5",
-    "@storybook/nextjs": "^7.6.5",
-    "@storybook/react": "^7.6.5",
-    "@storybook/test": "^7.6.5",
+    "@storybook/blocks": "^8.0.0-alpha.3",
+    "@storybook/nextjs": "^8.0.0-alpha.3",
+    "@storybook/react": "^8.0.0-alpha.3",
+    "@storybook/test": "^8.0.0-alpha.3",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -37,7 +37,7 @@
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-storybook": "^0.6.15",
     "next-compose-plugins": "^2.2.1",
-    "storybook": "^7.6.5"
+    "storybook": "^8.0.0-alpha.3"
   },
   "eslintConfig": {
     "extends": [
