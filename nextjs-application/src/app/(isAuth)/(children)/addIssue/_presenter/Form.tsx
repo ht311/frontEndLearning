@@ -22,7 +22,7 @@ const Form = ({ children }: { children: ReactNode }): JSX.Element => {
                     <hr className={styles.hr} />
                     {postIssueResponse.issueKey ? (
                         <h3>
-                            <Link href={`./issue/${postIssueResponse.issueKey}`}>
+                            <Link href={`../issue/${postIssueResponse.issueKey}`}>
                                 課題が追加されました
                             </Link>
                         </h3>

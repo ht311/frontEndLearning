@@ -5,7 +5,7 @@ import { Detail } from "@app/(isAuth)/(children)/updateIssue/[id]/_container/Det
 
 type PageProps = { params: { id: string } };
 
-const Page: NextPage<PageProps> = async ({ params }: PageProps) => {
+const Page: NextPage<PageProps> = ({ params }: PageProps) => {
     return (
         <Modal>
             <Suspense fallback={<div>loading...</div>}>

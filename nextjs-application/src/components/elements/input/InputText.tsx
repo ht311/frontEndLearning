@@ -9,11 +9,6 @@ export type InputTextProps = {
      */
     // eslint-disable-next-line no-unused-vars
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    /**
-     * 非表示にしたいときにtrue
-     */
-    disabled?: boolean;
-    defaultValue?: string;
 };
 
 export const InputText = ({
@@ -21,8 +16,6 @@ export const InputText = ({
     value = "",
     placeholder,
     onChange,
-    disabled = false,
-    defaultValue = "",
 }: InputTextProps): JSX.Element => {
     return (
         <input
@@ -30,10 +23,8 @@ export const InputText = ({
             type="text"
             name={inputName}
             placeholder={placeholder}
-            disabled={disabled}
             onChange={onChange}
             value={value}
-            defaultValue={defaultValue}
         ></input>
     );
 };

@@ -3,10 +3,20 @@ import { GetIssueResponse } from "@api/type/backlog/getIssue";
 import InputTextForm from "@components/elements/input/InputTextForm";
 import Submit from "@components/elements/submit/Submit";
 import Select from "@components/elements/select/SelectForm";
+import { Option } from "@components/elements/select/SelectForm";
 import { useFormState } from "react-dom";
-import { FormItemsPresenterProps } from "../_container/Detail";
 import UpdateIssueAction from "../_container/UpdateIssueAction";
-import { defaultUpdateIssueAction } from "../_container/types";
+import styles from "./DetailPresenter.module.css";
+import Link from "next/link";
+
+type FormItemsPresenterProps = {
+    /** project */
+    statusesOptions: Option[];
+    /** タスクのタイプ */
+    issueTypeIdsOptions: Option[];
+    /** 優先度 */
+    prioritiesOptions: Option[];
+};
 
 type DetailProps = {
     items: FormItemsPresenterProps;
@@ -19,13 +29,12 @@ const DetailPresenter: React.FC<DetailProps> = ({
     defaultValues,
     id,
 }: DetailProps): JSX.Element => {
-    const state = defaultUpdateIssueAction;
-    state.issueIdOrKey = id;
-    const [patchIssueResponse, formSubmit] = useFormState(UpdateIssueAction, state);
+    const [patchIssueResponse, formSubmit] = useFormState(UpdateIssueAction, undefined);
 
     return (
         <>
             <form action={formSubmit}>
+                <input type="hidden" name="issueIdOrKey" value={id} />
                 <div>
                     課題の件名：
                     <InputTextForm inputName={"summary"} defaultValue={defaultValues.summary} />
@@ -57,7 +66,20 @@ const DetailPresenter: React.FC<DetailProps> = ({
                 </div>
                 <Submit value="更新" />
             </form>
-            {patchIssueResponse && <div>{patchIssueResponse.id}</div>}
+            {patchIssueResponse && (
+                <>
+                    <hr className={styles.hr} />
+                    {patchIssueResponse.issueKey ? (
+                        <h3>
+                            <Link href={`../issue/${patchIssueResponse.issueKey}`}>
+                                課題が更新されました
+                            </Link>
+                        </h3>
+                    ) : (
+                        <h3>課題の更新に失敗しました</h3>
+                    )}
+                </>
+            )}
         </>
     );
 };

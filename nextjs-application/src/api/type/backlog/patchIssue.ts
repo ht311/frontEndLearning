@@ -77,5 +77,6 @@ export type RequestParams = {
  */
 export type PatchIssueResponse = {
     id: number;
+    issueKey: string;
     name: string;
 };
