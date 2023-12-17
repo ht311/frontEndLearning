@@ -34,6 +34,11 @@
   - `npm run format`
 - bundleサイズ解析
   - `npm run analyzer`
+- storybook起動
+  - `npm run storybook`
+- storybook静的出力
+  - `npm run build-storybook`
+    - storybook-staticフォルダに出力される
 
 
 ## 使用技術
@@ -110,7 +115,11 @@
     - デザインパターンのinterfaceを定義
 - styles
   - globalなcssを定義
-- その他設定ファイル
+- その他設定ファイル、フォルダ
+  - .storybook
+    - storybookの設定
+  - .vscode
+    - vscodeの設定
   - .env
     - 環境変数を定義
   - .eslintrc.yml
@@ -143,9 +152,10 @@
 
 - [ ] importのフォーマット(自動でimport文を並び変える)
 - [ ] スマホ対応
-  - [ ] cssに@mediaを適用でいけるはず(詳しい人教えて...)
+  - [ ] cssに@mediaを適用でいけるはず
 - [ ] エラー画面のカスタム
 - [ ] APIのエラー応答考慮
+- [ ] jest
 <!-- - [ ] ビルド時にMiddlewareに対して「not supported in the Edge Runtime」の警告が走る
   - [ ] Middlewareに[jose](https://www.npmjs.com/package/jose)を適用すれば対応可能らしい  あるいはnextjs v13に下げる ~~nextjsのマイナーリリースで対応される気はする~~ -->
 
@@ -169,6 +179,3 @@
 |UT|必要|最低限|
 |IT|最低限|必要|
 
-
-- [ ] updateissueに更新機能を追加
-- [ ] jest,storybook
