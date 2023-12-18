@@ -1,24 +1,41 @@
 "use client";
+import Link from "next/link";
+import { ChangeEvent, Suspense } from "react";
+import { getFormattedDate } from "@util/dateUtils";
 import Table from "@components/elements/table/Table";
 import { Option } from "@components/elements/select/SelectForm";
 import { GroupOption } from "@components/elements/select/SelectFroupForm";
-import useFetchIssues from "../_container/useFetchIssues";
 import SearchItemsPresenter from "./SearchItemsPresenter";
-import Link from "next/link";
-import { Suspense } from "react";
-import { getFormattedDate } from "@util/dateUtils";
+import { Response as GetIssueResponse } from "@api/type/backlog/getIssueList";
+import { ReadonlyURLSearchParams } from "next/navigation";
 
-export type IssuesPresenterProps = {
+// 引数が多すぎる
+type IssuesPresenterProps = {
     /** project */
     projectOptions: Option[];
     /** タスクのタイプ */
     issueTypeIdsOptions: GroupOption[];
     /** 優先度 */
     prioritiesOptions: Option[];
+    /**
+     * onChangeイベント
+     * elementに依存させることで、onChange発火時にAPIを発行して、issuesを更新する
+     */
+    onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
+    /**
+     * fetch中(API発行中)はfalse
+     */
+    isLoading: boolean;
+    /**
+     * isLoadingがtrueの場合、課題検索結果
+     * falseの場合、undefined
+     */
+    issues: ({ projectName: string } & GetIssueResponse)[] | undefined;
+    /** useSearchParams */
+    params: ReadonlyURLSearchParams;
 };
-const IssuesPresenter = (props: IssuesPresenterProps): JSX.Element => {
-    const { onChange, isLoading, issues } = useFetchIssues();
 
+const IssuesPresenter = (props: IssuesPresenterProps): JSX.Element => {
     return (
         <>
             <Suspense
@@ -44,18 +61,19 @@ const IssuesPresenter = (props: IssuesPresenterProps): JSX.Element => {
                     projectOptions={props.projectOptions}
                     issueTypeIdsOptions={props.issueTypeIdsOptions}
                     prioritiesOptions={props.prioritiesOptions}
-                    onChange={onChange}
+                    onChange={props.onChange}
+                    params={props.params}
                 />
             </Suspense>
             <hr />
-            {isLoading ? (
+            {props.isLoading ? (
                 <div>loading...</div>
             ) : (
                 <>
-                    {issues && (
+                    {props.issues && (
                         <Table
                             head={["Project名", "タスク名", "担当者", "優先度", "状態", "期限"]}
-                            body={issues.map((issue, index) => [
+                            body={props.issues.map((issue, index) => [
                                 issue.projectName,
                                 <Link
                                     href={`./updateIssue/${issue.issueKey}`}

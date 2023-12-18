@@ -1,10 +1,30 @@
 "use client";
 import Button from "@components/elements/button/Button";
-import useFetchActivities from "../_container/useFetchActivities";
+import { Activity } from "@api/type/backlog/getActivities";
 
-export const ActivitiesPresenter: React.FC = (): JSX.Element => {
-    const { fetchActivity, isLoading, activityResponse } = useFetchActivities();
+type ActivitiesPresenterProps = {
+    /**
+     * 再fetchしたい場合に呼ぶ
+     */
+    fetchActivity: () => void;
+    /**
+     * fetch中はfalse
+     */
+    isLoading: boolean;
+    /**
+     * isLoadingがtrueの場合、応答値
+     * falseの場合、undefined
+     */
+    activityResponse: CustomActivityResponse[] | undefined;
+};
 
+type CustomActivityResponse = { name: string } & Activity;
+
+export const ActivitiesPresenter = ({
+    fetchActivity,
+    isLoading,
+    activityResponse,
+}: ActivitiesPresenterProps): JSX.Element => {
     return (
         <>
             <Button onClick={fetchActivity}>activityを更新する</Button>

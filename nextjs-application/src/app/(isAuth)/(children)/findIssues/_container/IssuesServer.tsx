@@ -1,5 +1,5 @@
 import SearchItemsContainer from "../_container/SearchItemsContainer";
-import IssuesPresenter from "./IssuesPresenter";
+import IssuesClient from "./IssuesClient";
 
 /**
  * - SearchItemsContainer
@@ -17,7 +17,7 @@ const Issues = async (): Promise<JSX.Element> => {
     const { projectOptions, issueTypeIdsOptions, prioritiesOptions } = await SearchItemsContainer();
 
     return (
-        <IssuesPresenter
+        <IssuesClient
             projectOptions={projectOptions}
             issueTypeIdsOptions={issueTypeIdsOptions}
             prioritiesOptions={prioritiesOptions}
