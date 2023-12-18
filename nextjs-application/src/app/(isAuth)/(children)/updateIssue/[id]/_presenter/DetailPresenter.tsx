@@ -29,6 +29,8 @@ const DetailPresenter: React.FC<DetailProps> = ({
     defaultValues,
     id,
 }: DetailProps): JSX.Element => {
+    // presenterパターンとしてどうかはともかく、formに依存するのは設計として問題ないように思える
+    // 問題あれば、他と同じようにContainer経由でパラメータを渡す
     const [patchIssueResponse, formSubmit] = useFormState(UpdateIssueAction, undefined);
 
     return (

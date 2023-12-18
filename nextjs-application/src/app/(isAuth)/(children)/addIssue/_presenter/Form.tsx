@@ -27,8 +27,9 @@ const Form = ({ children }: { children: ReactNode }): JSX.Element => {
                             </Link>
                         </h3>
                     ) : (
-                        <h3>課題の追加に失敗しました{postIssueResponse.issueKey}</h3>
+                        <h3>課題の追加に失敗しました。issueKey={postIssueResponse.issueKey}</h3>
                     )}
+                    {/* ↑本来はエラーメッセージとかにするべき */}
                 </>
             )}
         </>

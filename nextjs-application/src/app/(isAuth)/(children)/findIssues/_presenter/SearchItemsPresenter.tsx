@@ -2,7 +2,7 @@
 import GroupSelect, { GroupOption } from "@components/elements/select/SelectFroupForm";
 import Select, { Option } from "@components/elements/select/SelectForm";
 import { ChangeEvent } from "react";
-import { useSearchParams } from "next/navigation";
+import { ReadonlyURLSearchParams } from "next/navigation";
 
 export type SearchItemsPresenterProps = {
     /** project */
@@ -11,8 +11,10 @@ export type SearchItemsPresenterProps = {
     issueTypeIdsOptions: GroupOption[];
     /** 優先度 */
     prioritiesOptions: Option[];
-    // 各セレクタのonChangeイベント
+    /** 各セレクタのonChangeイベント */
     onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
+    /** useSearchParams */
+    params: ReadonlyURLSearchParams;
 };
 
 /**
@@ -24,9 +26,8 @@ export const SearchItemsPresenter = ({
     issueTypeIdsOptions,
     prioritiesOptions,
     onChange,
+    params,
 }: SearchItemsPresenterProps): JSX.Element => {
-    const params = useSearchParams();
-
     return (
         <>
             <div>

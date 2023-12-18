@@ -1,10 +1,10 @@
 import { NextAuthProvider } from "@lib/nextAuth/session/Providers";
-import Issues from "./_presenter/Issues";
+import IssuesServer from "./_container/IssuesServer";
 
 const Page = () => {
     return (
         <NextAuthProvider>
-            <Issues />
+            <IssuesServer />
         </NextAuthProvider>
     );
 };
