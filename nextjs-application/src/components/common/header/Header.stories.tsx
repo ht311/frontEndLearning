@@ -17,6 +17,6 @@ type Story = StoryObj<typeof HeaderPresenter>;
 
 export const story: Story = {
     args: {
-        userName:"userName"
+        userName: "ユーザ名",
     },
 };

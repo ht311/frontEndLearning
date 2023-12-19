@@ -8,10 +8,6 @@ export type SelectGroupProps = {
     groupOptions: GroupOption[];
     selectName?: string;
     required?: boolean;
-    /**
-     * 非表示にしたいときにtrue
-     */
-    disabled?: boolean;
     onChange?: (event: ChangeEvent<HTMLSelectElement>) => void;
     selected?: string | number;
 };
@@ -61,7 +57,6 @@ export const GroupSelect = ({
     selectName: inputName = "",
     groupOptions,
     required = false,
-    disabled = false,
     onChange,
     selected = "",
 }: SelectGroupProps): JSX.Element => {
@@ -69,7 +64,6 @@ export const GroupSelect = ({
         <label className={style.selectbox}>
             <select
                 name={inputName}
-                disabled={disabled}
                 required={required}
                 onChange={onChange}
                 defaultValue={selected}

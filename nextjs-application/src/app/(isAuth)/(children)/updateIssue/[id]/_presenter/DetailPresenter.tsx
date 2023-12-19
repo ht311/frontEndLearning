@@ -7,7 +7,6 @@ import { Option } from "@components/elements/select/SelectForm";
 import { useFormState } from "react-dom";
 import UpdateIssueAction from "../_container/UpdateIssueAction";
 import styles from "./DetailPresenter.module.css";
-import Link from "next/link";
 
 type FormItemsPresenterProps = {
     /** project */
@@ -72,11 +71,7 @@ const DetailPresenter: React.FC<DetailProps> = ({
                 <>
                     <hr className={styles.hr} />
                     {patchIssueResponse.issueKey ? (
-                        <h3>
-                            <Link href={`../issue/${patchIssueResponse.issueKey}`}>
-                                課題が更新されました
-                            </Link>
-                        </h3>
+                        <h3>課題が更新されました</h3>
                     ) : (
                         <h3>課題の更新に失敗しました</h3>
                     )}

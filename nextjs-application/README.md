@@ -24,7 +24,7 @@
 
 - 開発者モードで起動
   - `npm run dev`
-    - turbopackで起動は[バグ](https://github.com/vercel/turbo/issues/4979)に遭遇するため不可
+    - [turbopack](https://nextjs.org/docs/architecture/turbopack)で起動は[バグ](https://github.com/vercel/turbo/issues/4979)に遭遇するため不可
 - ビルド
   - `npm run build`
     - 実行時に静的解析、フォーマットも実行  
@@ -34,6 +34,7 @@
   - `npm run format`
 - bundleサイズ解析
   - `npm run analyzer`
+    - 動きはするが設定がイマイチで起動時に空のページが複数開く
 - storybook起動
   - `npm run storybook`
 - storybook静的出力
@@ -135,17 +136,35 @@
   - tsconfig.json
     - TypeScriptの設定
 
+
 #### App routerについて
-  - app
-    - app routerを使用
-    - page専用のcomponentを定義する場合、`_components`フォルダに定義する
-      - 例：`app/home`に専用のcomponentが必要な場合、`app/home/_components`に定義
-      - フォルダ階層がURLのパスとなる
-        - 例：`app/home`はhttp://{domain}/home
-        - ただし、`(hoge)`のようにフォルダ名を()で囲った場合は、グループピングのためのフォルダと扱われルーティング対象外となる
-          - 例1：`app/(hoge)/home`はhttp://{domain}/home
-          - 例2：http://{domain}/(hoge) や http://{domain}/hoge は404となる
-          - グループピングしたフォルダ配下に`layout.tsx` layout.tsxについては後述
+- ルーティングはフォルダ階層に従う
+  - 例：`app/home`はhttp://{domain}/home
+- 特殊なフォルダ命名
+  - グルーピング
+    - `(hoge)`のようにフォルダ名を()で囲った場合は、グループピングのためのフォルダと扱われルーティング対象外となる
+      - 例1：`app/(hoge)/home`はhttp://{domain}/home
+      - 例2：http://{domain}/(hoge) や http://{domain}/hoge は404となる
+  - プライベートフォルダ
+    - `_presenter`のように先頭に_を付けた場合は、privateなフォルダ扱いとなり、ルーティング対象外となる
+      - 例：`app/home`に専用のcomponentが必要な場合、`app/home/_components`配下に専用のcomponentを定義して依存関係をわかりやすくする
+  - 動的ルーティング
+    - `[id]`のように[]で囲った場合は、動的なパスと扱われる
+      - 例：`app/hoge/[id]`で定義しているときは、http://{domain}/hoge/id01にアクセスできる
+        - Rest APIのパスパラメータ的なイメージでアクセスできるようになる。
+        - [id]のpageで渡ってきたパラメータは参照可能で、もし不正なidの場合は404扱いにもできる
+- その他にも様々な機能や特殊なフォルダ命名があるため、[公式ドキュメント](https://nextjs.org/docs/app)、[zennの記事](https://zenn.dev/yamadadayo123/articles/6cb4f586de0183)などを参照することを推奨
+ 
+
+## Container Presenter pattern
+
+||Container|Presenter|
+|:---|:---|:---|
+|責務|ロジック|UI|
+|状態|持つ|原則持たない|
+|データの受け取り元|Hooks、API等|Props|
+|UT|必要|最低限|
+|IT|最低限|必要|
 
 
 ## 課題
@@ -156,26 +175,13 @@
 - [ ] エラー画面のカスタム
 - [ ] APIのエラー応答考慮
 - [ ] jest
-<!-- - [ ] ビルド時にMiddlewareに対して「not supported in the Edge Runtime」の警告が走る
-  - [ ] Middlewareに[jose](https://www.npmjs.com/package/jose)を適用すれば対応可能らしい  あるいはnextjs v13に下げる ~~nextjsのマイナーリリースで対応される気はする~~ -->
 
 
 ## その他参考
 
 - [formについて](https://qiita.com/nuko-suke/items/1393995fd53ecaeb1cbc)
-- [Next.js 13](https://reffect.co.jp/react/next-js-13)
 - [request-memoization](https://nextjs.org/docs/app/building-your-application/caching#request-memoization)
 - モーダル関連
   - [Intercepting Routes](https://nextjs.org/docs/app/building-your-application/routing/intercepting-routes)
   - [Parallel Routes](https://nextjs.org/docs/app/building-your-application/routing/parallel-routes)
 - [デザインパターン](https://zenn.dev/ficilcom/articles/app_router_design_pattern)
-
-
-||Container|Presenter|
-|:---|:---|:---|
-|責務|ロジック|UI|
-|状態|持つ|原則持たない|
-|データの受け取り元|Hooks、API等|Props|
-|UT|必要|最低限|
-|IT|最低限|必要|
-
