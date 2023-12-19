@@ -8,10 +8,6 @@ export type SelectProps = {
     options: Option[];
     selectName?: string;
     required?: boolean;
-    /**
-     * 非表示にしたいときにtrue
-     */
-    disabled?: boolean;
     onChange?: (event: ChangeEvent<HTMLSelectElement>) => void;
     selected?: string | number;
 };
@@ -38,7 +34,6 @@ export const Select = ({
     selectName: inputName = "",
     options,
     required = false,
-    disabled = false,
     onChange,
     selected = "",
 }: SelectProps): JSX.Element => {
@@ -46,7 +41,6 @@ export const Select = ({
         <label className={style.selectbox}>
             <select
                 name={inputName}
-                disabled={disabled}
                 required={required}
                 onChange={onChange}
                 defaultValue={selected}
