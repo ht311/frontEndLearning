@@ -1,9 +1,9 @@
-import Header from "./Header";
+import HeaderPresenter from "./HeaderPresenter";
 import type { Meta, StoryObj } from "@storybook/react";
 
-const meta: Meta<typeof Header> = {
-    title: "Header",
-    component: Header,
+const meta: Meta<typeof HeaderPresenter> = {
+    title: "components/common/Header",
+    component: HeaderPresenter,
     parameters: {
         // https://storybook.js.org/docs/configure/story-layout
         layout: "padded",
@@ -13,11 +13,10 @@ const meta: Meta<typeof Header> = {
 };
 export default meta;
 
-type Story = StoryObj<typeof Header>;
+type Story = StoryObj<typeof HeaderPresenter>;
 
 export const story: Story = {
     args: {
-        href: "https://github.com/",
-        children: "GitHubに遷移します",
+        userName:"userName"
     },
 };
