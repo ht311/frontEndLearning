@@ -1,3 +1,3 @@
-# react
-Reactの勉強用リポジトリ
-適当な資産をコミットしている
+# frontEndLearning
+フロントエンド勉強用リポジトリ  
+成果物は`nextjs-application`配下
