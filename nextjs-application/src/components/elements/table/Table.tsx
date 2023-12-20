@@ -17,13 +17,11 @@ export const Table = ({ head, body }: TableProps): JSX.Element => {
             <thead>
                 <tr>
                     <th key={"no"}>No</th>
-                    {head.map((h, index) => (
-                        <th key={index}>{h}</th>
-                    ))}
+                    {head?.map((h, index) => <th key={index}>{h}</th>)}
                 </tr>
             </thead>
             <tbody>
-                {body.map((b, index) => (
+                {body?.map((b, index) => (
                     <tr key={index}>
                         <td key={"no" + index + 1}>{index + 1}</td>
                         {b.map((bChild, bChildIndex) => (
