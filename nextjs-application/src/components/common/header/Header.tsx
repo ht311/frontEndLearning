@@ -2,7 +2,7 @@ import { getServerSession } from "@lib/nextAuth/util/sessionUtil";
 import { Session } from "next-auth";
 import HeaderPresenter from "./HeaderPresenter";
 
-const Header = async (): Promise<JSX.Element> => {
+const Header = async (): Promise<React.JSX.Element> => {
     const session: Session = await getServerSession();
     const name = session.user.name || "";
 

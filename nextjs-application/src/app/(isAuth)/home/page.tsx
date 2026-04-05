@@ -1,7 +1,6 @@
-import { NextPage } from "next";
 import HomePresenter from "./_presenter/HomePresenter";
 
-const Home: NextPage = () => {
+const Home = () => {
     return <HomePresenter />;
 };
 

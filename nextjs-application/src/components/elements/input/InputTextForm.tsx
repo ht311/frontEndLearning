@@ -18,7 +18,7 @@ export const InputTextForm = ({
     required = false,
     pattern,
     errorMessage,
-}: InputTextFormProps): JSX.Element => {
+}: InputTextFormProps): React.JSX.Element => {
     return (
         <label>
             <input

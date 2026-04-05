@@ -59,7 +59,7 @@ export const GroupSelect = ({
     required = false,
     onChange,
     selected = "",
-}: SelectGroupProps): JSX.Element => {
+}: SelectGroupProps): React.JSX.Element => {
     return (
         <label className={style.selectbox}>
             <select

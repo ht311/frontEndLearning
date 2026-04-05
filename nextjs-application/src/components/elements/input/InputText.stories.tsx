@@ -16,7 +16,7 @@ export default meta;
 
 type Story = StoryObj<typeof InputText>;
 
-const ButtonWithHooks = (args: InputTextProps): JSX.Element => {
+const ButtonWithHooks = (args: InputTextProps): React.JSX.Element => {
     const [value, setValue] = useState(args.value);
     const onChenge = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);

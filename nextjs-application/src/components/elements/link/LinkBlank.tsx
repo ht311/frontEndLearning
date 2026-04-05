@@ -11,7 +11,7 @@ export type LinkBlankProps = {
 /**
  * target="_blank"で開くときに使用。target="_blank"で開くことがわかるような画像をリンクの右に配置
  */
-export const LinkBlank = ({ href, children, ariaLabel }: LinkBlankProps): JSX.Element => {
+export const LinkBlank = ({ href, children, ariaLabel }: LinkBlankProps): React.JSX.Element => {
     return (
         <Link href={href} target="_blank" aria-label={ariaLabel}>
             {children}

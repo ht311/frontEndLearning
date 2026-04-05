@@ -4,7 +4,7 @@ export type SubmitProps = {
     value: string | number;
 };
 
-export const Submit: React.FC<SubmitProps> = ({ value }: SubmitProps): JSX.Element => {
+export const Submit: React.FC<SubmitProps> = ({ value }: SubmitProps): React.JSX.Element => {
     return <input className={styles.submit} type="submit" value={value} />;
 };
 

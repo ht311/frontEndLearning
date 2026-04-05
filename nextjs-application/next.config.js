@@ -1,8 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const path = require("path");
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const withPlugins = require("next-compose-plugins");
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+    enabled: process.env.ANALYZE === "true",
+});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -28,36 +27,8 @@ const nextConfig = {
             },
         ],
     },
-
-    webpack: (config) => {
-        config.resolve.alias = {
-            ...config.resolve.alias,
-            // ディレクトリ構成が変更されたときに下記とtsconfig.jsonを変更すれば済むように定義
-            "@app": path.resolve(__dirname, "app"),
-            "@util": path.resolve(__dirname, "util"),
-            "@types": path.resolve(__dirname, "types"),
-            "@api": path.resolve(__dirname, "api"),
-            "@components": path.resolve(__dirname, "components"),
-            "@contexts": path.resolve(__dirname, "contexts"),
-            "@lib": path.resolve(__dirname, "lib"),
-            "@styles": path.resolve(__dirname, "styles"),
-            "@hooks": path.resolve(__dirname, "hooks"),
-        };
-        return config;
-    },
-    experimental: {
-        webpackBuildWorker: true,
-    },
+    // パスエイリアスはtsconfig.jsonのpathsで定義済み。Turbopackが自動で読み込む。
+    turbopack: {},
 };
 
-// バンドルアナライザ
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-    enabled: process.env.ANALYZE === "true",
-});
-
-// ネストしたい順に配列に渡す
-const plugins = [withBundleAnalyzer];
-
-// next.config.js
-module.exports = withPlugins(plugins, nextConfig);
+module.exports = withBundleAnalyzer(nextConfig);

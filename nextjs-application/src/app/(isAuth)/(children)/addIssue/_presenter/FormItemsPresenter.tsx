@@ -20,7 +20,7 @@ const FormItemsPresenter = ({
     projectOptions,
     issueTypeIdsOptions,
     prioritiesOptions,
-}: FormItemsPresenterProps): JSX.Element => {
+}: FormItemsPresenterProps): React.JSX.Element => {
     return (
         <>
             <div>

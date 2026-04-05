@@ -13,7 +13,7 @@ export type IssuesClientProps = {
     /** 優先度 */
     prioritiesOptions: Option[];
 };
-const IssuesClient = (props: IssuesClientProps): JSX.Element => {
+const IssuesClient = (props: IssuesClientProps): React.JSX.Element => {
     const { onChange, isLoading, issues } = useFetchIssues();
     const params = useSearchParams();
 

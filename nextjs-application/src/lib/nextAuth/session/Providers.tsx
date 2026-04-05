@@ -9,7 +9,7 @@ type Props = {
 /**
  * session情報を扱いたいclient componentは、このcomponentを親にすること
  */
-export const NextAuthProvider = ({ children }: Props): JSX.Element => {
+export const NextAuthProvider = ({ children }: Props): React.JSX.Element => {
     return (
         <SessionProvider
             // sessionの再取得は5分毎

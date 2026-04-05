@@ -1,4 +1,3 @@
-import Favicon from "/public/images/favicon.ico";
 import "@styles/global.css";
 import { Metadata } from "next";
 
@@ -24,5 +23,5 @@ export const metadata: Metadata = {
         template: "%s | Nextjs-Sample",
     },
     description: "Nextjs v13で作成したアプリケーションです",
-    icons: [{ rel: "icon", url: Favicon.src }],
+    icons: [{ rel: "icon", url: "/images/favicon.ico" }],
 };

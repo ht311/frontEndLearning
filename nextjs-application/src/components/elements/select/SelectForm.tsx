@@ -36,7 +36,7 @@ export const Select = ({
     required = false,
     onChange,
     selected = "",
-}: SelectProps): JSX.Element => {
+}: SelectProps): React.JSX.Element => {
     return (
         <label className={style.selectbox}>
             <select

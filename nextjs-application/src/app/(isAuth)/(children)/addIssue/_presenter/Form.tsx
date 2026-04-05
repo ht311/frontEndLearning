@@ -1,6 +1,6 @@
 "use client";
 import { ReactNode, Suspense } from "react";
-import { useFormState } from "react-dom";
+import { useActionState } from "react";
 import Link from "next/link";
 import FormAddIssueAction from "../_container/FormAddIssueAction";
 import styles from "./Form.module.css";
@@ -9,8 +9,8 @@ import styles from "./Form.module.css";
  * 課題追加ページのformcomponent
  * @returns 概要の通り
  */
-const Form = ({ children }: { children: ReactNode }): JSX.Element => {
-    const [postIssueResponse, handleSubmit] = useFormState(FormAddIssueAction, undefined);
+const Form = ({ children }: { children: ReactNode }): React.JSX.Element => {
+    const [postIssueResponse, handleSubmit] = useActionState(FormAddIssueAction, undefined);
 
     return (
         <>

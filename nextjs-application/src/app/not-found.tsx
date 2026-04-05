@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const Custom404 = (): JSX.Element => {
+export const Custom404 = (): React.JSX.Element => {
     return (
         <>
             <h1>404 - Page Not Found</h1>

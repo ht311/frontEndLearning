@@ -1,8 +1,7 @@
-import { NextPage } from "next";
 import Form from "./_presenter/Form";
 import FormItems from "./_container/FormItems";
 
-const Activities: NextPage = () => {
+const Activities = () => {
     return (
         <Form>
             <FormItems />
