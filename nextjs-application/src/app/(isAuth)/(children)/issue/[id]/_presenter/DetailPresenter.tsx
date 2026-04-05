@@ -7,7 +7,7 @@ type DetailPresenterProps = {
 
 const DetailPresenter: React.FC<DetailPresenterProps> = async (
     props: DetailPresenterProps,
-): Promise<JSX.Element> => {
+): Promise<React.JSX.Element> => {
     return (
         <>
             <div>課題名:{props.summary}</div>

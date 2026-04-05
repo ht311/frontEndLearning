@@ -7,7 +7,7 @@ export type InputTextProps = {
     /**
      * inputのonChengeイベント
      */
-    // eslint-disable-next-line no-unused-vars
+
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
@@ -16,7 +16,7 @@ export const InputText = ({
     value = "",
     placeholder,
     onChange,
-}: InputTextProps): JSX.Element => {
+}: InputTextProps): React.JSX.Element => {
     return (
         <input
             className={style.input_text}

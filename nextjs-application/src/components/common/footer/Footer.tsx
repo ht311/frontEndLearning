@@ -1,7 +1,7 @@
 import styles from "./Footer.module.css";
 import Link from "next/link";
 
-const Footer = (): JSX.Element => {
+const Footer = (): React.JSX.Element => {
     return (
         <div className={styles.backToHome}>
             <Link href="/home" aria-label="ホームに戻る">

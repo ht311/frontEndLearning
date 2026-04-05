@@ -16,7 +16,7 @@ import FormItemsPresenter from "../_presenter/FormItemsPresenter";
  *   このserver componentが、client component扱いされてしまい、
  *   ブラウザから各APIを発行することになり効率が悪い
  */
-export const FormItems = async (): Promise<JSX.Element> => {
+export const FormItems = async (): Promise<React.JSX.Element> => {
     const session = await getServerSession();
 
     // bffがあれば、フロントエンドはAPIを1本発行で済む

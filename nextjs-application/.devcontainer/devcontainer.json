@@ -1,0 +1,44 @@
+{
+    "name": "Next.js Application",
+    "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm",
+    "features": {
+        "ghcr.io/devcontainers/features/git:1": {}
+    },
+    "forwardPorts": [3000, 6006],
+    "portsAttributes": {
+        "3000": {
+            "label": "Next.js Dev Server",
+            "onAutoForward": "notify"
+        },
+        "6006": {
+            "label": "Storybook",
+            "onAutoForward": "notify"
+        }
+    },
+    "postCreateCommand": "npm install",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "bradlc.vscode-tailwindcss",
+                "ms-vscode.vscode-typescript-next",
+                "formulahendry.auto-rename-tag",
+                "streetsidesoftware.code-spell-checker",
+                "christian-kohler.path-intellisense",
+                "storybook.storybook-vscode"
+            ],
+            "settings": {
+                "editor.defaultFormatter": "esbenp.prettier-vscode",
+                "editor.formatOnSave": true,
+                "editor.codeActionsOnSave": {
+                    "source.fixAll.eslint": "explicit"
+                },
+                "typescript.tsdk": "node_modules/typescript/lib"
+            }
+        }
+    },
+    "remoteEnv": {
+        "NEXTAUTH_URL": "http://localhost:3000"
+    }
+}

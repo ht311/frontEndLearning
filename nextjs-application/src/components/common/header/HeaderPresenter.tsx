@@ -7,7 +7,7 @@ type HeaderPresenterProps = {
     userName: string;
 };
 
-const HeaderPresenter = ({ userName }: HeaderPresenterProps): JSX.Element => {
+const HeaderPresenter = ({ userName }: HeaderPresenterProps): React.JSX.Element => {
     return (
         <header className={styles.header}>
             <Link href="/home" aria-label="ホームに戻る">

@@ -2,7 +2,7 @@
 import { signOut } from "next-auth/react";
 import style from "./LogoutButton.module.css";
 
-export const LogoutButton = (): JSX.Element => {
+export const LogoutButton = (): React.JSX.Element => {
     return (
         <button
             className={style.button}

@@ -8,7 +8,7 @@ type DetailProps = {
     id: string;
 };
 
-const Detail: React.FC<DetailProps> = async ({ id }: DetailProps): Promise<JSX.Element> => {
+const Detail: React.FC<DetailProps> = async ({ id }: DetailProps): Promise<React.JSX.Element> => {
     const session: Session = await getServerSession();
     const res = await fetch(session.user, id);
 

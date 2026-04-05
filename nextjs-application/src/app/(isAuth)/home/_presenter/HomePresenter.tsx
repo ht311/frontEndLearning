@@ -2,7 +2,7 @@ import Link from "next/link";
 import utilStyles from "@styles/utils.module.css";
 import LinkBlank from "@components/elements/link/LinkBlank";
 
-const HomePresenter = (): JSX.Element => {
+const HomePresenter = (): React.JSX.Element => {
     return (
         <>
             <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>

@@ -4,7 +4,7 @@ import InputTextForm from "@components/elements/input/InputTextForm";
 import Submit from "@components/elements/submit/Submit";
 import Select from "@components/elements/select/SelectForm";
 import { Option } from "@components/elements/select/SelectForm";
-import { useFormState } from "react-dom";
+import { useActionState } from "react";
 import UpdateIssueAction from "../_container/UpdateIssueAction";
 import styles from "./DetailPresenter.module.css";
 
@@ -27,10 +27,10 @@ const DetailPresenter: React.FC<DetailProps> = ({
     items,
     defaultValues,
     id,
-}: DetailProps): JSX.Element => {
+}: DetailProps): React.JSX.Element => {
     // presenterパターンとしてどうかはともかく、formに依存するのは設計として問題ないように思える
     // 問題あれば、他と同じようにContainer経由でパラメータを渡す
-    const [patchIssueResponse, formSubmit] = useFormState(UpdateIssueAction, undefined);
+    const [patchIssueResponse, formSubmit] = useActionState(UpdateIssueAction, undefined);
 
     return (
         <>

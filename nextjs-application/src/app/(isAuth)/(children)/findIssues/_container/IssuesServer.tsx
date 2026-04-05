@@ -13,7 +13,7 @@ import IssuesClient from "./IssuesClient";
  *
  *  - nextjs v14ならclientcomponentにserveractionを書けるので、複雑な依存関係は改善できるかも(可読性がどうなるかは要検証)
  */
-const Issues = async (): Promise<JSX.Element> => {
+const Issues = async (): Promise<React.JSX.Element> => {
     const { projectOptions, issueTypeIdsOptions, prioritiesOptions } = await SearchItemsContainer();
 
     return (

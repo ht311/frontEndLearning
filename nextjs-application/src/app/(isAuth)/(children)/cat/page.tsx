@@ -37,7 +37,13 @@ const Page: NextPage = () => {
     // 第一引数は副作用関数、第二引数は副作用関数に依存する配列ってよく説明されてたりする
     useEffect(() => {
         const abortController = new AbortController();
-        onClick();
+
+        // useEffect内で直接非同期関数を定義して呼び出すパターン
+        const fetchInitial = async () => {
+            const res = await handler();
+            setImageUrl(res[0].url);
+        };
+        fetchInitial();
 
         return () => {
             abortController.abort();

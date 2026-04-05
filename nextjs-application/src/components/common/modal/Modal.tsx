@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { useRef, useCallback, MouseEventHandler } from "react";
 import styles from "./Modal.module.css";
 
-const Modal = ({ children }: { children: React.ReactNode }): JSX.Element | null => {
+const Modal = ({ children }: { children: React.ReactNode }): React.JSX.Element | null => {
     const overlay = useRef(null);
     const wrapper = useRef(null);
     const router = useRouter();

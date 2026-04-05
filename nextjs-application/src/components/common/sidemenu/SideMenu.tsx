@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from "./SideMenu.module.css";
 import Image from "next/image";
 
-const Sidemenu = (): JSX.Element => {
+const Sidemenu = (): React.JSX.Element => {
     return (
         <nav className={styles.sidemenu}>
             <ul>

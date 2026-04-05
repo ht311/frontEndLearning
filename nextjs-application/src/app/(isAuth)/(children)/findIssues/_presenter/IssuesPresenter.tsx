@@ -35,7 +35,7 @@ type IssuesPresenterProps = {
     params: ReadonlyURLSearchParams;
 };
 
-const IssuesPresenter = (props: IssuesPresenterProps): JSX.Element => {
+const IssuesPresenter = (props: IssuesPresenterProps): React.JSX.Element => {
     return (
         <>
             <Suspense

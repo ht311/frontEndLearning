@@ -14,7 +14,10 @@ export type ButtonProps = {
 /**
  * ボタンcomponent
  */
-export const Button: React.FC<ButtonProps> = ({ children, onClick }: ButtonProps): JSX.Element => {
+export const Button: React.FC<ButtonProps> = ({
+    children,
+    onClick,
+}: ButtonProps): React.JSX.Element => {
     const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
         onClick(event);
     };

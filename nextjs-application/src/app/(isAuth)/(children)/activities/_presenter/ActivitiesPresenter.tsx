@@ -24,7 +24,7 @@ export const ActivitiesPresenter = ({
     fetchActivity,
     isLoading,
     activityResponse,
-}: ActivitiesPresenterProps): JSX.Element => {
+}: ActivitiesPresenterProps): React.JSX.Element => {
     return (
         <>
             <Button onClick={fetchActivity}>activityを更新する</Button>

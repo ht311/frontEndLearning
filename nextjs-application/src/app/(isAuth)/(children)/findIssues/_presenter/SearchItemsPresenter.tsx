@@ -27,7 +27,7 @@ export const SearchItemsPresenter = ({
     prioritiesOptions,
     onChange,
     params,
-}: SearchItemsPresenterProps): JSX.Element => {
+}: SearchItemsPresenterProps): React.JSX.Element => {
     return (
         <>
             <div>

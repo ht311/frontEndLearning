@@ -12,7 +12,9 @@ type DetailProps = {
     id: string;
 };
 
-export const Detail: React.FC<DetailProps> = async ({ id }: DetailProps): Promise<JSX.Element> => {
+export const Detail: React.FC<DetailProps> = async ({
+    id,
+}: DetailProps): Promise<React.JSX.Element> => {
     const session: Session = await getServerSession();
     const defaultValues = await fetchDetail(session.user, id);
     const items = await fetchItems(session.user, defaultValues.projectId);

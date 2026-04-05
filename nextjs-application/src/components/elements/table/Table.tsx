@@ -11,7 +11,7 @@ export type TableProps = {
     body: ReactNode[][];
 };
 
-export const Table = ({ head, body }: TableProps): JSX.Element => {
+export const Table = ({ head, body }: TableProps): React.JSX.Element => {
     return (
         <table className={style.tableStyle}>
             <thead>
